@@ -147,14 +147,14 @@
           checkBoxNum.push(deleteTemp[i].value)
         }
         console.log(checkBoxNum)
-        // const response = await axios.post('http://127.0.0.1:7071/notice', {
-        //   msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
-        //   data: {
-        //     noticeIds : checkBoxNum
-        //   }
-        // }, {withCredentials: true})
+        const response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
+          data: {
+            noticeIds : checkBoxNum
+          }
+        }, {withCredentials: true})
 
-        // console.log(response)
+        console.log(response)
       }
 
     </script>
