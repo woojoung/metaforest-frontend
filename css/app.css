@@ -1,0 +1,73 @@
+.footerTopBox {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    margin: 0 0 30px 0;
+}
+.left {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.middle {
+    display: block;
+    width: 294px;
+    height: 85px;
+    margin: 0 auto;
+    align-items: center;
+    align-content: center;
+}
+.middle .btn56 {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 56px;
+    color: #131313;
+    background-color: #9de2d3;
+    border-radius: 60px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.middle .btn56 span {
+    color: #ffffff;
+}
+.right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.btn56M {
+    display: none;
+    margin: 0 auto 60px;
+    width: 60%;
+    height: 80%;
+    text-align: center;
+    line-height: 56px;
+    color: #131313;
+    border-radius: 60px;
+    cursor: pointer;
+    font-weight: 700;
+}
+@media screen and (max-width: 900px) {
+    .btn56M {
+        display: block;
+    }
+    .middle {
+        display: none;
+    }
+}
+
+.youtubeBox {
+    width: 660px;
+    height: 658px;
+}
+.youtubeBox .youtubeVideo {
+    width: 100%;
+    height: 100%;
+}
+@media screen and (max-width: 768px) {
+    .youtubeBox {
+        width: 100%;
+    }
+}

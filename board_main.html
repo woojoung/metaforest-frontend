@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+    <title></title>
+  </head>
+  <body>
+    <div id="board_area">
+
+      <h1>공지사항</h1>
+      <div>
+        <ul class="nav">
+            <li style="display:inline"><a href="./board_main.html">공지사항</a></li>
+            <li style="display:inline"><a href="./board_event.html">이벤트</a></li>
+            <li style="display:inline"><a href="./board_manual.html">이용매뉴얼</a></li>
+            <li style="display:inline"><a href="./board_faq.html">문의사항</a></li>
+          </ul>
+      </div>
+      
+      <div id="search_box">
+        <form action="" method="">
+          <select name="catgo">
+            <option value="starter" selected>선택</option>
+            <option value="title">제목</option>
+            <option value="name">글쓴이</option>
+            <option value="content">내용</option>
+          </select>
+          <input type="text" name="search" size="30" required="required" /> <button>검색</button>
+        </form>
+      </div>
+
+    </br>
+
+    <section id="section9">
+      <table class="list-table">
+        <thead>
+            <tr>
+              <th><input class="overall-checkbox" type="checkbox"></th>
+              <th width="70">번호</th>
+              <th width="300">제목</th>
+              <th width="120">글쓴이</th>
+            </tr>
+        </thead>
+        <tbody id="table1">
+        </tbody>
+  
+      </table>
+      <button type="button" class="delete-button" >선택 삭제</button>
+      <button type="button" onclick="location.href='board_write.html' ">등록</button>
+    </section>
+
+    </br>
+    
+
+    <!---pagination number --->
+    <p className={styles.pagination}>
+      <a href="javascript:prevPage()">이전</a>
+      | 
+      <a href="javascript:nextPage()">다음</a>
+    </p>
+
+     <!---paging number --->
+     <ul id="pagingul">
+
+     </ul>
+
+  </div>
+    <script src='./tools/cfg.js'></script>
+    <script src='./tools/enums.js'></script>
+    <script src='./tools/libs.js'></script>
+    <script src='./tools/md5.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script>
+      'use strict'
+      var myArray = [ 
+        {noticeId : 1, title : '공지사항입니다.', name : '관리자'}, 
+        {noticeId : 2, title : '집단상담은 어떻게 진행되나요?', name : '관리자'}, 
+        {noticeId : 3, title : '플랫폼은 무료인가요?', name : '관리자'}, 
+      ];
+
+      buildTable(myArray); 
+      
+      function buildTable(data) { 
+        var table = document.getElementById('table1');
+        for (var i=0; i < data.length; i++) { 
+          var row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${data[i].name}</td> </tr>`;
+          table.innerHTML += row 
+        } 
+      }
+
+    </script>
+
+    <script>
+      'use strict'
+      // lib.js 로 뺴기. window.onload() { apiGetList() }
+      const apiGetList = async (_perPage) => {
+        try {
+          const response = await axios.post('http://127.0.0.1:7071/notice', {
+            msgType: 40,
+            data: {
+              page: _perPage + 1
+            }
+          })
+
+          console.log(response)
+
+          // if (response.eErrCode !== eErrCode.NONE) {return}
+
+          // buildTable(response.data)
+
+        } catch (err) {
+          console.error(err)
+        }
+      };
+
+    </script>
+
+    <script>
+      'use strict'
+
+      let currentPageNum = 0; // localstorage에 저장하고 사용하기.
+      
+      function prevPage() {
+        if (currentPageNum > 0) {
+          currentPageNum--;
+        }
+
+        let prevPageNum = currentPageNum
+        console.log(currentPageNum)
+        // apiGetList(currentPageNum)
+
+      }
+
+      function nextPage() {
+
+        if (currentPageNum < 0) {
+          currentPageNum = -1;
+        }
+
+        let nextPageNum = currentPageNum++
+        console.log(currentPageNum)
+        // apiGetList(currentPageNum)
+
+      }
+
+      function changePage() {
+
+      }
+
+      function numPages() {
+
+      }
+
+    </script>
+
+    <script>
+      /* 체크박스 전체선택, 전체해제 */
+      let section = document.querySelector('#section9')
+      let noticeList = section.querySelector('.list-table')
+      let tableBody = noticeList.querySelector('tbody')
+      let allCheckbox = section.querySelector('.overall-checkbox')
+      let deleteButton = section.querySelector('.delete-button')
+      // select all
+      allCheckbox.onchange = function () {
+        let temp = tableBody.querySelectorAll('input[type="checkbox"]')
+        if (allCheckbox.checked === true) {
+          for (let i=0;i<temp.length;i++) {
+            temp[i].checked = true
+          }
+        } else {
+          for (let i=0;i<temp.length;i++) {
+            temp[i].checked = false
+          }
+        }
+      }
+      // delete selected row
+      deleteButton.onclick = async function () {
+        let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
+        console.log(deleteTemp)
+        let checkBoxNum = []
+        for (let i=0;i<deleteTemp.length;i++) {
+          checkBoxNum.push(deleteTemp[i].value)
+        }
+        console.log(checkBoxNum)
+        const response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
+          data: {
+            checkBoxNum : checkBoxNum
+          }
+        })
+
+        console.log(response)
+      }
+
+    </script>
+
+    <script>
+      let totalData; // 총 데이터 수 
+      let globalCurrentPage = 1; // 현재 페이지
+
+      const _response = axios.post('http://127.0.0.1:7071/notice', {
+        msgType: eApiMessageType.USER_GET_LIST_NOTICE_REQ,
+        data: {}
+        
+      });
+
+      let response = {}
+      Object.assign(response, _response)
+
+      console.log(response)
+      console.log(response.data)
+
+      totalData = response.datValues.length;
+
+      paging(totalData, 1);
+
+      // paging 함수
+      function paging(totalData, currentPage) {
+        const dataPerPage = 10;
+        const pageCount = 5;
+
+        console.log("currentPage : " + currentPage);
+
+        const totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
+
+        if (totalPage < pageCount) {
+          pageCount = totalPage;
+        }        
+
+        let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+        let last = pageGroup * pageCount // 화면에 보여질 마지막 페이지 번호
+
+        if (last > totalPage) {
+          last = totalPage;
+        }
+
+        let first = last - (pageCount - 1);
+        let next = last + 1;
+        let prev = first - 1;
+
+        let pageHtml = "";
+
+        if (prev > 0) {
+          pageHtml += "<li><a href='#' id='prev'> 이전 </a></li>";
+        }
+
+
+      }
+
+
+    </script>
+
+</body>
+</html>
