@@ -3,142 +3,490 @@
   <head>
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
+    <style>
+      #pagingul {
+          text-align: center;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-right: 0;
+          list-style-type: none;
+          padding-left: 0;
+      }
+
+      #pagingul li {
+          text-align: center;
+          float: left;
+      }
+
+      #pagingul li a {
+          display: block;
+          font-size: 14px;
+          padding: 9px 12px;
+          border-right: solid 1px #ccc;
+          box-sizing: border-box;
+      }
+
+      #pagingul li.on {
+          background: #000000;
+      }
+
+      #pagingul li.on a {
+          color: #fff;
+      }
+
+      table {
+        width: 60%;
+        border-top: 1px solid #444444;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      th, td {
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+      }
+      /* Add a black background color to the top navigation */
+      .topnav {
+        position: relative;
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        /* background-color: #6ad6c0; */
+        color: #6ad6c0;
+      }
+
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        color: #6ad6c0;
+      }
+
+      /* Centered section inside the top navigation */
+      .topnav-centered a {
+        float: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Right-aligned section inside the top navigation */
+      .topnav-right {
+        float: right;
+      }
+
+      /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+      @media screen and (max-width: 600px) {
+        .topnav a, .topnav-right {
+          float: none;
+          display: block;
+        }
+
+        .topnav-centered a {
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: none;
+        }
+      }
+
+      .category a {
+        float: left;
+        display: block;
+        color: #000000;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+      }
+
+      .category a:hover {
+        border-bottom: 3px solid black;
+      }
+
+      .category a:active {
+        border-bottom: 3px solid black;
+      }
+
+      .category-manual a {
+        float: left;
+        display: block;
+        color: #000000;
+        background-color: whitesmoke;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+        border: 1px solid #CFCFCF;
+       
+      }
+
+      .category-manual a:hover {
+        float: left;
+        display: block;
+        color: #fff;
+        background-color: #000000;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+      }
+
+      .topnav-right ul {
+        list-style-type: none;
+      }
+
+      .topnav-right li {
+        display: inline;
+      }
+
+      .topnav-logo img {
+        width: 210px;
+      }
+
+      .footer {
+        position: fixed;
+        background-color: #333;
+        overflow: hidden;
+        top: 931px;
+        width: 100%;
+        height: 30%;
+        background: #292929 0% 0% no-repeat padding-box;
+        opacity: 1;
+      }
+
+      .que{
+        position: relative;
+        padding: 17px 0;
+        cursor: pointer;
+        font-size: 14px;
+        border-bottom: 1px solid #dddddd;
+        
+      }
+        
+      .que::before{
+        display: inline-block;
+        content: 'Q';
+        font-size: 14px;
+        color: #006633;
+        margin-right: 5px;
+      }
+
+      .que.on>span{
+        font-weight: bold;
+        color: #006633; 
+      }
+        
+      .anw {
+        display: none;
+          overflow: hidden;
+        font-size: 14px;
+        background-color: #f4f4f2;
+        padding: 27px 0;
+      }
+        
+      .anw::before {
+        display: inline-block;
+        content: 'A';
+        font-size: 14px;
+        font-weight: bold;
+        color: #666;
+        margin-right: 5px;
+      }
+      
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
+    <!-- Top navigation -->
+    <div class="topnav">
+
+      <!-- Centered link -->
+      <div class="topnav-centered">
+        <!-- <a href="#home" class="active">Home</a> -->
+      </div>
+
+      <!-- Left-aligned links (default) -->
+      <!-- Logo -->
+      <div class="topnav-logo">
+        <a href="./index.html" class="">
+          <img class="" src="img/logo/log03.png" alt="logo">
+        </a>
+      </div>
+
+      <!-- Right-aligned links -->
+      <div class="topnav-right">
+        <ul class="" id="">
+          <li class="">
+            <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
+          </li>
+          <li>
+            <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
+          </li>
+          <li>
+            <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
+          </li>
+          <li>
+            <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
+          </li>
+          <li>
+            <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
+          </li>
+          <li>
+            <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
+          </li>
+          <li>
+            <a href="" class="fa fa-bars"></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    </br>
+    
+    <div class="category">
+      
+      <a href="./board_main.html">공지사항</a>
+      <a href="./board_event.html">이벤트</a>
+      <a href="./board_faq.html" class="active">이용매뉴얼</a>
+      <a href="http://yatavent.com/contact">문의사항</a>
+      
+    </div>
+    </br>
+
     <div id="board_area">
 
-      <h1>FAQ</h1>
-      <div>
-        <ul class="nav">
-            <li style="display:inline"><a href="./board_main.html">공지사항</a></li>
-            <li style="display:inline"><a href="./board_event.html">이벤트</a></li>
-            <li style="display:inline"><a href="./board_manual.html">이용매뉴얼</a></li>
-            <li style="display:inline"><a href="./board_faq.html">문의사항</a></li>
-          </ul>
-      </div>
-      
-      <div id="search_box">
-        <form action="" method="">
-          <select name="catgo">
-            <option value="starter" selected>선택</option>
-            <option value="title">제목</option>
-            <option value="name">글쓴이</option>
-            <option value="content">내용</option>
-          </select>
-          <input type="text" name="search" size="30" required="required" /> <button>검색</button>
-        </form>
+      <h1>이용매뉴얼</h1>
+      <h4>찾으시는 질문이 없으실 경우 문의하기를 통해 문의를 주시면 각 질문 내용별 담당자가 내용 확인 후 빠른 답변을 드리겠습니다.</h4>
+      </br>
+
+
+      <div class="category-manual">
+        <a >전체</a>
+        <a >1:1 상담</a>
+        <a >집단 상담</a>
+        <a >EAP 상담</a>
+        <a >튜토리얼</a>
+        <a >커뮤니티</a>
       </div>
 
-    <table class="list-table">
-      <thead>
-          <tr>
-            <th width="70">번호</th>
-            <th width="300">제목</th>
-            <th width="120">글쓴이</th>
-          </tr>
-      </thead>
-      <tbody id="table1">
-      </tbody>
+      </br>
 
-    </table>
+      <div id="accordion_wrap">
+      </div>
 
-    <button type="button" onclick="location.href='board_write.html' ">등록</button>
+      <button type="button" onclick="location.href='board_write.html' ">등록</button>
+    
 
-    <!---pagination number --->
-    <p className={styles.pagination}>
-      <a href="javascript:prevPage()">이전</a>
-      | 
-      <a href="javascript:nextPage()">다음</a>
-    </p>
+    </br>
+
+     <!---paging number --->
+     <ul id="pagingul">
+     </ul>
 
   </div>
-    <script src='./tools/cfg.js'></script>
-    <script src='./tools/enums.js'></script>
-    <script src='./tools/libs.js'></script>
-    <script src='./tools/md5.js'></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <script>
-      'use strict'
-      var myArray = [ 
-        {noticeId : 1, title : 'FAQ 1', name : '관리자'}, 
-        {noticeId : 2, title : 'FAQ 2', name : '관리자'}, 
-        {noticeId : 3, title : 'FAQ 3', name : '관리자'}, 
+
+  <!-- Footer -->
+  <div class="footer" itemtype="http://schema.org/WPFooter" itemscope>
+    <p>Footer</p>
+  </div> <!-- end footer -->
+
+  <script src='./tools/cfg.js'></script>
+  <script src='./tools/enums.js'></script>
+  <script src='./tools/libs.js'></script>
+  <script src='./tools/md5.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+  <script>
+    'use strict'
+
+      const testArray = [ 
+        {manualId : 7, category: 'EAP상담',  title : '무료로 즐길 수 있나요?', content : '아니요'}, 
+        {manualId : 6, category: '커뮤니티',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 5, category: '1:1상담',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 4, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 3, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 2, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 1, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'},
       ];
-
-      buildTable(myArray); 
-      
-      function buildTable(data) { 
-        var table = document.getElementById('table1');
-        for (var i=0; i < data.length; i++) { 
-          var row = `<tr><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${data[i].name}</td> </tr>`;
-          table.innerHTML += row 
-        } 
+      // test 후 주석처리하기
+      window.onload = function () {
+        paging(testArray.length, 1);
+        buildTable(testArray);
+        $(".que").click(function() {
+          $(this).next(".anw").stop().slideToggle(300);
+          $(this).toggleClass('on').siblings().removeClass('on');
+          $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+        });
       }
+    
+    function buildTable(data) { 
+      let acc = document.getElementById('accordion_wrap');
+      console.log('acc: ', acc)
+      acc.innerHTML = '';
+      let row = '';
+      for (var i=0; i < data.length; i++) { 
+        // row = `<tr> <td class="center"></td><td style="text-align:center">${data[i].manualId}</td> <td style="text-align:left">${data[i].type}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center"><a class="accordion" >${data[i].content}</a><div class="panel"><p>${data[i].title}</p></div></td> </tr>`;
+        row = `<div class="que">
+        <span>${data[i].category}</span> |
+        <span>${data[i].title}</span>
+        </div>
+        <div class="anw">
+        <span>${data[i].content}</span>
+        </div>`;
+        acc.innerHTML += row 
+      } 
+    }
 
-    </script>
+    
 
-    <!-- <script>
-      'use strict'
-      // lib.js 로 뺴기.
-      const apiGetList = async (_perPage) => {
-        try {
-          const response = await axios.post('http://127.0.0.1:7071/faq', {
-            msgType: 40,
-            data: {
-              page: _perPage + 1
-            }
-          })
+  </script>
 
+  <script>
+    'use strict'
+    const apiGetList = async (_perPage) => {
+      try {
+        const _response = await axios.post('http://127.0.0.1:7071/faq', {
+          msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
+          data: {
+            page: _perPage
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
           console.log(response)
-
-        } catch (err) {
-          console.error(err)
+          return
         }
-      };
+        globalCurrentPage = _perPage;
+        paging(totalData, _perPage);
+        buildTable(response.data)
 
-    </script> -->
+      } catch (err) {
+        console.error(err)
+      }
+    };
 
-    <script>
-      'use strict'
+  </script>
 
-      let currentPageNum = 0; // localstorage에 저장하고 사용하기.
-      
-      function prevPage() {
-        if (currentPageNum > 0) {
-          currentPageNum--;
+  <script>
+    'use strict'
+
+    let totalData; // 총 데이터 수 
+    let dataPerPage = 10;
+    let pageCount = 5;
+    let globalCurrentPage = 1; // 현재 페이지
+
+
+    // window.onload = function () {
+    //   apiGetCount()
+    // }
+    const apiGetCount = async () => {
+      try {
+        const _response = await axios.post(apiUrl +'faq', {
+          msgType: eApiMessageType.USER_GET_COUNT_FAQ_REQ,
+          data: {}
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        totalData = response.data.length
+        console.log("totalData : " + totalData);
+
+        await paging(totalData, globalCurrentPage);
+        await apiGetList(globalCurrentPage);
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
+    
+
+    // paging 함수
+    function paging(totalData, currentPage) {
+
+      console.log("totalData : " + totalData);
+      console.log("currentPage : " + currentPage);
+
+      let totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
+      console.log("totalPage : " + totalPage);
+
+      console.log("pageCount : " + pageCount);
+
+      if (totalPage < pageCount) {
+        pageCount = totalPage;
+      }        
+
+      let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+      console.log("pageGroup : " + pageGroup);
+
+      let last = pageGroup * pageCount // 화면에 보여질 마지막 페이지 번호
+      console.log("last : " + last);
+
+      if (last > totalPage) {
+        last = totalPage;
+      }
+
+      let first = last - (pageCount - 1); // 화면에 보여질 첫번째 페이지 번호
+      console.log("first : " + first);
+      let next = last + 1;
+      let prev = first - 1;
+
+      let pageHtml = "";
+
+      pageHtml += "<li><a class='pageIdx' id='first' onclick=apiGetList(" + (first.toString()) + ")> |< </a></li>";
+
+      if (prev > 0) {
+        pageHtml += "<li><a class='pageIdx' id='prev' onclick=apiGetList(" + (prev.toString()) + ")> < </a></li>";
+      }
+
+      // 페이징 번호 표시
+      for (let i = first; i<=last; i++) {
+        if(currentPage === i) {
+          pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
+        } else {
+          pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
         }
-
-        let prevPageNum = currentPageNum
-        console.log(currentPageNum)
-        // apiGetList(currentPageNum)
-
       }
 
-      function nextPage() {
-
-        if (currentPageNum < 0) {
-          currentPageNum = -1;
-        }
-
-        let nextPageNum = currentPageNum++
-        console.log(currentPageNum)
-        // apiGetList(currentPageNum)
-
+      if (last < totalPage) {
+        pageHtml += "<li><a id='next' onclick=apiGetList(" + (next.toString()) + ")> > </a></li>";
       }
 
-      function changePage() {
+      pageHtml += "<li><a class='pageIdx' id='last' onclick=apiGetList(" + (last.toString()) + ")> >| </a></li>";
 
-      }
-
-      function numPages() {
-
-      }
-
-    </script>
+      document.querySelector('#pagingul').innerHTML = pageHtml;
+    }
 
 
+  </script>
 
 </body>
 </html>

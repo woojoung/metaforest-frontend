@@ -110,6 +110,14 @@ const Time = function (d) {
         return [year, month, dayOfMonth].join('-') + ' ' + [hour, minute, second].join(':')
     }
 
+    function _toDateStr() {
+        const year = date.getFullYear()
+        const month = (date.getMonth() + 1).toString().padStart(2, '0')
+        const dayOfMonth = date.getDate().toString().padStart(2, '0')
+
+        return [year, month, dayOfMonth].join('-')
+    }
+
     function _toUTCStr() {
         return date.toUTCString()
     }
@@ -126,6 +134,9 @@ const Time = function (d) {
         },
         toDateTimeStr: function () {
             return _toDateTimeStr()
+        },
+        toDateStr: function () {
+            return _toDateStr()
         },
         toUTCStr: function () {
             return _toUTCStr()

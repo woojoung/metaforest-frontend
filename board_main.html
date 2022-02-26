@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
     <style>
       #pagingul {
@@ -28,58 +29,219 @@
       }
 
       #pagingul li.on {
-          background: #eda712;
+          background: #000000;
       }
 
       #pagingul li.on a {
           color: #fff;
       }
+
+      table {
+        width: 60%;
+        border-top: 1px solid #444444;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      th, td {
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+      }
+      /* Add a black background color to the top navigation */
+      .topnav {
+        position: relative;
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        /* background-color: #6ad6c0; */
+        color: #6ad6c0;
+      }
+
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        color: #6ad6c0;
+      }
+
+      /* Centered section inside the top navigation */
+      .topnav-centered a {
+        float: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Right-aligned section inside the top navigation */
+      .topnav-right {
+        float: right;
+      }
+
+      /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+      @media screen and (max-width: 600px) {
+        .topnav a, .topnav-right {
+          float: none;
+          display: block;
+        }
+
+        .topnav-centered a {
+          position: relative;
+          top: 0;
+          left: 0;
+          transform: none;
+        }
+      }
+
+      .category a {
+        float: left;
+        display: block;
+        color: #000000;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+      }
+
+      .category a:hover {
+        border-bottom: 3px solid black;
+      }
+
+      .category a:active {
+        border-bottom: 3px solid black;
+      }
+
+      .topnav-right ul {
+        list-style-type: none;
+      }
+
+      .topnav-right li {
+        display: inline;
+      }
+
+      .topnav-logo img {
+        width: 210px;
+      }
+
+      .footer {
+        position: fixed;
+        background-color: #333;
+        overflow: hidden;
+        top: 931px;
+        width: 100%;
+        height: 30%;
+        background: #292929 0% 0% no-repeat padding-box;
+        opacity: 1;
+      }
     </style>
+    <!-- Css -->
+
   </head>
   <body>
+    <!-- Top navigation -->
+    <div class="topnav">
+
+      <!-- Centered link -->
+      <div class="topnav-centered">
+        <!-- <a href="#home" class="active">Home</a> -->
+      </div>
+
+      <!-- Left-aligned links (default) -->
+      <!-- Logo -->
+      <div class="topnav-logo">
+        <a href="./index.html" class="">
+          <img class="" src="img/logo/log03.png" alt="logo">
+        </a>
+      </div>
+
+      <!-- Right-aligned links -->
+      <div class="topnav-right">
+        <ul class="" id="">
+          <li class="">
+            <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
+          </li>
+          <li>
+            <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
+          </li>
+          <li>
+            <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
+          </li>
+          <li>
+            <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
+          </li>
+          <li>
+            <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
+          </li>
+          <li>
+            <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
+          </li>
+          <li>
+            <a href="" class="fa fa-bars"></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    </br>
+    
+    <div class="category">
+      
+      <a href="./board_main.html" class="active">공지사항</a>
+      <a href="./board_event.html">이벤트</a>
+      <a href="./board_manual.html">이용매뉴얼</a>
+      <a href="http://yatavent.com/contact">문의사항</a>
+      
+    </div>
+    </br>
     <div id="board_area">
 
       <h1>공지사항</h1>
-      <div>
-        <ul class="nav">
-            <li style="display:inline"><a href="./board_main.html">공지사항</a></li>
-            <li style="display:inline"><a href="./board_event.html">이벤트</a></li>
-            <li style="display:inline"><a href="./board_manual.html">이용매뉴얼</a></li>
-            <li style="display:inline"><a href="./board_faq.html">문의사항</a></li>
-          </ul>
-      </div>
+      <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
+      
       
       <div id="search_box">
         <form action="" method="">
           <select name="catgo">
             <option value="starter" selected>선택</option>
             <option value="title">제목</option>
-            <option value="name">글쓴이</option>
             <option value="content">내용</option>
           </select>
-          <input type="text" name="search" size="30" required="required" /> <button>검색</button>
+          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색" onkeyup="if(window.event.keyCode===13){}" />
         </form>
       </div>
 
     </br>
 
-    <section id="section9">
+
       <table class="list-table">
         <thead>
             <tr>
-              <th><input class="overall-checkbox" type="checkbox"></th>
-              <th width="70">번호</th>
+              <!-- <th><input class="overall-checkbox" type="checkbox"></th> -->
+              <!-- <th width="70">번호</th>
               <th width="300">제목</th>
-              <th width="120">글쓴이</th>
+              <th width="120">글쓴이</th> -->
             </tr>
         </thead>
         <tbody id="table1">
         </tbody>
   
       </table>
+    </br>
       <button type="button" class="delete-button" >선택 삭제</button>
-      <button type="button" onclick="location.href='board_write.html' ">등록</button>
-    </section>
+      <button type="button" onclick="location.href='board_write.html'">등록</button>
+
 
     </br>
 
@@ -87,7 +249,20 @@
      <ul id="pagingul">
      </ul>
 
+
+     <!-- Footer -->
+		<div class="footer" itemtype="http://schema.org/WPFooter" itemscope>
+			<p>Footer</p>
+    </div> <!-- end footer -->
+
   </div>
+
+  <!-- Footer -->
+  
+  <!-- end footer -->
+
+
+
     <script src='./tools/cfg.js'></script>
     <script src='./tools/enums.js'></script>
     <script src='./tools/libs.js'></script>
@@ -96,20 +271,32 @@
     
     <script>
       'use strict'
-      var myArray = [ 
-        {noticeId : 1, title : '공지사항입니다.', name : '관리자'}, 
-        {noticeId : 2, title : '집단상담은 어떻게 진행되나요?', name : '관리자'}, 
-        {noticeId : 3, title : '플랫폼은 무료인가요?', name : '관리자'}, 
+      const testArray = [ 
+        {noticeId : 10, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 9, title : '집단상담은 어떻게 진행되나요?', createdAt : '2022-02-18'}, 
+        {noticeId : 8, title : '플랫폼은 무료인가요?', createdAt : '2022-02-18'}, 
+        {noticeId : 7, title : '1:1상담은 어떻게 진행되는건가요?.', createdAt : '2022-02-18'}, 
+        {noticeId : 6, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 5, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 4, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 3, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 2, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
+        {noticeId : 1, title : '공지사항입니다.', createdAt : '2022-02-18'},
       ];
-
-      // buildTable(myArray); 
+      // test 후 주석처리하기
+      window.onload = function () {
+        paging(testArray.length, 1);
+        buildTable(testArray); 
+      }
+      
       
       function buildTable(data) { 
         let table = document.getElementById('table1');
         table.innerHTML = '';
         let row = '';
-        for (var i=0; i < data.length; i++) { 
-          row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${data[i].adminId}</td> </tr>`;
+        for (let i=0; i < data.length; i++) { 
+          // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
+          row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${data[i].createdAt}</td> </tr>`;
           table.innerHTML += row 
         } 
       }
@@ -123,21 +310,21 @@
       let section = document.querySelector('#section9')
       let noticeList = section.querySelector('.list-table')
       let tableBody = noticeList.querySelector('tbody')
-      let allCheckbox = section.querySelector('.overall-checkbox')
+      // let allCheckbox = section.querySelector('.overall-checkbox')
       let deleteButton = section.querySelector('.delete-button')
       // select all
-      allCheckbox.onchange = function () {
-        let temp = tableBody.querySelectorAll('input[type="checkbox"]')
-        if (allCheckbox.checked === true) {
-          for (let i=0;i<temp.length;i++) {
-            temp[i].checked = true
-          }
-        } else {
-          for (let i=0;i<temp.length;i++) {
-            temp[i].checked = false
-          }
-        }
-      }
+      // allCheckbox.onchange = function () {
+      //   let temp = tableBody.querySelectorAll('input[type="checkbox"]')
+      //   if (allCheckbox.checked === true) {
+      //     for (let i=0;i<temp.length;i++) {
+      //       temp[i].checked = true
+      //     }
+      //   } else {
+      //     for (let i=0;i<temp.length;i++) {
+      //       temp[i].checked = false
+      //     }
+      //   }
+      // }
       // delete selected row
       deleteButton.onclick = async function () {
         let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
@@ -200,9 +387,9 @@
       let globalCurrentPage = 1; // 현재 페이지
 
 
-      window.onload = function () {
-        apiGetCount()
-      }
+      // window.onload = function () {
+      //   apiGetCount()
+      // }
       const apiGetCount = async () => {
         try {
           const _response = await axios.post(apiUrl +'notice', {
@@ -260,26 +447,26 @@
 
         let pageHtml = "";
 
-        pageHtml += "<li><a class='pageIdx' href='#' id='first' onclick=apiGetList(" + (first.toString()) + ")> |< </a></li>";
+        pageHtml += "<li><a class='pageIdx' id='first' onclick=apiGetList(" + (first.toString()) + ")> |< </a></li>";
 
         if (prev > 0) {
-          pageHtml += "<li><a class='pageIdx' href='#' id='prev' onclick=apiGetList(" + (prev.toString()) + ")> < </a></li>";
+          pageHtml += "<li><a class='pageIdx' id='prev' onclick=apiGetList(" + (prev.toString()) + ")> < </a></li>";
         }
 
         // 페이징 번호 표시
         for (let i = first; i<=last; i++) {
           if(currentPage === i) {
-            pageHtml += "<li class='on'><a class='pageIdx' href='#' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
+            pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
           } else {
-            pageHtml += "<li class='on'><a class='pageIdx' href='#' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
+            pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
           }
         }
 
         if (last < totalPage) {
-          pageHtml += "<li><a href='#' id='next' onclick=apiGetList(" + (next.toString()) + ")> > </a></li>";
+          pageHtml += "<li><a id='next' onclick=apiGetList(" + (next.toString()) + ")> > </a></li>";
         }
 
-        pageHtml += "<li><a class='pageIdx' href='#' id='last' onclick=apiGetList(" + (last.toString()) + ")> >| </a></li>";
+        pageHtml += "<li><a class='pageIdx' id='last' onclick=apiGetList(" + (last.toString()) + ")> >| </a></li>";
 
         document.querySelector('#pagingul').innerHTML = pageHtml;
       }

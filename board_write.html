@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<script src="https://cdn.tiny.cloud/1/1fmpc24j5xq66xb3nmfijvrl614iwmfmcektko3okxgzfbyw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    // plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+    // toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
+    // toolbar_mode: 'floating',
+    // tinycomments_mode: 'embedded',
+    // tinycomments_author: 'Author name',
+  });
+</script>
 <title>게시판</title>
 <style>
   #board_write {
@@ -49,28 +60,45 @@
 </style>
 </head>
 <body>
-    <div id="board_write">
-        <h2>공지사항 작성</h2>
-            <div id="write_area">
-                <form enctype="multipart/form-data">
-                    <div id="in_title">
-                        <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required></textarea>
-                    </div>
+  <div id="board_area">
 
-                    <div class="wi_line"></div>
-                    <div id="in_content">
-                        <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
-                    </div>
-
-                      <input type="file" name="SelectFile" />
-
-
-                    <div class="bt_se">
-                        <button type="submit">확인</button>
-                    </div>
-                </form>
-            </div>
+    <h1>공지사항</h1>
+    <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
+    
+    
+      <div id="search_box">
+        <form action="" method="">
+          <select name="catgo">
+            <option value="starter" selected>선택</option>
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+          </select>
+          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색" onkeyup="if(window.event.keyCode===13){}" />
+        </form>
       </div>
+  </div>
+  <div id="board_write">
+
+          <div id="write_area">
+              <form enctype="multipart/form-data">
+                  <div id="in_title">
+                      <input name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required>
+                  </div>
+
+                  <div class="wi_line"></div>
+                  <div id="in_content">
+                      <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
+                  </div>
+
+                    <input type="file" name="SelectFile" />
+
+
+                  <div class="bt_se">
+                      <button type="submit">확인</button>
+                  </div>
+              </form>
+          </div>
+  </div>
 
       <script src='./tools/cfg.js'></script>
       <script src='./tools/enums.js'></script>
