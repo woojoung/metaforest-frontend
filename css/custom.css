@@ -1,1 +1,74 @@
 /*! Paste your custom styles here */
+
+
+
+
+/* layout */
+html {
+  height: 100%;
+  font-size: 16px;
+  font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+}
+
+@media screen and (max-width:1024px) {
+  html {
+      font-size: 14px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  html {
+      font-size: 12px;
+  }
+
+}
+
+
+
+/* ------------------------- */
+/* -------- write ---------- */
+/* ------------------------- */
+
+#board_write {
+  width:900px;
+  position:relative;
+  margin:0 auto;
+}
+#write_area {
+  margin-top:70px;
+  font-size:14px;
+}
+#in_title {
+  margin-top:30px;
+}
+#in_title textarea {
+  font-weight:bold;
+  font-size:26px;
+  color:#333;
+  width: 600px;
+  border:none;
+  resize: none;
+}
+.wi_line {
+  border:solid 1px lightgray;
+  margin-top:10px;
+  width: 600px;
+}
+#in_content {
+  margin-top:10px;
+}
+#in_content textarea {
+  font:14px;
+  color:#333;
+  width: 600px;
+  height: 300px;
+  resize: none;
+}
+.bt_se {
+  margin-top:20px;
+  text-align:center;
+}
+.bt_se button {
+  width:100px;
+  height:30px;
+}
