@@ -149,7 +149,7 @@
                     <input type="text" id="email_code" class="int" maxlength="5" placeholder="">
                 </span>
                 <div id="code_btn">
-                    <button type="button" id="btnSend" onclick="onSubmitForm()">
+                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
                         <span>확인</span>
                     </button>
                 </div>
@@ -182,7 +182,7 @@
 
             <!-- JOIN BTN-->
             <div class="btn_area">
-                <button type="button" id="btnJoin">
+                <button type="button" id="btnJoin" onclick="onSubmitForm()">
                     <span>가입하기</span>
                 </button>
             </div>
@@ -199,6 +199,22 @@
     <script src='./tools/libs.js'></script>
     <script src='./tools/md5.js'></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        'use strict'
+        async function verifyAuthCode() {
+            let storageAuthCode = storageGet('authCode', '0')
+            let emailAuthCode = document.getElementById("email_code").value
+
+            if (storageAuthCode != emailAuthCode) {
+                alert("storageAuthCode != emailAuthCode")
+                return
+            }
+
+
+            alert('인증번호 확인')
+        }
+    </script>
 
     <script>
         'use strict'
