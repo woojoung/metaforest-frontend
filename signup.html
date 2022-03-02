@@ -1,155 +1,198 @@
 <!DOCTYPE html>
 <html lnag="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>메타포레스트 : 회원가입</title>
-        <link rel="stylesheet" href="./css/signup.css">
-        
-    </head>
-    <body>
-        <!-- header -->
-        <div id="header">
-            <a href="" target="_blank" title=""><img src="" id="logo">로고</a>
-        </div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>메타포레스트 : 회원가입</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
+    <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap'
+        rel='stylesheet'>
+
+    <!-- css-->
+    <link rel="stylesheet" href="css/signup.css">
+
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header">
+        <h2 id="logo"><a href="" target="_blank" title=""><img src="https://www.metaforest.us/img/logo/log03.png"></a>
+        </h2>
+    </div>
 
 
-        <!-- wrapper -->
-        <div id="wrapper">
+    <!-- wrapper -->
+    <div id="wrapper">
 
-            <!-- content-->
-            <div id="content">
+        <!-- content-->
+        <div id="content">
 
-                <!-- ID -->
-                <div>
-                    <h3 class="join_title">
-                        <label for="id">아이디</label>
-                    </h3>
-                    <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20">
-                        
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+            <!-- ID -->
+            <div>
+                <h3 class="join_title">
+                    <label for="id">아이디</label>
+                </h3>
+                <span class="box int_id">
+                    <input type="text" id="id" class="int" maxlength="20">
 
-                <!-- PW1 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20">
-                        <span id="alertTxt">사용불가</span>
-                        <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+                </span>
+                <span class="error_next_box"></span>
+            </div>
 
-                <!-- PW2 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20">
-                        <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+            <!-- PW1 -->
+            <div>
+                <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                <span class="box int_pass">
+                    <input type="text" id="pswd1" class="int" maxlength="20">
+                    <span id="alertTxt">사용불가</span>
+                    <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
 
-                <!-- NAME -->
-                <div>
-                    <h3 class="join_title"><label for="name">이름</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+            <!-- PW2 -->
+            <div>
+                <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                <span class="box int_pass_check">
+                    <input type="text" id="pswd2" class="int" maxlength="20">
+                    <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
 
-                <!-- BIRTH -->
-                <div>
-                    <h3 class="join_title"><label for="yy">생년월일</label></h3>
+            <!-- NAME -->
+            <div>
+                <h3 class="join_title"><label for="name">이름</label></h3>
+                <span class="box int_name">
+                    <input type="text" id="name" class="int" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
 
-                    <div id="bir_wrap">
-                        <!-- BIRTH_YY -->
-                        <div id="bir_yy">
-                            <span class="box">
-                                <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
-                            </span>
-                        </div>
 
-                        <!-- BIRTH_MM -->
-                        <div id="bir_mm">
-                            <span class="box">
-                                <input type="text" id="mm" class="int" maxlength="2" placeholder="월">
-                            </span>
-                        </div>
+            <!-- GENDER -->
+            <div>
+                <h3 class="join_title"><label for="gender">성별</label></h3>
+                <span class="box gender_code">
+                    <select id="gender" class="sel">
+                        <option>선택</option>
+                        <option value="M">남자</option>
+                        <option value="F">여자</option>
+                    </select>
+                </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+            </div>
 
-                        <!-- BIRTH_DD -->
-                        <div id="bir_dd">
-                            <span class="box">
-                                <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
-                            </span>
-                        </div>
+            <!-- BIRTH -->
+            <div>
+                <h3 class="join_title"><label for="yy">생년월일</label></h3>
 
+                <div id="bir_wrap">
+                    <!-- BIRTH_YY -->
+                    <div id="bir_yy">
+                        <span class="box">
+                            <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                        </span>
                     </div>
-                    <span class="error_next_box"></span>    
-                </div>
 
-                <!-- GENDER -->
-                <div>
-                    <h3 class="join_title"><label for="gender">성별</label></h3>
-                    <span class="box gender_code">
-                        <select id="gender" class="sel">
-                            <option>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
-                        </select>                            
-                    </span>
-                    <span class="error_next_box">필수 정보입니다.</span>
-                </div>
-
-                <!-- EMAIL -->
-                <div>
-                    <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
-                    </span>
-                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
-                </div>
-
-                <!-- MOBILE -->
-                <div>
-                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="대한민국 +82" readonly="true">
-                    </span>
-                </br>
-                    <div id="mobile_wrap">
-                        <div id="mobile_digit">
-                            <span class="box int_mobile">
-                                <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-                            </span>
-                            <span class="error_next_box"></span>
-                        </div>
-                        <div id="mobile_btn">
-                            <button type="button" id="btnSend">
-                                <span>인증번호 받기</span>
-                            </button>  
-                        </div>
+                    <!-- BIRTH_MM -->
+                    <div id="bir_mm">
+                        <span class="box">
+                            <input type="text" id="mm" class="int" maxlength="2" placeholder="월">
+                        </span>
                     </div>
+
+                    <!-- BIRTH_DD -->
+                    <div id="bir_dd">
+                        <span class="box">
+                            <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                        </span>
+                    </div>
+
                 </div>
+                <span class="error_next_box"></span>
+            </div>
 
 
-                <!-- JOIN BTN-->
-                <div class="btn_area">
-                    <button type="button" id="btnJoin">
-                        <span>가입하기</span>
+            <!-- EMAIL -->
+            <div>
+                <h3 class="join_title"><label for="email">이메일 주소</label></h3>
+                <span class="int_email">
+                    <input type="text" id="email" class="int" maxlength="100" placeholder="">
+                    @
+                    <select name="" id="">
+                        <option value="">직접입력</option>
+                        <option value="">gmail.com</option>
+                        <option value="">hanmail.net</option>
+                        <option value="">hotmail.com</option>
+                        <option value="">nate.com</option>
+                        <option value="">naver.com</option>
+                        <option value="">yahoo.com</option>
+                    </select>
+                </span>
+                <div id="email_btn">
+                    <button type="button" id="btnSend">
+                        <span>인증번호 요청</span>
                     </button>
                 </div>
+                <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+            </div>
 
-                
+            <!-- SECURITY CODE -->
+            <div>
+                <h3 class="join_title"><label for="email_code">인증번호 (5자리)</label></h3>
+                <span class="int_code">
+                    <input type="text" id="email_code" class="int" maxlength="5" placeholder="">
+                </span>
+                <div id="code_btn">
+                    <button type="button" id="btnSend">
+                        <span>확인</span>
+                    </button>
+                </div>
+            </div>
 
-            </div> 
-            <!-- content-->
 
-        </div> 
-        <!-- wrapper -->
+
+            <!-- MOBILE -->
+            <!-- <div>
+                <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                <span class="box int_mobile">
+                    <input type="tel" id="mobile" class="int" maxlength="16" placeholder="대한민국 +82" readonly="true">
+                </span>
+                </br>
+                <div id="mobile_wrap">
+                    <div id="mobile_digit">
+                        <span class="box int_mobile">
+                            <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                    <div id="mobile_btn">
+                        <button type="button" id="btnSend">
+                            <span>인증번호 받기</span>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- JOIN BTN-->
+            <div class="btn_area">
+                <button type="button" id="btnJoin">
+                    <span>가입하기</span>
+                </button>
+            </div>
+
+            
+        </div>
+        <!-- content-->
+
+    </div>
+    <!-- wrapper -->
     <script src="main.js"></script>
     <script src='./tools/cfg.js'></script>
     <script src='./tools/enums.js'></script>
@@ -192,7 +235,9 @@
                 }
             }
 
-            const _response = await axios.post('http://127.0.0.1:7071/auth/signup', apiRequest, {withCredentials: true})
+            const _response = await axios.post('http://127.0.0.1:7071/auth/signup', apiRequest, {
+                withCredentials: true
+            })
 
             let response = {}
             Object.assign(response, _response)
@@ -208,5 +253,6 @@
             window.location.href = "http://127.0.0.1:5500/login.html"
         }
     </script>
-    </body>
+</body>
+
 </html>
