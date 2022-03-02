@@ -14,45 +14,53 @@
 
 	<!-- Css -->
 	<link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
 </head>
 
 <body class="single-project" itemscope itemtype="http://schema.org/WebPage">
     <main>
+
+	    <!-- header -->
+	    <div id="header">
+	        <h2 id="logo"><a href="" target="_blank" title=""><img src="https://www.metaforest.us/img/logo/log03.png"></a>
+	        </h2>
+	    </div>
+
 	<div class="loginContainer">
-        <!-- <div class="logoBox">
+	    <!-- <div class="logoBox">
             <img class="logoImage1" src="" alt="" />
         </div> -->
-        <div class="loginBox">
-            <h1 class="headline1">로그인</h1>
-            <div class="contentBox">
-                <div class="contentWrap">
-                    <div class="mb-4">
-                        <label htmlFor="formEmailInput" class="form-label"></label>
-                        <input onChange="" type="text" class="form-control form-control-lg" id="formEmailInput" placeholder="아이디" />
-                    </div>
-                    <div class="mb-4">
-                        <label htmlFor="formPasswordInput2" class="form-label"></label>
-                        <input onChange="" type="password" class="form-control form-control-lg" id="formPasswordInput2" placeholder="비밀번호" />
-                    </div>
 
-                    <div onClick="onSubmitForm()" class="d-grid gap-2">
-                        <button class="btn btn-primary btn-lg" type="button">로그인</button>
-                </div>
-            </div>
-        </div>
+	        <div class="loginBox">
+	            <h1 class="headline1">로그인</h1>
+	            <div class="contentBox">
+	                <div class="contentWrap">
+	                    <div class="mb-4">
+	                        <label htmlFor="formEmailInput" class="form-label"></label>
+	                        <input onChange="" type="text" class="form-control form-control-lg" id="formEmailInput" placeholder="아이디" />
+	                    </div>
+	                    <div class="mb-4">
+	                        <label htmlFor="formPasswordInput2" class="form-label"></label>
+	                        <input onChange="" type="password" class="form-control form-control-lg" id="formPasswordInput2" placeholder="비밀번호" />
+	                    </div>
+                        <div class="keep_check">
+                            <input type="checkbox" id="keep_login">
+                            <label for="keep_login">로그인 상태 유지</label>                            
+                        </div>
+	                    <div onClick="onSubmitForm()" class="d-grid gap-2">
+	                        <button class="btn btn-primary btn-lg" type="button">로그인</button>
+	                    </div>
+	                </div>
+	            </div>
 
-        <div>
-            <ul class="">
-                <li style="display:inline"><a href="./password.html">비밀번호 찾기</a></li>
-                |
-                <li style="display:inline"><a href="./account.html">아이디 찾기</a></li>
-                |
-                <li style="display:inline"><a href="./signup.html"> 회원가입</a></li>
-              </ul>
-          </div>
-    </div>
-
+	            <div class="find_wrap">
+	                <ul class="">
+	                    <li><a href="./password.html">비밀번호 찾기</a></li>
+	                    <li><a href="./account.html">아이디 찾기</a></li>
+	                    <li><a href="./signup.html"> 회원가입</a></li>
+	                </ul>
+	            </div>
+	        </div>
 	</main> <!-- end main wrapper -->
     <script src='./tools/cfg.js'></script>
     <script src='./tools/enums.js'></script>

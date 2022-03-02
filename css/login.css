@@ -1,47 +1,206 @@
+/* layout */
+html {
+    height: 100%;
+    font-size: 16px;
+  }
+  
+  @media screen and (max-width:1024px) {
+    html {
+        font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width:768px) {
+    html {
+        font-size: 12px;
+    }
+  
+  }
+  
+  body {
+    margin: 0;
+    height: 100%;
+    background: #f5f6f7;
+    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+  }
+  
+
+
+/* login */
+
+#header {
+    padding-top: 3.875rem;
+    /*padding-bottom:1.25rem;*/
+    text-align: center
+}
+
+h2#logo {
+    width: 50%;
+    max-width: 233px;
+    margin: 0 auto 4.25rem
+}
+
+h2#logo img {
+    width: 100%
+}
+
 .loginContainer {
     width: 80%;
+    max-width: 745px;
     margin: 40px auto 80px;
 }
-.logoBox {
-    width: 140px;
-}
-.logoBox .logoImage1{
+
+.logoBox .logoImage1 {
     width: 100%;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .loginBox {
-    width: 488px;
+    width: 100%;
     margin: 0 auto;
 }
+
 .headline1 {
     margin: 30px 0;
+    font-size: 0;
+    display: none;
 }
+
 .contentBox {
-    border: 1px solid #ced4da; 
-    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #707070;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
+
 .contentWrap {
-    padding: 24px;
+    padding: 2.6rem 3.8rem;
 }
+
+.mb-4 {
+    height: 4.2rem;
+    border: 1px solid #aeaeae;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin-bottom: 1.5rem;   
+    position: relative
+}
+
+.mb-4 input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding:2px 20px 0;
+    box-sizing:border-box; 
+    font-size:1.375rem;
+    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+}
+
+.mb-4::before{
+    content:'이미지';
+    display:block;
+    position:absolute;
+    top:0;
+    left: 0;
+    z-index:2;
+    width:auto;
+    height: 1.375rem;
+}
+
+.keep_check{
+    margin-bottom: 2.6rem;
+}
+
+/* .keep_check input{
+    border:none;
+    appearance: none;
+} */
+
+.keep_check label{
+    font-size:1.125rem;
+    color: #414141;
+}
+
+.keep_check label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+}
+.btn {
+    background-color: #292929;
+    border-radius: 6px;
+    width: 100%;
+    height: 4.2rem;
+    border: none;
+    color:#fff;
+    font-size: 1.5rem;
+    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+}
+
+
 .text1 {
     text-align: right;
 }
+
 .text1 span {
     color: #0d6efd;
     font-weight: bold;
 }
+
 .cursorPointer {
     cursor: pointer;
 }
+
+
+.find_wrap ul{
+    color:#646464;
+    text-align: center;
+    margin:2.6rem auto 0;
+    padding:0;
+}
+
+.find_wrap ul li {
+    display: inline;
+    line-height: 1.125rem;
+}
+
+.find_wrap ul li::after{
+ content:'';
+ display:inline-block;
+ width:1px;
+ height:1rem;
+ background-color: #646464;   
+ margin: 0 27px 0 29px;
+ line-height: 1.125rem;
+ vertical-align: -0.1rem
+}
+
+.find_wrap ul li:last-child::after{
+    display:none;
+}
+
+.find_wrap ul li a {
+    text-decoration: none;
+    color: #646464;
+    font-size:1.125rem;
+}
+
+
 /* google btn */
 .googleBtnBox {
     width: 150px;
     height: 40px;
     cursor: pointer;
 }
+
 .googleBtnBox img {
     width: 100%;
     background-position: center;
@@ -50,40 +209,44 @@
 }
 
 .googleBox {
-  width: 100%;
-  height: 48px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  background: white;
-  white-space: nowrap;
-  cursor: pointer;
-  position: relative;
+    width: 100%;
+    height: 48px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background: white;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
 }
+
 .googleBox .googleWrap {
-  overflow: hidden;
+    overflow: hidden;
 }
+
 .googleBox .googleWrap .googleLogo {
-  float: left;
-  width: 42px;
-  padding: 8px 0;
-  margin: 0 12px;
-  position: absolute;
+    float: left;
+    width: 42px;
+    padding: 8px 0;
+    margin: 0 12px;
+    position: absolute;
 }
+
 .googleBox .googleWrap .googleLogo .googleLogoImg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 .googleBox .googleWrap .googleText {
-  font-family: 'RobotoRegular', sans-serif;
-  float: left;
-  /* font-size: 14px; */
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
-  line-height: 48px;
-  text-align: center;
-  width: 438px;
+    font-family: 'RobotoRegular', sans-serif;
+    float: left;
+    /* font-size: 14px; */
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 48px;
+    text-align: center;
+    width: 438px;
 }
