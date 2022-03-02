@@ -4,214 +4,18 @@
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title></title>
-    <style>
-      #pagingul {
-          text-align: center;
-          display: inline-block;
-          border: 1px solid #ccc;
-          border-right: 0;
-          list-style-type: none;
-          padding-left: 0;
-      }
+    <title>메타포레스트 : 이용매뉴얼</title>
 
-      #pagingul li {
-          text-align: center;
-          float: left;
-      }
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
+    <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap' rel='stylesheet'>
 
-      #pagingul li a {
-          display: block;
-          font-size: 14px;
-          padding: 9px 12px;
-          border-right: solid 1px #ccc;
-          box-sizing: border-box;
-      }
+    <!-- css-->
+    <link rel="stylesheet" href="css/custom.css">
 
-      #pagingul li.on {
-          background: #000000;
-      }
 
-      #pagingul li.on a {
-          color: #fff;
-      }
-
-      table {
-        width: 60%;
-        border-top: 1px solid #444444;
-        border-collapse: collapse;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      th, td {
-        border-bottom: 1px solid #444444;
-        padding: 10px;
-      }
-      /* Add a black background color to the top navigation */
-      .topnav {
-        position: relative;
-        background-color: #333;
-        overflow: hidden;
-      }
-
-      /* Style the links inside the navigation bar */
-      .topnav a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-      }
-
-      /* Change the color of links on hover */
-      .topnav a:hover {
-        /* background-color: #6ad6c0; */
-        color: #6ad6c0;
-      }
-
-      /* Add a color to the active/current link */
-      .topnav a.active {
-        color: #6ad6c0;
-      }
-
-      /* Centered section inside the top navigation */
-      .topnav-centered a {
-        float: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      /* Right-aligned section inside the top navigation */
-      .topnav-right {
-        float: right;
-      }
-
-      /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
-      @media screen and (max-width: 600px) {
-        .topnav a, .topnav-right {
-          float: none;
-          display: block;
-        }
-
-        .topnav-centered a {
-          position: relative;
-          top: 0;
-          left: 0;
-          transform: none;
-        }
-      }
-
-      .category a {
-        float: left;
-        display: block;
-        color: #000000;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        border-bottom: 3px solid transparent;
-      }
-
-      .category a:hover {
-        border-bottom: 3px solid black;
-      }
-
-      .category a:active {
-        border-bottom: 3px solid black;
-      }
-
-      .category-manual a {
-        float: left;
-        display: block;
-        color: #000000;
-        background-color: whitesmoke;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        border-bottom: 3px solid transparent;
-        border: 1px solid #CFCFCF;
-       
-      }
-
-      .category-manual a:hover {
-        float: left;
-        display: block;
-        color: #fff;
-        background-color: #000000;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        border-bottom: 3px solid transparent;
-      }
-
-      .topnav-right ul {
-        list-style-type: none;
-      }
-
-      .topnav-right li {
-        display: inline;
-      }
-
-      .topnav-logo img {
-        width: 210px;
-      }
-
-      .footer {
-        position: fixed;
-        background-color: #333;
-        overflow: hidden;
-        top: 931px;
-        width: 100%;
-        height: 30%;
-        background: #292929 0% 0% no-repeat padding-box;
-        opacity: 1;
-      }
-
-      .que{
-        position: relative;
-        padding: 17px 0;
-        cursor: pointer;
-        font-size: 14px;
-        border-bottom: 1px solid #dddddd;
-        
-      }
-        
-      .que::before{
-        display: inline-block;
-        content: 'Q';
-        font-size: 14px;
-        color: #006633;
-        margin-right: 5px;
-      }
-
-      .que.on>span{
-        font-weight: bold;
-        color: #006633; 
-      }
-        
-      .anw {
-        display: none;
-          overflow: hidden;
-        font-size: 14px;
-        background-color: #f4f4f2;
-        padding: 27px 0;
-      }
-        
-      .anw::before {
-        display: inline-block;
-        content: 'A';
-        font-size: 14px;
-        font-weight: bold;
-        color: #666;
-        margin-right: 5px;
-      }
-      
-    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
@@ -279,7 +83,7 @@
 
 
       <div class="category-manual">
-        <a >전체</a>
+        <a class="on">전체</a>
         <a >1:1 상담</a>
         <a >집단 상담</a>
         <a >EAP 상담</a>
@@ -292,7 +96,8 @@
       <div id="accordion_wrap">
       </div>
 
-      <button type="button" onclick="location.href='board_write.html' ">등록</button>
+    </br>
+      <button type="button" class="btn_bk" onclick="location.href='board_write.html' ">등록</button>
     
 
     </br>
@@ -345,8 +150,8 @@
       for (var i=0; i < data.length; i++) { 
         // row = `<tr> <td class="center"></td><td style="text-align:center">${data[i].manualId}</td> <td style="text-align:left">${data[i].type}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center"><a class="accordion" >${data[i].content}</a><div class="panel"><p>${data[i].title}</p></div></td> </tr>`;
         row = `<div class="que">
-        <span>${data[i].category}</span> |
-        <span>${data[i].title}</span>
+        <span class="q_cate">${data[i].category}</span>
+        <span class="q_tit">${data[i].title}</span>
         </div>
         <div class="anw">
         <span>${data[i].content}</span>
