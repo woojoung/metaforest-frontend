@@ -106,7 +106,7 @@
             <p>
               <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
               <input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
-              <input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
+              <input type="button" onclick="submitContents(this);" value="등록" />
             </p>
         </div>
 
@@ -172,15 +172,27 @@
       alert(sHTML);
     }
       
-    function submitContents(elClickedObj) {
+    async function submitContents(elClickedObj) {
       oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
       
-      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리
       
       try {
         // elClickedObj.form.submit();
         alert(document.getElementById("ir1").value)
+        let _title = document.getElementById("utitle").value
+        let _content = document.getElementById("ir1").value
         // axios post notice pass
+        const response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
+          data: {
+            title : _title,
+            content: _content
+          }
+        }, {withCredentials: true})
+
+        console.log(response)
+
       } catch(e) {}
     }
     
