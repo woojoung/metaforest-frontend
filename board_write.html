@@ -158,12 +158,21 @@
         //예제 코드
         //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
         // DB 에서 불러온 정보를 저 안에 담으면 되겠군.
+        // // axios post notice pass
+        // const response = await axios.post('http://127.0.0.1:7071/notice', {
+        //   msgType: eApiMessageType.ADMIN_GET_ONE_NOTICE_REQ,
+        //   data: {
+        //     // noticeId : getParams.noticeId
+        //   }
+        // }, {withCredentials: true})
+
+        // console.log(response)
       },
       fCreator: "createSEditor2"
     });
     
     function pasteHTML() {
-      let sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
+      let sHTML = "";
       oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
     }
     
@@ -182,6 +191,17 @@
         alert(document.getElementById("ir1").value)
         let _title = document.getElementById("utitle").value
         let _content = document.getElementById("ir1").value
+
+        if (_content == "") {
+          alert('내용을 입력해주세요')
+          return
+        }
+
+        if (_title == "") {
+          alert('제목을 입력해주세요')
+          return
+        }
+
         // axios post notice pass
         const response = await axios.post('http://127.0.0.1:7071/notice', {
           msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
