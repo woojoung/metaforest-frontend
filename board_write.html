@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="./smarteditor2-2.8.2.3/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-<title>게시판</title>
+<title>메타포레스트 : 게시글 쓰기</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -14,8 +14,67 @@
     <!-- css-->
     <link rel="stylesheet" href="css/custom.css">
 
+
 </head>
 <body>
+
+  <!-- Top navigation -->
+  <div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <!-- <a href="#home" class="active">Home</a> -->
+    </div>
+
+    <!-- Left-aligned links (default) -->
+    <!-- Logo -->
+    <div class="topnav-logo">
+      <a href="./index.html" class="">
+        <img class="" src="img/logo/log03.png" alt="logo">
+      </a>
+    </div>
+
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <ul class="" id="">
+        <li class="">
+          <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
+        </li>
+        <li>
+          <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
+        </li>
+        <li>
+          <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
+        </li>
+        <li>
+          <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
+        </li>
+        <li>
+          <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
+        </li>
+        <li>
+          <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
+        </li>
+        <li>
+          <a href="" class="fa fa-bars"></a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  </br>
+  
+  <div class="category">
+    
+    <a href="./board_main.html" class="active">공지사항</a>
+    <a href="./board_event.html">이벤트</a>
+    <a href="./board_manual.html">이용매뉴얼</a>
+    <a href="http://yatavent.com/contact">문의사항</a>
+    
+  </div>
+  
+
+
   <div id="board_area">
 
     <h1>공지사항</h1>
@@ -24,7 +83,7 @@
     
       <div id="search_box">
         <form action="" method="">
-          <select name="catgo">
+          <select name="catgo" class="sel_cate">
             <option value="starter" selected>선택</option>
             <option value="title">제목</option>
             <option value="content">내용</option>
@@ -43,7 +102,7 @@
 
         <div class="wi_line"></div>
         <div id="in_content">
-            <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:766px; height:412px; display:none;"></textarea>
+            <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%; height:412px; display:none;"></textarea>
             <p>
               <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
               <input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
@@ -51,11 +110,24 @@
             </p>
         </div>
 
-          <input type="file" name="SelectFile" />
+        <div class="btm_info">
+          <ul>
+            <li>
+              <span>첨부파일</span>
+              <input type="file" name="SelectFile" />
+            </li>
+            <li>
+              <span>작성일</span>
+            </li>
+          </ul>
+        </div>
+          
 
 
         <div class="bt_se">
-            <button type="submit">확인</button>
+            <button class="btn_list btn_bk">목록</button>
+            <button type="submit" class="btn_ok btn_bk">확인</button>
+            <button class="btn_del btn_gr">취소</button>
         </div>
       </form>
     </div>
