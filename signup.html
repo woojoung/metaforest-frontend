@@ -124,18 +124,18 @@
                 <span class="int_email">
                     <input type="text" id="email" class="int" maxlength="100" placeholder="">
                     @
-                    <select name="" id="">
+                    <select name="" id="email_addrs">
                         <option value="">직접입력</option>
-                        <option value="">gmail.com</option>
-                        <option value="">hanmail.net</option>
-                        <option value="">hotmail.com</option>
-                        <option value="">nate.com</option>
-                        <option value="">naver.com</option>
-                        <option value="">yahoo.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="hotmail.com">hotmail.com</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="yahoo.com">yahoo.com</option>
                     </select>
                 </span>
                 <div id="email_btn">
-                    <button type="button" id="btnSend">
+                    <button type="button" id="btnSend" onclick="requestAuthCode()">
                         <span>인증번호 요청</span>
                     </button>
                 </div>
@@ -149,7 +149,7 @@
                     <input type="text" id="email_code" class="int" maxlength="5" placeholder="">
                 </span>
                 <div id="code_btn">
-                    <button type="button" id="btnSend">
+                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
                         <span>확인</span>
                     </button>
                 </div>
@@ -182,7 +182,7 @@
 
             <!-- JOIN BTN-->
             <div class="btn_area">
-                <button type="button" id="btnJoin">
+                <button type="button" id="btnJoin" onclick="onSubmitForm()">
                     <span>가입하기</span>
                 </button>
             </div>
@@ -202,18 +202,94 @@
 
     <script>
         'use strict'
+        async function verifyAuthCode() {
+            let storageAuthCode = storageGet('authCode', '0')
+            let emailAuthCode = document.getElementById("email_code").value
+
+            if (storageAuthCode != emailAuthCode) {
+                alert("storageAuthCode != emailAuthCode")
+                return
+            }
+
+
+            alert('인증번호 확인')
+        }
+    </script>
+
+    <script>
+        'use strict'
+        async function requestAuthCode() {
+            let email = document.getElementById("email").value
+            let emailAddress = document.getElementById("email_addrs")
+            let emailAddressValue = emailAddress.options[emailAddress.selectedIndex].value
+
+            if (email === "") {
+                alert("email === ''")
+                return
+            }
+
+            if (emailAddressValue === "") {
+                alert("emailAddressValue === ''")
+                return
+            }
+
+            const sendEmail = [email, emailAddressValue].join('@')
+
+            if (!emailCheck(sendEmail)) {
+                alert("wrong email address")
+                return
+            }
+
+            let apiRequest = {
+                msgType: eApiMessageType.USER_SIGNUP_AUTHCODE_REQ,
+                data: {
+                    email: sendEmail,
+                }
+            }
+
+            const _response = await axios.post('http://127.0.0.1:7071/auth/signup', apiRequest, {
+                withCredentials: true
+            })
+
+            let response = {}
+            Object.assign(response, _response)
+
+            console.log(response)
+            console.log(response.data)
+
+            storageSet('authCode', response.data.authCode)
+        }
+    </script>
+
+    <script>
+        'use strict'
         async function onSubmitForm() {
-            let userNickname = document.getElementById("formFirstNameInput").value
-            let email = document.getElementById("formEmailInput").value
-            let passwd = document.getElementById("formPasswordInput2").value
-            let passwd2 = document.getElementById("formPasswordInput3").value
+            let accountId = document.getElementById("id").value
+            let userNickname = document.getElementById("name").value
+
+            let email = document.getElementById("email").value
+            let emailAddress = document.getElementById("email_addrs")
+            let emailAddressValue = emailAddress.options[emailAddress.selectedIndex].value
+
+            let gender = document.getElementById("gender")
+            let genderValue = gender.options[gender.selectedIndex].value
+
+            let passwd = document.getElementById("pswd1").value
+            let passwd2 = document.getElementById("pswd2").value
+
+            let birthYear = document.getElementById("yy").value
+            let birthMonth = document.getElementById("mm").value
+            let birthDay = document.getElementById("dd").value
 
             if (email === "" && passwd === "" && userNickname === "" && passwd2 === "") {
                 alert("email === '' && passwd === '' && userNickname === '' && passwd2 === ''")
                 return
             }
 
-            if (!emailCheck(email)) {
+            const sendEmail = [email, emailAddressValue].join('@')
+            const birth = [birthYear, birthMonth, birthDay].join('-')
+
+            if (!emailCheck(sendEmail)) {
                 alert("wrong email address")
                 return
             }
@@ -224,14 +300,19 @@
                 return
             }
 
-            const hexMd5 = hex_md5(email + hex_md5(passwd))
+            const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
 
             let apiRequest = {
-                msgType: 0,
+                msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
+                    accountId: accountId,
                     userNickname: userNickname,
-                    email: email,
-                    password: hexMd5
+                    profileImageUrl: '',
+                    email: sendEmail,
+                    password: hexMd5,
+                    gender: genderValue,
+                    birth: birth,
+                    md5Mobile: ''
                 }
             }
 
