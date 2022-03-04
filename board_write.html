@@ -79,20 +79,7 @@
 
     <h1>공지사항</h1>
     <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
-    
-    
-      <div id="search_box">
-        <form action="" method="">
-          <select name="catgo" class="sel_cate">
-            <option value="starter" selected>선택</option>
-            <option value="title">제목</option>
-            <option value="content">내용</option>
-          </select>
-          <span class="search_keyword">
-            <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색" onkeyup="if(window.event.keyCode===13){}"  />
-          </span>
-        </form>
-      </div>
+        
   </div>
 
   <div id="board_write">
@@ -116,15 +103,12 @@
           <ul>
             <li>
               <span>첨부파일</span>
-              <label for="attFile">
-              <input type="file" name="SelectFile" id="attFile"/></label>
-            </li>
-            <li>
-              <span>작성일</span>
+              <label id="attFile">
+                <input type="file" name="SelectFile" />
+              </label>
             </li>
           </ul>
-        </div>
-          
+        </div>          
 
 
         <div class="bt_se">

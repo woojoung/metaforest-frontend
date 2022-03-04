@@ -102,7 +102,7 @@ tr td:nth-child(3){padding-left:20px}
 .btm_info ul li span{margin-right:2rem}
 }
 .btm_info #attFile{position:relative;height:44px;padding-top:11px;padding-left:70px;width:230px}
-.btm_info #attFile::before{content:'';display:block;background:url(/img/icon/icon_file.png) center center no-repeat;width:135px;height:44px;position:absolute;top:0;left:0;z-index:2}
+.btm_info #attFile::before{content:'';display:block;background:url(/img/icon/icon_file.png) center center no-repeat;width:135px;height:44px;position:absolute;top:-2px;left:0;z-index:2}
 .btm_info #attFile::after{content:'';display:block;width:50px;height:44px;background-color:#fff;position:absolute;top:0;left:86px;z-index:1}
 @media screen and (max-width:768px) {
 .btm_info #attFile{padding-left:34px}
