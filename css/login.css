@@ -1,27 +1,26 @@
 /* layout */
 html {
-    height: 100%;
-    font-size: 16px;
+    height:100%;
+    font-size:16px;
   }
   
   @media screen and (max-width:1024px) {
     html {
-        font-size: 14px;
+        font-size:14px;
     }
   }
   
   @media screen and (max-width:768px) {
     html {
-        font-size: 12px;
+        font-size:12px;
     }
   
   }
   
   body {
-    margin: 0;
-    height: 100%;
-    background: #f5f6f7;
-    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+    margin:0;
+    height:100%;
+    font-family:'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
   }
   
 
@@ -29,147 +28,180 @@ html {
 /* login */
 
 #header {
-    padding-top: 3.875rem;
+    padding-top:3.875rem;
     /*padding-bottom:1.25rem;*/
-    text-align: center
+    text-align:center
 }
 
 h2#logo {
-    width: 50%;
-    max-width: 233px;
-    margin: 0 auto 4.25rem
+    width:50%;
+    max-width:364px;
+    margin:0 auto 5.5rem
 }
 
 h2#logo img {
-    width: 100%
+    width:100%
 }
 
 .loginContainer {
-    width: 80%;
-    max-width: 745px;
-    margin: 40px auto 80px;
+    width:80%;
+    max-width:915px;
+    margin:40px auto 0;
+    text-align:center;
+    padding-bottom:100px
 }
 
 .logoBox .logoImage1 {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    width:100%;
+    height:100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 
 .loginBox {
-    width: 100%;
-    margin: 0 auto;
+    width:100%;
+    margin:0 auto;
+    border:1px solid #E9E9E9;
+    box-sizing:border-box;
+    padding:7rem 5rem;
 }
 
 .headline1 {
-    margin: 30px 0;
-    font-size: 0;
-    display: none;
+    margin:0 auto 1.5rem;
+    font-size:2.6rem;
+    color:#212121;
+    font-weight:500;
+    word-break:keep-all ;
+}
+
+.desc_txt{
+    margin:0 auto;
+    color:#8A8A8A;
+    font-size:1.6rem;
+    line-height:2.5rem;
 }
 
 .contentBox {
-    width: 100%;
-    border: 1px solid #707070;
-    border-radius: 6px;
-    box-sizing: border-box;
+    width:100%;
 }
 
 .contentWrap {
-    padding: 2.6rem 3.8rem;
+    padding:4.2rem 3.8rem 1.2rem;
 }
 
+
 .mb-4 {
-    height: 4.2rem;
-    border: 1px solid #aeaeae;
-    border-radius: 4px;
-    box-sizing: border-box;
-    overflow: hidden;
-    margin-bottom: 1.5rem;   
-    position: relative
+    height:4.2rem;
+    border:1px solid #A7A7A7;
+    box-sizing:border-box;
+    overflow:hidden;
+    margin-bottom:1.5rem;  
+    position:relative
 }
 
 .mb-4 input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    padding:2px 20px 0;
-    box-sizing:border-box; 
+    width:100%;
+    height:100%;
+    border:none;
+    padding:0 15px 0 52px;
+    box-sizing:border-box;
     font-size:1.375rem;
-    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+    font-family:'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
 }
 
 .mb-4::before{
-    content:'이미지';
+    content:'';
     display:block;
     position:absolute;
-    top:0;
-    left: 0;
+    top:50%;
+    transform:translateY(-12px);
+    left:22px;
     z-index:2;
-    width:auto;
-    height: 1.375rem;
+}
+
+.id_wrap:first-child::before{
+    background:url(/img/icon/icon_id.png) center center no-repeat;
+    width:20px;
+    height:23px;
+}
+
+
+
+.psw_wrap::before{
+    background:url(/img/icon/icon_psw.png) center center no-repeat;
+    width:18px;
+    height:23px;
 }
 
 .keep_check{
-    margin-bottom: 2.6rem;
+    margin-bottom:2.6rem;
+    text-align:left;
 }
 
-/* .keep_check input{
+.keep_check input{
     border:none;
-    appearance: none;
-} */
+    appearance:none;
+    display:none;
+}
 
 .keep_check label{
     font-size:1.125rem;
-    color: #414141;
+    color:#414141;
+    position:relative;
+    padding-left:30px;
 }
 
 .keep_check label::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 18px;
-    height: 18px;
-    background-color: #fff;
+    content:'';
+    position:absolute;
+    top:-1px;
+    left:0;
+    width:21px;
+    height:21px;
+    background:url(/img/icon/icon_unchk.png) center center no-repeat;
 }
+
+.keep_check.on label::before {
+    background:url(/img/icon/icon_chk.png) center center no-repeat;
+}
+
+
 .btn {
-    background-color: #292929;
-    border-radius: 6px;
-    width: 100%;
-    height: 4.2rem;
-    border: none;
+    background-color:#292929;
+    width:100%;
+    height:4.2rem;
+    border:none;
     color:#fff;
-    font-size: 1.5rem;
-    font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
+    font-size:1.5rem;
+    font-family:'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
 }
 
 
 .text1 {
-    text-align: right;
+    text-align:right;
 }
 
 .text1 span {
-    color: #0d6efd;
-    font-weight: bold;
+    color:#0d6efd;
+    font-weight:bold;
 }
 
 .cursorPointer {
-    cursor: pointer;
+    cursor:pointer;
 }
 
 
 .find_wrap ul{
     color:#646464;
-    text-align: center;
+    text-align:center;
     margin:2.6rem auto 0;
     padding:0;
 }
 
 .find_wrap ul li {
-    display: inline;
-    line-height: 1.125rem;
+    display:inline;
+    line-height:1.125rem;
 }
 
 .find_wrap ul li::after{
@@ -177,10 +209,10 @@ h2#logo img {
  display:inline-block;
  width:1px;
  height:1rem;
- background-color: #646464;   
- margin: 0 27px 0 29px;
- line-height: 1.125rem;
- vertical-align: -0.1rem
+ background-color:#646464;  
+ margin:0 1.5rem 0 1.5rem;
+ line-height:1.125rem;
+ vertical-align:-0.1rem
 }
 
 .find_wrap ul li:last-child::after{
@@ -188,65 +220,85 @@ h2#logo img {
 }
 
 .find_wrap ul li a {
-    text-decoration: none;
-    color: #646464;
+    text-decoration:none;
+    color:#646464;
     font-size:1.125rem;
 }
 
 
 /* google btn */
 .googleBtnBox {
-    width: 150px;
-    height: 40px;
-    cursor: pointer;
+    width:150px;
+    height:40px;
+    cursor:pointer;
 }
 
 .googleBtnBox img {
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    width:100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
 }
 
 .googleBox {
-    width: 100%;
-    height: 48px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    background: white;
-    white-space: nowrap;
-    cursor: pointer;
-    position: relative;
+    width:100%;
+    height:48px;
+    border:1px solid #ced4da;
+    border-radius:5px;
+    background:white;
+    white-space:nowrap;
+    cursor:pointer;
+    position:relative;
 }
 
 .googleBox .googleWrap {
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .googleBox .googleWrap .googleLogo {
-    float: left;
-    width: 42px;
-    padding: 8px 0;
-    margin: 0 12px;
-    position: absolute;
+    float:left;
+    width:42px;
+    padding:8px 0;
+    margin:0 12px;
+    position:absolute;
 }
 
 .googleBox .googleWrap .googleLogo .googleLogoImg {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 .googleBox .googleWrap .googleText {
-    font-family: 'RobotoRegular', sans-serif;
-    float: left;
-    /* font-size: 14px; */
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-    line-height: 48px;
-    text-align: center;
-    width: 438px;
+    font-family:'RobotoRegular', sans-serif;
+    float:left;
+    /* font-size:14px;*/
+    font-size:1.25rem;
+    font-weight:bold;
+    color:rgba(0, 0, 0, 0.5);
+    line-height:48px;
+    text-align:center;
+    width:438px;
+}
+
+
+
+
+/* mobile */
+@media screen and (max-width:768px) {
+    .loginBox{
+        padding:5rem 2rem;
+    }
+    .contentWrap{
+       padding:2.6rem 2rem 0;
+    }
+    .headline1{
+        font-size:2.2rem;
+    }    
+    .desc_txt {
+        font-size:1.4rem;
+    }
+
 }
