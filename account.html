@@ -1,47 +1,65 @@
 <!DOCTYPE html>
 <html lnag="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>메타포레스트 : 아이디찾기</title>
-        <link rel="stylesheet" href="./css/signup.css">
-        
-    </head>
-    <body>
-        <!-- header -->
-        <div id="header">
-            <a href="" target="_blank" title=""><img src="" id="logo">로고</a>
+
+<head>
+    <meta charset="UTF-8">
+    <title>메타포레스트 : 비밀번호찾기</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
+    <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap' rel='stylesheet'>
+
+    <!-- css-->
+    <link rel="stylesheet" href="css/account.css">
+
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header">
+        <h2 id="logo"><a href="" target="_blank" title=""><img src="/img/logo/logo_bk.png"></a>
+        </h2>
+    </div>
+
+    <!-- wrapper -->
+    <div id="wrapper">
+
+        <!-- content-->
+        <div class="contentBox" id="content">
+            <h3 class="headline1">아이디 찾기</h3>
+
+            <!-- ID -->
+            <div>
+                <label for="userNickname">이름</label>
+                <span class="box int_uid">
+                    <input type="text" id="uid" class="int" maxlength="20" placeholder="이름">
+                </span>
+            </div>
+
+            <!-- EMAIL -->
+            <div>
+                <label for="email">이메일 주소</label>
+                <span class="box int_email">
+                    <input type="text" id="email" class="int" maxlength="100" placeholder="이메일 주소">
+                </span>
+                <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+            </div>
+
+            <!-- FIND BTN-->
+            <div class="btn_area">
+                <button type="button" id="btnFind">
+                    <span>확인</span>
+                </button>
+            </div>
+
         </div>
+        <!-- content-->
 
-
-        <!-- wrapper -->
-        <div id="wrapper">
-
-            <!-- content-->
-            <div class="contentBox" id="content">
-
-                <!-- EMAIL -->
-                <div>
-                    <h3 class="join_title"><label for="email">아이디 찾기</label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="비밀번호 찾을 이메일">
-                    </span>
-                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
-                </div>
-
-                <!-- FIND BTN-->
-                <div class="btn_area">
-                    <button type="button" id="btnFind">
-                        <span>찾기</span>
-                    </button>
-                </div>
-
-                
-
-            </div> 
-            <!-- content-->
-
-        </div> 
-        <!-- wrapper -->
+    </div>
+    <!-- wrapper -->
     <script src="main.js"></script>
-    </body>
+</body>
+
 </html>
