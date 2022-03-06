@@ -94,6 +94,8 @@
             console.log(response)
             console.log(response.data)
 
+			storageSet('accessLevel', response.data.accessLevel.toString())
+
             // if (response.errCode !== eErrCode.NONE) {
             //     alert(response.message) 
             //     return
