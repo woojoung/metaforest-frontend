@@ -116,7 +116,7 @@
       </table>
     </br>
       <button type="button" class="btn_bk btn_del">선택 삭제</button>
-      <button type="button" class="btn_bk btn_new" onclick="location.href='board_write.html'">등록</button>
+      <button type="button" class="btn_bk btn_new">등록</button>
 
 
     </br>
@@ -176,12 +176,23 @@
       }
 
     </script>
-
+    <script>
+      'use strict'
+      let addButton = document.querySelector('.btn_new');
+      addButton.onclick = async function () {
+        let accessLevel = storageGet('accessLevel', 0);
+        if (accessLevel < 30) {
+          alert('등록 권한이 없습니다.');
+          return
+        }
+        window.location.href = './board_write.html'
+      }
+    </script>
     
 
     <script>
       /* 체크박스 전체선택, 전체해제 */
-      let section = document.querySelector('#section9')
+      let section = document.querySelector('#board_area')
       let noticeList = section.querySelector('.list-table')
       let tableBody = noticeList.querySelector('tbody')
       // let allCheckbox = section.querySelector('.overall-checkbox')
