@@ -93,7 +93,7 @@
 
         <div class="wi_line"></div>
         <div id="in_content">
-            <div id="summernote" name="summernote"></div>
+            <textarea id="summernote" name="summernote"></textarea>
             
         </div>
 
@@ -111,7 +111,7 @@
 
         <div class="bt_se">
             <button class="btn_type btn_bk">목록</button>
-            <button type="submit" class="btn_type btn_bk">등록</button>
+            <button type="submit" id="btnSave" class="btn_type btn_bk">등록</button>
             <button class="btn_type btn_gr">삭제</button>
         </div>
       </form>
@@ -127,6 +127,7 @@
             minHeight: null,
             maxHeight: null,
             focus: true,
+            disableResizeEditor: true,
             lang: "ko-KR",// 한글 설정
             placeholder: '본문을 입력해주세요.',
             toolbar: [
@@ -137,6 +138,21 @@
                 ['color', ['color']],
                 ['insert', ['picture', 'video', 'link']],
             ]
+        });
+
+        $(document).on('click', '#btnSave', async function () {
+          let uTitle = $('#utitle').val().toString();
+          let summernoteContent = $('#summernote').summernote('code');
+          // axios post 
+          const response = await axios.post('http://127.0.0.1:7071/notice', {
+            msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
+            data: {
+              title: uTitle,
+              content: summernoteContent
+            }
+          }, {withCredentials: true})
+
+          console.log(response)
         });
     });
     
