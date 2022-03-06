@@ -102,9 +102,9 @@
 
 
         <div class="bt_se">
-            <button class="btn_type btn_bk">목록</button>
-            <button class="btn_type btn_bk">수정</button>
-            <button class="btn_type btn_gr">삭제</button>
+            <button class="btn_type btn_bk" id="btnList">목록</button>
+            <button class="btn_type btn_bk" id="btnEdit">수정</button>
+            <button class="btn_type btn_gr" id="btnDel">삭제</button>
         </div>
 
     </div>
@@ -137,7 +137,40 @@
     ];
     // test 후 주석처리하기
     window.onload = function () {
-      buildTable(testArray); 
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id');
+        let noticeIds = [parseInt(id) - 1, parseInt(id), parseInt(id) + 1];
+        // apiGetOne(noticeIds);
+
+        const btnList = document.getElementById('btnList');
+        const btnEdit = document.getElementById('btnEdit');
+        const btnDel = document.getElementById('btnDel');
+
+        btnList.onclick = function () {
+            window.location.href = './board_main.html'
+        }
+
+        btnEdit.onclick = async function () {
+            let accessLevel = storageGet('accessLevel', 0);
+            if (accessLevel < 30) {
+                alert('수정 권한이 없습니다.');
+                return
+            }
+            // window.location.href = `./board_write.html?id=${id}`
+            window.location.href = `./board_write_ver2.html?id=${id}`
+        }
+
+        btnDel.onclick = function () {
+            alert('정말 삭제하시겠습니까?');
+            let accessLevel = storageGet('accessLevel', 0);
+            if (accessLevel < 30) {
+                alert('삭제 권한이 없습니다.');
+                return
+            }
+        }
+
+        buildTable(testArray); 
     }
     
     
@@ -153,6 +186,37 @@
       inTitleNext.innerHTML = `<div style="text-align:left">${data[2].title}</div>`;
       
     }
+
+  </script>
+
+<script>
+    'use strict'
+    const apiGetOne = async (noticeIds) => {
+      try {
+        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
+          data: {
+            noticeIds: noticeIds
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+
+        buildTable(response.data)
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
 
   </script>
 
