@@ -110,7 +110,7 @@
 
 
         <div class="bt_se">
-            <button class="btn_type btn_bk">목록</button>
+            <button class="btn_type btn_bk" id="btnList">목록</button>
             <button type="submit" id="btnSave" class="btn_type btn_bk">등록</button>
             <button class="btn_type btn_gr">삭제</button>
         </div>
@@ -153,6 +153,10 @@
           }, {withCredentials: true})
 
           console.log(response)
+        });
+
+        $(document).on('click', '#btnList', async function () {
+          window.location.href = './board_main.html';
         });
     });
     
