@@ -1,4 +1,3 @@
-
 /* ------------------------------- */
 /* reset */
 /* ------------------------------- */
@@ -726,8 +725,12 @@ tr td:nth-child(3) {
     left: 30px;
 }
 
-
-.board_list > div > div{
+.board_list #in_title_prev div,
+.board_list #in_title_next div{
   line-height:75px;
   margin-left:180px;
+  width: calc(100% - 200px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
