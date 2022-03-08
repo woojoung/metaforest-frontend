@@ -14,6 +14,9 @@
     <!-- css-->
     <link rel="stylesheet" href="css/policy.css">
 
+    <!-- js -->
+    <script src="/js/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -28,15 +31,17 @@
 
         <!-- content-->
         <div class="contentBox" id="content">
-            <h3 class="headline1">메타포레스트</h3>
-            <h3 class="headline1">서비스 약관에 동의해 주세요.</h3>
+            <h3 class="headline1">메타포레스트<br>서비스 약관에 동의해 주세요.</h3>
 
             <!-- terms -->
             <p class="terms_chk_all">
                 <span class="input_chk">
                     <input type="checkbox" id="chk_all" name="chk_all">
                     <!-- [D] ie7/8에서 checked일때 label에 클래스 on추가해주세요. -->
-                    <label for="chk_all"><span class="chk_all_txt">모두 동의합니다.<br>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있으며, 개별적으로도 동의를 선택하실 수 있습니다.<br>선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.</span></label>
+                    <label for="chk_all"><span class="chk_all_txt">모두 동의합니다.</span>
+                        전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있으며, 개별적으로도 동의를 선택하실 수 있습니다.<br>
+                        선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
+                    </label>
                 </span>
             </p>
             <ul class="terms_bx_list">
@@ -59,8 +64,8 @@
 
                 <li class="terms_bx">
                     <span class="input_chk">
-                        <input type="checkbox" id="termsService" name="termsService" class="chk">
-                        <label for="termsService">개인정보 수집 및 이용 동의<span class="terms_necessary">(필수)</span></label>
+                        <input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
+                        <label for="termsPrivacy">개인정보 수집 및 이용 동의<span class="terms_necessary">(필수)</span></label>
                     </span>
                     <div class="terms_box" tabindex="0" id="divService">
                         <div class="article">
@@ -68,7 +73,17 @@
                                 개인정보보호법에 따라 메타포레스트에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 
                                 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 
                                 불이익에 관한 사항을 안내드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+                                <br>
+                                1. 수집하는 개인정보
+                            </p>
+                        </div>
 
+                        <div class="article">
+                            <p class="article__text">
+                                개인정보보호법에 따라 메타포레스트에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 
+                                개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 
+                                불이익에 관한 사항을 안내드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
+                                <br>
                                 1. 수집하는 개인정보
                             </p>
                         </div>
@@ -81,12 +96,11 @@
                         <label for="termsEmail">프로모션 정보 수신 동의<span class="terms_choice terms_no">(선택)</span></label>
                     </span>
                 </li>
-
             </ul>
 
-            <span class="event_message" style="display:block">메타포레스트에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 메타포레스트 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.</span>
+            <span class="event_msg" style="display:block">메타포레스트에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 메타포레스트 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.</span>
             
-
+            <span class="error" id="agreeMsg" style="display:none">이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.</span>
             <!-- BTN-->
             <div class="btn_area">
                 <button type="button" id="btnCancel" onclick="">
@@ -102,7 +116,92 @@
 
     </div>
     <!-- wrapper -->
+
+
     <script src="main.js"></script>
+
+    
+  <script>
+    $(function(){
+      
+      // 전체 동의
+      $('#chk_all').on('click',function(){
+        setTerms();
+      })
+
+      var setTerms = function(){
+        var all_chk = $('#chk_all');
+        var checked = $('#chk_all').is(':checked');
+        if(checked){
+         $('input:checkbox').prop('checked',true);
+        }else{
+          $('input:checkbox').prop('checked',false);
+        }
+        return true;
+      }
+
+      // 부분 동의
+      $('#termsService').on('click',function(){
+        viewTerms();
+      })
+      
+      $('#termsPrivacy').on('click',function(){
+        viewTerms();
+      })
+                  
+      $('#termsEmail').on('click',function(){
+        viewTerms();
+      })
+      
+      var viewTerms = function(){        
+        if( !$('#termsPrivacy').is(':checked') || $('#termsPrivacy').is(':checked') || $('#termsEmail').is(':checked') ){
+          $('#chk_all').prop('checked',false);
+        }
+        if( $('#termsService').is(':checked') && $('#termsPrivacy').is(':checked')  && $('#termsEmail').is(':checked')){
+          $('#chk_all').prop('checked',true);
+        }
+        return true;
+      }
+
+      //취소 버튼
+      $('#btnDisagree').on('click',function(){
+        submitDisagree();
+      })      
+
+      var submitDisagree = function(){
+        location.href="https://www.metaforest.us/";
+        return true;
+      }
+
+      // 동의 버튼
+      $('#btnAgree').on('click',function(){
+        submitAgree();
+        return false;
+      })
+      
+      var checkTerms = function(){
+        var res = true;
+        if($('#termsService').is(':checked') == false || $('#termsPrivacy').is(':checked') == false){
+          $('#agreeMsg').show();
+          res = false;
+        }else{
+          $('#agreeMsg').hide();
+        }
+        return res;
+      }
+
+      var submitAgree = function(){
+        if (checkTerms() != true){
+          return false;
+        }
+        return true;
+      }
+
+    })
+  </script>
+
+
+
 </body>
 
 </html>
