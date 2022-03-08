@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="./smarteditor2-2.8.2.3/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-<title>메타포레스트 : 게시글 쓰기</title>
+<title>메타포레스트 : 게시글 보기</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -87,19 +87,19 @@
         <div id="in_title">
             <span>공지사항입니다.</span>
         </div>
-
         
         <div id="in_content">
             <span>메타 포레스트 공지사항입니다.</span>
         </div>
 
-        <div id="in_title_prev">
-            <span>공지사항입니다.</span>
+        <div class="board_list">
+          <div id="in_title_prev">
+              <span>공지사항입니다.</span>
+          </div>
+          <div id="in_title_next">
+              <span>집단상담은 어떻게 진행되나요?</span>
+          </div>
         </div>
-        <div id="in_title_next">
-            <span>집단상담은 어떻게 진행되나요?</span>
-        </div>
-
 
         <div class="bt_se">
             <button class="btn_type btn_bk" id="btnList">목록</button>
@@ -181,7 +181,7 @@
       let inTitleNext = document.getElementById('in_title_next');
 
       inTitle.innerHTML = `<div style="text-align:left">${data[1].title}</div>`;
-      inContent.innerHTML = `<div style="text-align:center">${data[1].content}</div>`;
+      inContent.innerHTML = `<div style="text-align:left">${data[1].content}</div>`;
       inTitlePrev.innerHTML = `<div style="text-align:left">${data[0].title}</div>`;
       inTitleNext.innerHTML = `<div style="text-align:left">${data[2].title}</div>`;
       
