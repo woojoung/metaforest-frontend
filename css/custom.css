@@ -83,7 +83,7 @@ tr td:nth-child(3){padding-left:20px}
 .que::after{display:block;position:absolute;content:'';right:3rem;top:46%;transition:all .3s ease-in-out;background:url(/img/icon/icon_arrow_down.png) center center no-repeat #fff;width:20px;height:12px}
 .que.on::after{transform:scaleY(-1)}
 .anw{display:none;overflow:hidden;font-size:1.5rem;padding:4rem 8rem;border-bottom:1px solid #ddd}
-.anw::before{display:inline-block;content:'A';font-size:1.5rem;font-weight:700;color:#666;margin-right:5px}
+.anw::before{display:none;content:'A';font-size:1.5rem;font-weight:700;color:#666;margin-right:5px}
 
 /* board write */
 #board_write{width:80%;max-width:1465px;position:relative;margin:1.5rem auto 0;border-top:3px solid #8A949E;padding-top:1rem}
