@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./smarteditor2-2.8.2.3/js/HuskyEZCreator.js" charset="utf-8"></script>
+
+<title>메타포레스트 : 게시글 쓰기</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
+    <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap' rel='stylesheet'>
+
+    <!-- css-->
+    <link rel="stylesheet" href="css/custom.css">
+
+
+</head>
+<body>
+
+  <!-- Top navigation -->
+  <div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <!-- <a href="#home" class="active">Home</a> -->
+    </div>
+
+    <!-- Left-aligned links (default) -->
+    <!-- Logo -->
+    <div class="topnav-logo">
+      <a href="./index.html" class="">
+        <img class="" src="img/logo/log03.png" alt="logo">
+      </a>
+    </div>
+
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <ul class="" id="">
+        <li class="">
+          <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
+        </li>
+        <li>
+          <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
+        </li>
+        <li>
+          <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
+        </li>
+        <li>
+          <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
+        </li>
+        <li>
+          <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
+        </li>
+        <li>
+          <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
+        </li>
+        <li>
+          <a href="" class="fa fa-bars"></a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  </br>
+  
+  <div class="category">
+    
+    <a href="./board_main.html" class="active">공지사항</a>
+    <a href="./board_event.html">이벤트</a>
+    <a href="./board_faq.html">이용매뉴얼</a>
+    <a href="http://yatavent.com/contact">문의사항</a>
+    
+  </div>
+  
+
+
+  <div id="board_area">
+
+    <h1>공지사항</h1>
+    <h4>메타포레스트의 새로운 소식 입니다.</h4>
+        
+  </div>
+
+  <div id="board_detail">
+    <div id="detail_area">
+        <div id="in_title">
+            <span>공지사항입니다.</span>
+        </div>
+
+        
+        <div id="in_content">
+            <span>메타 포레스트 공지사항입니다.</span>
+        </div>
+
+        <div id="in_title_prev">
+            <span>공지사항입니다.</span>
+        </div>
+        <div id="in_title_next">
+            <span>집단상담은 어떻게 진행되나요?</span>
+        </div>
+
+
+        <div class="bt_se">
+            <button class="btn_type btn_bk" id="btnList">목록</button>
+            <button class="btn_type btn_bk" id="btnEdit">수정</button>
+            <button class="btn_type btn_gr" id="btnDel">삭제</button>
+        </div>
+
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    'use strict'
+    
+  </script>
+
+  <script src='./tools/cfg.js'></script>
+  <script src='./tools/enums.js'></script>
+  <script src='./tools/libs.js'></script>
+  <script src='./tools/md5.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script>
+    'use strict'
+    const testArray = [ 
+      {noticeId : 1, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 2, title : '집단상담은 어떻게 진행되나요?', content : '2022-02-18'}, 
+      {noticeId : 3, title : '플랫폼은 무료인가요?', content : '2022-02-18'}, 
+      {noticeId : 4, title : '1:1상담은 어떻게 진행되는건가요?.', content : '2022-02-18'}, 
+      {noticeId : 5, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 6, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 7, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 8, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 9, title : '공지사항입니다.', content : '2022-02-18'}, 
+      {noticeId : 10, title : '공지사항입니다.', content : '2022-02-18'},
+    ];
+    // test 후 주석처리하기
+    window.onload = function () {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id');
+        let noticeIds = [parseInt(id) - 1, parseInt(id), parseInt(id) + 1];
+        // apiGetOne(noticeIds);
+
+        const btnList = document.getElementById('btnList');
+        const btnEdit = document.getElementById('btnEdit');
+        const btnDel = document.getElementById('btnDel');
+
+        btnList.onclick = function () {
+            window.location.href = './board_main.html'
+        }
+
+        btnEdit.onclick = async function () {
+            let accessLevel = storageGet('accessLevel', 0);
+            if (accessLevel < 30) {
+                alert('수정 권한이 없습니다.');
+                return
+            }
+            // window.location.href = `./board_write.html?id=${id}`
+            window.location.href = `./board_write_ver2.html?id=${id}`
+        }
+
+        btnDel.onclick = function () {
+            alert('정말 삭제하시겠습니까?');
+            let accessLevel = storageGet('accessLevel', 0);
+            if (accessLevel < 30) {
+                alert('삭제 권한이 없습니다.');
+                return
+            }
+        }
+
+        buildTable(testArray); 
+    }
+    
+    
+    function buildTable(data) { 
+      let inTitle = document.getElementById('in_title');
+      let inContent = document.getElementById('in_content');
+      let inTitlePrev = document.getElementById('in_title_prev');
+      let inTitleNext = document.getElementById('in_title_next');
+
+      inTitle.innerHTML = `<div style="text-align:left">${data[1].title}</div>`;
+      inContent.innerHTML = `<div style="text-align:center">${data[1].content}</div>`;
+      inTitlePrev.innerHTML = `<div style="text-align:left">${data[0].title}</div>`;
+      inTitleNext.innerHTML = `<div style="text-align:left">${data[2].title}</div>`;
+      
+    }
+
+  </script>
+
+<script>
+    'use strict'
+    const apiGetOne = async (noticeIds) => {
+      try {
+        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
+          data: {
+            noticeIds: noticeIds
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+
+        buildTable(response.data)
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
+  </script>
+
+</body>
+</html>

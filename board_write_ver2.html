@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="./smarteditor2-2.8.2.3/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <title>메타포레스트 : 게시글 쓰기</title>
 
@@ -14,6 +13,9 @@
     <!-- css-->
     <link rel="stylesheet" href="css/custom.css">
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 </head>
 <body>
@@ -68,7 +70,7 @@
     
     <a href="./board_main.html" class="active">공지사항</a>
     <a href="./board_event.html">이벤트</a>
-    <a href="./board_manual.html">이용매뉴얼</a>
+    <a href="./board_faq.html">이용매뉴얼</a>
     <a href="http://yatavent.com/contact">문의사항</a>
     
   </div>
@@ -91,12 +93,8 @@
 
         <div class="wi_line"></div>
         <div id="in_content">
-            <textarea name="ir1" id="ir1" rows="10" cols="100" style="width:100%;min-width:260px;height:412px; display:none;"></textarea>
-            <p>
-              <!-- <input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
-              <input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
-              <input type="button" onclick="submitContents(this);" value="서버로 내용 전송" /> -->
-            </p>
+            <textarea id="summernote" name="summernote"></textarea>
+            
         </div>
 
         <div class="btm_info">
@@ -112,8 +110,8 @@
 
 
         <div class="bt_se">
-            <button class="btn_type btn_bk">목록</button>
-            <button type="submit" class="btn_type btn_bk">등록</button>
+            <button class="btn_type btn_bk" id="btnList">목록</button>
+            <button type="submit" id="btnSave" class="btn_type btn_bk">등록</button>
             <button class="btn_type btn_gr">삭제</button>
         </div>
       </form>
@@ -122,55 +120,87 @@
 
   <script type="text/javascript">
     'use strict'
-    let oEditors = [];
-    
-    // 추가 글꼴 목록
-    //var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-    
-    nhn.husky.EZCreator.createInIFrame({
-      oAppRef: oEditors,
-      elPlaceHolder: "ir1",
-      sSkinURI: "./smarteditor2-2.8.2.3/SmartEditor2Skin.html",	
-      htParams : {
-        bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-        bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-        bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-        //bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-        //aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-        fOnBeforeUnload : function(){
-          //alert("완료!");
+    $(document).ready(function() {
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let id = 0;
+        if (urlParams.has('id')) {
+          id = urlParams.get('id');
+          let data = apiGetOne(id);
+          $('#utitle').val(data[0].title)
+          $('#summernote').val(data[0].cotent);
         }
-      }, //boolean
-      fOnAppLoad : function(){
-        //예제 코드
-        //oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-        // DB 에서 불러온 정보를 저 안에 담으면 되겠군.
-      },
-      fCreator: "createSEditor2"
+        $('#summernote').summernote({
+            height: 300,
+            tabsize: 2,
+            minHeight: null,
+            maxHeight: null,
+            focus: true,
+            disableResizeEditor: true,
+            lang: "ko-KR",// 한글 설정
+            placeholder: '본문을 입력해주세요.',
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold','strikethrough', 'underline', 'clear']],
+                ['table', ['table']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['color', ['color']],
+                ['insert', ['picture', 'video', 'link']],
+            ]
+        });
+
+        $(document).on('click', '#btnSave', async function () {
+          let uTitle = $('#utitle').val().toString();
+          let summernoteContent = $('#summernote').summernote('code');
+          // axios post 
+          const response = await axios.post('http://127.0.0.1:7071/notice', {
+            msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
+            data: {
+              title: uTitle,
+              content: summernoteContent
+            }
+          }, {withCredentials: true})
+
+          console.log(response)
+        });
+
+        $(document).on('click', '#btnList', async function () {
+          window.location.href = './board_main.html';
+        });
     });
     
-    function pasteHTML() {
-      let sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-      oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
-    }
-    
-    function showHTML() {
-      let sHTML = oEditors.getById["ir1"].getIR();
-      alert(sHTML);
-    }
-      
-    function submitContents(elClickedObj) {
-      oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-      
-      // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-      
+  </script>
+
+  <script>
+    'use strict'
+    const apiGetOne = async (noticeIds) => {
       try {
-        // elClickedObj.form.submit();
-        alert(document.getElementById("ir1").value)
-        // axios post notice pass
-      } catch(e) {}
-    }
-    
+        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+          msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
+          data: {
+            noticeIds: noticeIds
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+
+        return response.data
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
   </script>
 
   <script src='./tools/cfg.js'></script>
