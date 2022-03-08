@@ -119,6 +119,10 @@ h3 {
     box-sizing: border-box;
 }
 
+.int_email select option:first-child{
+    color:#939393
+}
+
 #email_btn{display:inline-block;padding-left:10px}
 
 
