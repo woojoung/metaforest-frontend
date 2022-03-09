@@ -194,7 +194,6 @@
 
     </div>
     <!-- wrapper -->
-    <script src="main.js"></script>
     <script src='./tools/cfg.js'></script>
     <script src='./tools/enums.js'></script>
     <script src='./tools/libs.js'></script>
@@ -283,7 +282,7 @@
             let birthDay = document.getElementById("dd").value
 
             if (email === "" && passwd === "" && userNickname === "" && passwd2 === "") {
-                alert("이메일 = '' && 비밀번호 === '' && 이름 === '' && 비밀번호확인 === ''")
+                alert("항목을 모두 입력해주세요.")
                 return
             }
 
@@ -338,7 +337,7 @@
             //     return
             // }
             // window.location.href = "https://metaforest.us/login.html"
-            window.location.href = "http://127.0.0.1:5500/login.html"
+            location.href = "./login.html"
         }
     </script>
 </body>

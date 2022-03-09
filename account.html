@@ -36,7 +36,7 @@
             <div>
                 <label for="userNickname">이름</label>
                 <span class="box int_uid">
-                    <input type="text" id="uid" class="int" maxlength="20" placeholder="이름">
+                    <input type="text" id="uid" class="int" maxlength="20" placeholder="이름" required>
                 </span>
             </div>
 
@@ -44,7 +44,7 @@
             <div>
                 <label for="email">이메일 주소</label>
                 <span class="box int_email">
-                    <input type="text" id="email" class="int" maxlength="100" placeholder="이메일 주소">
+                    <input type="text" id="email" class="int" maxlength="100" placeholder="이메일 주소" required>
                 </span>
                 <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
             </div>
@@ -127,7 +127,39 @@
 
         </div> <!-- end container -->
     </footer> <!-- end footer -->
-    <script src="main.js"></script>
+    
+    <script src='./tools/cfg.js'></script>
+    <script src='./tools/enums.js'></script>
+    <script src='./tools/libs.js'></script>
+    <script src='./tools/md5.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        'use strict'
+        let findButton = document.getElementById('btnFind');
+        findButton.onclick = async function () {
+
+            let userNickname = document.getElementById('uid').value;
+            let userEmail = document.getElementById('email').value;
+
+            let apiRequest = {
+                msgType: eApiMessageType.USER_FIND_ACCOUNT_ID_REQ,
+                data: {
+                    userNickname: userNickname,
+                    email: userEmail,
+                }
+            }
+
+            const _response = await axios.post(apiUrl+'user', apiRequest, {withCredentials: true})
+
+            let response = {}
+            Object.assign(response, _response)
+
+            console.log(response)
+            console.log(response.data)
+        }
+    </script>
+
 </body>
 
 </html>

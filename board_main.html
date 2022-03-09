@@ -87,8 +87,7 @@
           <option value="content">내용</option>
         </select>
         <span class="search_keyword">
-          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색"
-            onkeyup="if(window.event.keyCode===13){}" />
+          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색"/>
         </span>
       </form>
     </div>
@@ -257,6 +256,12 @@
     ];
     // test 후 주석처리하기
     window.onload = function () {
+      // let accessLevel = storageGet('accessLevel', '');
+      // if (accessLevel == '') {
+      //   alert('로그인 후 이용할 수 있습니다.');
+      //   location.href = './login.html';
+      //   return
+      // }
       paging(testArray.length, 1);
       buildTable(testArray);
     }
@@ -284,6 +289,40 @@
         return
       }
       window.location.href = './board_write.html'
+    }
+  </script>
+
+  <script>
+    'use strict'
+    let searchKeyword = document.querySelector('.sel_cate').value;
+    let searchWordInput = document.getElementsByName('search');
+    let searchWord = document.getElementsByName('search').value;
+    searchWordInput.onkeyup = async function () {
+      if(window.event.keyCode===13) {
+        const _response = await axios.post(apiUrl + 'notice', {
+          msgType: eApiMessageType.USER_GET_LIST_NOTICE_BY_SEARCHWORD_REQ,
+          data: {
+            searchWord: searchWord.toString(),
+            searchKeyword: searchKeyword.toString(),
+          }
+        }, {
+          withCredentials: true
+        })
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        totalData = response.data.length
+        console.log("totalData : " + totalData);
+
+        globalCurrentPage = 1
+
+        await paging(totalData, globalCurrentPage);
+        await apiGetList(globalCurrentPage);
+      }
     }
   </script>
 
@@ -317,7 +356,7 @@
         checkBoxNum.push(deleteTemp[i].value)
       }
       console.log(checkBoxNum)
-      const response = await axios.post('http://127.0.0.1:7071/notice', {
+      const response = await axios.post(apiUrl+'notice', {
         msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
         data: {
           noticeIds: checkBoxNum
@@ -334,7 +373,7 @@
     'use strict'
     const apiGetList = async (_perPage) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+        const _response = await axios.post(apiUrl+'notice', {
           msgType: eApiMessageType.USER_GET_LIST_NOTICE_REQ,
           data: {
             page: _perPage

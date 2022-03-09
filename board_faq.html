@@ -80,11 +80,11 @@
 
       <div class="category-manual">
         <a class="on">전체</a>
-        <a >1:1 상담</a>
-        <a >집단 상담</a>
-        <a >EAP 상담</a>
-        <a >튜토리얼</a>
-        <a >커뮤니티</a>
+        <a data-value="10">1:1 상담</a>
+        <a data-value="20">집단 상담</a>
+        <a data-value="30">EAP 상담</a>
+        <a data-value="40">튜토리얼</a>
+        <a data-value="50">커뮤니티</a>
       </div>
 
       </br>
@@ -225,7 +225,7 @@
     'use strict'
     const apiGetList = async (_perPage) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/faq', {
+        const _response = await axios.post(apiUrl+'faq', {
           msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
           data: {
             page: _perPage

@@ -41,11 +41,11 @@
 	                <div class="contentWrap">
 	                    <div class="mb-4 id_wrap">
 	                        <label htmlFor="formEmailInput" class="form-label"></label>
-	                        <input onChange="" type="text" class="form-control form-control-lg" id="formEmailInput" placeholder="아이디" />
+	                        <input onChange="" type="text" class="form-control form-control-lg" id="formEmailInput" placeholder="아이디" required/>
 	                    </div>
 	                    <div class="mb-4 psw_wrap">
 	                        <label htmlFor="formPasswordInput2" class="form-label"></label>
-	                        <input onChange="" type="password" class="form-control form-control-lg" id="formPasswordInput2" placeholder="비밀번호" />
+	                        <input onChange="" type="password" class="form-control form-control-lg" id="formPasswordInput2" placeholder="비밀번호" required/>
 	                    </div>
                         <div class="keep_check" id="keep_check">
                             <input type="checkbox">
@@ -147,7 +147,7 @@
             let passwd = document.getElementById("formPasswordInput2").value
 
             if (email === "" && passwd === "") {
-                alert("email === '' && passwd === ''")
+                alert("항목을 모두 입력해주세요.")
                 return
             }
 
@@ -171,8 +171,8 @@
             //     alert(response.message) 
             //     return
             // }
-            // window.location.href = "https://metaforest.us/board_main.html?value="+_value;
-            window.location.href = "http://127.0.0.1:5500/board_main.html"
+            // window.location.href = "https://metaforest.us/board_main.html;
+            location.href = "./board_main.html"
         }
     </script>
 
