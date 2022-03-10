@@ -421,6 +421,9 @@ tr td:nth-child(3) {
   justify-content: flex-end;
   align-items: center;
   text-align: center;
+  position:relative;
+
+  border-bottom: 3px solid red;
 }
 
 .footer-socials i {
@@ -431,15 +434,35 @@ tr td:nth-child(3) {
   font-size: 2rem;
   display: inline-block;
   text-align: center;
-  margin-right: 20px;
   margin-bottom: 15px;
   /* padding-bottom: 5px; */
   color: #686868;
   transition: all 0.1s ease-in-out;
 }
 
-.footer-socials a:hover {
-  border-bottom: 3px solid red;
+.footer-socials .contact{
+  position: absolute;
+  bottom: -20px;
+    right: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.footer-socials .contact a{
+  color:#fff;
+  font-size:1.2rem;
+}
+
+.footer-socials .contact::before{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background-color: #F20F15;
+  content:'';
+  display: block;
+    float: right;
+    margin-bottom: 10px;
 }
 
 /* .footer-socials div:hover:before {
