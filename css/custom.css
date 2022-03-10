@@ -406,7 +406,7 @@ tr td:nth-child(3) {
   display: inline-block;
   color: #686868;
   font-size: 0.875rem;
-  margin-top:30px;
+  margin-top: 30px;
 }
 
 .footer-bottom .copyright a {
@@ -421,13 +421,17 @@ tr td:nth-child(3) {
   justify-content: flex-end;
   align-items: center;
   text-align: center;
-  position:relative;
+  position: relative;
 
   border-bottom: 3px solid red;
 }
 
 .footer-socials i {
   color: white;
+}
+
+.footer-socials i:hover{
+  color:#F20F15
 }
 
 .footer-socials a {
@@ -440,41 +444,38 @@ tr td:nth-child(3) {
   transition: all 0.1s ease-in-out;
 }
 
-.footer-socials .contact{
+.footer-socials .contact {
   position: absolute;
   bottom: -20px;
-    right: 60px;
-    margin: 0;
-    padding: 0;
+  right: 60px;
+  margin: 0;
+  padding: 0;
 }
 
 
-.footer-socials .contact a{
-  color:#fff;
-  font-size:1.2rem;
+.footer-socials .contact a {
+  color: #fff;
+  font-size: 1.2rem;
 }
 
-.footer-socials .contact::before{
-  width:9px;
-  height:9px;
-  border-radius:50%;
+.footer-socials .contact span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
   background-color: #F20F15;
-  content:'';
+  content: '';
   display: block;
-    float: right;
-    margin-bottom: 10px;
+  float: right;
+  margin-bottom: 10px;
 }
 
-/* .footer-socials div:hover:before {
-  content: "";
-  color: white;
-  position: absolute;
-  background: red;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  left:calc(50% + 250px);
-} */
+.footer-socials .contact:hover a{
+  color: #F20F15;
+}
+
+.footer-socials .contact:hover span {
+  background-color: #fff;
+}
 
 .footer-right {
   position: absolute;
@@ -749,10 +750,10 @@ tr td:nth-child(3) {
 .btm_info #attFile input {
   font-family: 'NexonLv2Gothic', Malgun Gothic, '맑은 고딕', Helvetica, sans-serif;
   position: absolute;
-    top: 50%;
-    transform: translateY(-4px);
-    left: 70px;
-    z-index: 1;
+  top: 50%;
+  transform: translateY(-4px);
+  left: 70px;
+  z-index: 1;
 }
 
 .btm_info #attFile::before {
@@ -794,9 +795,10 @@ tr td:nth-child(3) {
     left: 50px
   }
 
-  
-.btm_info #attFile input {
-    left: 34px;}
+
+  .btm_info #attFile input {
+    left: 34px;
+  }
 }
 
 .bt_se {
