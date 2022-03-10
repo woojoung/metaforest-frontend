@@ -430,8 +430,8 @@ tr td:nth-child(3) {
   color: white;
 }
 
-.footer-socials i:hover{
-  color:#F20F15
+.footer-socials i:hover {
+  color: #F20F15
 }
 
 .footer-socials a {
@@ -469,7 +469,7 @@ tr td:nth-child(3) {
   margin-bottom: 10px;
 }
 
-.footer-socials .contact:hover a{
+.footer-socials .contact:hover a {
   color: #F20F15;
 }
 
@@ -514,10 +514,29 @@ tr td:nth-child(3) {
 
 }
 
+
 .fa-blog:before {
-  content: url(../img/footer/blog.png);
+  content:'';
+  background: url(../img/footer/blog.png) center center no-repeat;
   vertical-align: -4px;
+  background-size: 100% auto;
+  width: 30px;
+  height: 26px;
+  display: block;
 }
+
+
+
+.social-blog:hover .fa-blog:before {
+  content:'';
+  background: url(../img/footer/blog_on.png) center center no-repeat;
+  vertical-align: -4px;
+  width: 30px;
+  height: 26px;
+  display: block;
+  background-size: 100% auto;
+}
+
 
 
 /* board faq */
