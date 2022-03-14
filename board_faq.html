@@ -91,9 +91,10 @@
 
       <div id="accordion_wrap">
       </div>
-    </div>
 
       <!-- <button type="button" class="btn_bk" onclick="location.href='board_write.html' ">등록</button> -->
+    </br>
+    <button type="button" class="btn_bk btn_new">등록</button>
     
 
     </br>
@@ -102,7 +103,7 @@
      <ul id="pagingul">
      </ul>
 
-  </div>
+    </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -223,6 +224,19 @@
 
     
 
+  </script>
+
+  <script>
+    'use strict'
+    let addButton = document.querySelector('.btn_new');
+    addButton.onclick = async function () {
+      let accessLevel = storageGet('accessLevel', 0);
+      if (accessLevel < 30) {
+        alert('등록 권한이 없습니다.');
+        return
+      }
+      window.location.href = './board_faq_write.html'
+    }
   </script>
 
   <script>
