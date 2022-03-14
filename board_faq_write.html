@@ -223,10 +223,11 @@
         });
 
         $(document).on('click', '#btnSave', async function () {
+          let category = document.querySelector('.sel_cate').value;
           let uTitle = $('#utitle').val().toString();
           let summernoteContent = $('#summernote').summernote('code');
           // axios post 
-          const response = await axios.post('http://127.0.0.1:7071/faq', {
+          const response = await axios.post(apiUrl+'faq', {
             msgType: eApiMessageType.ADMIN_CREATE_FAQ_REQ,
             data: {
               title: uTitle,
@@ -249,7 +250,7 @@
     'use strict'
     const apiGetOne = async (faqId) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/faq', {
+        const _response = await axios.post(apiUrl+'faq', {
           msgType: eApiMessageType.ADMIN_GET_ONE_FAQ_REQ,
           data: {
             faqId: faqId
