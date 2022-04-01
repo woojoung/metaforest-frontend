@@ -76,13 +76,14 @@
 
   <div id="board_area">
 
-    <h1>공지사항</h1>
-    <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
+    <h1>이용매뉴얼</h1>
+    <h4>찾으시는 질문이 없으실 경우 문의하기를 통해 문의를 주시면 각 질문 내용별 담당자가 내용 확인 후 빠른 답변을 드리겠습니다.</h4>
         
   </div>
 
   <div id="board_write">
     <div id="write_area">
+      <form enctype="multipart/form-data">
         <div id="in_title">
             <input name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required>
         </div>
@@ -96,10 +97,15 @@
         <div class="btm_info">
           <ul>
             <li>
-              <span>첨부파일</span>
-              <label id="attFile">
-                <input type="file" name="SelectFile" />
-              </label>
+              <span>카테고리</span>
+              <select name="catgo" class="sel_cate">
+                <option value="0" selected>선택</option>
+                <option value="10">1:1 상담</option>
+                <option value="20">집단 상담</option>
+                <option value="30">EAP 상담</option>
+                <option value="40">튜토리얼</option>
+                <option value="50">커뮤니티</option>
+              </select>
             </li>
           </ul>
         </div>
@@ -110,6 +116,7 @@
             <button type="submit" id="btnSave" class="btn_type btn_bk">등록</button>
             <button class="btn_type btn_gr">삭제</button>
         </div>
+      </form>
     </div>
   </div>
   
@@ -216,14 +223,16 @@
         });
 
         $(document).on('click', '#btnSave', async function () {
+          let category = document.querySelector('.sel_cate').value;
           let uTitle = $('#utitle').val().toString();
           let summernoteContent = $('#summernote').summernote('code');
           // axios post 
-          const response = await axios.post('http://127.0.0.1:7071/notice', {
-            msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
+          const response = await axios.post(apiUrl+'faq', {
+            msgType: eApiMessageType.ADMIN_CREATE_FAQ_REQ,
             data: {
               title: uTitle,
-              content: summernoteContent
+              content: summernoteContent,
+              category: category,
             }
           }, {withCredentials: true})
 
@@ -231,7 +240,7 @@
         });
 
         $(document).on('click', '#btnList', async function () {
-          window.location.href = './board_main.html';
+          window.location.href = './board_faq.html';
         });
     });
     
@@ -239,12 +248,12 @@
 
   <script>
     'use strict'
-    const apiGetOne = async (noticeIds) => {
+    const apiGetOne = async (faqId) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/notice', {
-          msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
+        const _response = await axios.post(apiUrl+'faq', {
+          msgType: eApiMessageType.ADMIN_GET_ONE_FAQ_REQ,
           data: {
-            noticeIds: noticeIds
+            faqId: faqId
           }
         }, {withCredentials: true})
 

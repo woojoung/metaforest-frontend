@@ -1,352 +1,507 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>메타포레스트 : 공지사항</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
-    <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap' rel='stylesheet'>
 
-    <!-- css-->
-    <link rel="stylesheet" href="css/custom.css">
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>메타포레스트 : 공지사항</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
+  <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap'
+    rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Favicons -->
+	<link rel="shortcut icon" href="./img/favicon.ico">
+
+  <!-- css-->
+  <link rel="stylesheet" href="css/custom.css">
 
 
-  </head>
-  <body>
-    <!-- Top navigation -->
-    <div class="topnav">
+</head>
 
-      <!-- Centered link -->
-      <div class="topnav-centered">
-        <!-- <a href="#home" class="active">Home</a> -->
-      </div>
-
-      <!-- Left-aligned links (default) -->
-      <!-- Logo -->
-      <div class="topnav-logo">
-        <a href="./index.html" class="">
-          <img class="" src="img/logo/log03.png" alt="logo">
-        </a>
-      </div>
-
-      <!-- Right-aligned links -->
-      <div class="topnav-right">
-        <ul class="" id="">
-          <li class="">
-            <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
-          </li>
-          <li>
-            <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
-          </li>
-          <li>
-            <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
-          </li>
-          <li>
-            <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
-          </li>
-          <li>
-            <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
-          </li>
-          <li>
-            <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
-          </li>
-          <li>
-            <a href="" class="fa fa-bars"></a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-    </br>
-    
-    <div class="category">
-      
-      <a href="./board_main.html" class="active">공지사항</a>
-      <a href="./board_event.html">이벤트</a>
-      <a href="./board_manual.html">이용매뉴얼</a>
-      <a href="http://yatavent.com/contact">문의사항</a>
-      
+<body>
+  <!-- Top navigation -->
+  <div class="topnav">
+    <!-- Logo -->
+    <div class="topnav-logo">
+      <a href="./index.html" class="">
+        <img class="" src="img/logo/log03.png" alt="logo">
+      </a>
     </div>
 
-    <div id="board_area">
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <ul class="" id="">
+        <li class="">
+          <a href="./index.html#home" class="nav-link font-NXN" aria-haspopup="true">HOME</a>
+        </li>
+        <li>
+          <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
+        </li>
+        <li>
+          <a href="./index.html#page2Link" class="nav-link font-NXN">서비스 소개</a>
+        </li>
+        <li>
+          <a href="./index.html#page4Link" class="nav-link font-NXN">프렌즈</a>
+        </li>
+        <li>
+          <a href="./index.html#page3Link" class="nav-link font-NXN">파트너쉽</a>
+        </li>
+        <li>
+          <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
+        </li>
+        <li>
+          <a href="" class="nav-link fa fa-bars"></a>
+        </li>
+      </ul>
+    </div>
 
-      <h1>공지사항</h1>
-      <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
-      
-      
-      <div id="search_box">
-        <form action="" method="">
-          <select name="catgo" class="sel_cate">
-            <option value="starter" selected>선택</option>
-            <option value="title">제목</option>
-            <option value="content">내용</option>
-          </select>
-          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색" onkeyup="if(window.event.keyCode===13){}" />
-        </form>
-      </div>
+  </div>
+  </br>
+
+  <div class="category">
+
+    <a href="./board_main.html" class="active">공지사항</a>
+    <a href="./board_event.html">이벤트</a>
+    <a href="./board_faq.html">이용매뉴얼</a>
+    <a href="http://yatavent.com/contact">문의사항</a>
+
+  </div>
+
+  <div id="board_area">
+
+    <h1>공지사항</h1>
+    <h4>서비스에 대한 궁금하신 점을 빠르고 친절하게 답변해 드립니다.</h4>
+
+
+    <div id="search_box">
+      <form action="" method="">
+        <select name="catgo" class="sel_cate">
+          <option value="starter" selected>선택</option>
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+        </select>
+        <span class="search_keyword">
+          <input type="text" name="search" size="30" required="required" placeholder="제목/내용 검색"/>
+        </span>
+      </form>
+    </div>
 
     </br>
 
 
-      <table class="list-table">
-        <colgroup>
-          <col width="5%">
-          <col width="5%">
-          <col width="*">
-          <col width="*">
-       </colgroup>
-        <thead>
-            <tr>
-              <!-- <th><input class="overall-checkbox" type="checkbox"></th> -->
-              <!-- <th width="70">번호</th>
+    <table class="list-table">
+      <colgroup>
+        <col width="5%">
+        <col width="5%">
+        <col width="*">
+        <col width="*">
+      </colgroup>
+      <thead>
+        <tr>
+          <!-- <th><input class="overall-checkbox" type="checkbox"></th> -->
+          <!-- <th width="70">번호</th>
               <th width="300">제목</th>
               <th width="120">글쓴이</th> -->
-            </tr>
-        </thead>
-        <tbody id="table1">
-        </tbody>
-  
-      </table>
+        </tr>
+      </thead>
+      <tbody id="table1">
+      </tbody>
+
+    </table>
     </br>
-      <button type="button" class="btn_bk btn_del">선택 삭제</button>
-      <button type="button" class="btn_bk btn_new" onclick="location.href='board_write.html'">등록</button>
+    <button type="button" class="btn_bk btn_del">선택 삭제</button>
+    <button type="button" class="btn_bk btn_new">등록</button>
 
 
     </br>
 
-     <!---paging number --->
-     <ul id="pagingul">
-     </ul>
-
-
-     <!-- Footer -->
-		<div class="footer" itemtype="http://schema.org/WPFooter" itemscope>
-			<p>Footer</p>
-    </div> <!-- end footer -->
+    <!---paging number --->
+    <ul id="pagingul">
+    </ul>
 
   </div>
 
   <!-- Footer -->
-  
-  <!-- end footer -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-top">
+        <div class="footer-left">
+          <div class="logo">
+            <img class="logo" src="img/logo/log03.png" alt="logo">
+          </div>
+        </div>
+        <div class="footer-right">
+        </div>
+      </div>
+
+      <div class="footer-middle">
+        <div class="btn-download">
+          <img src="img/button/btn-download.png" alt="download">
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <div class="footer-info">
+            <ul>
+              <li>주식회사 야타브엔터 (<a href="http://www.yatavent.com" target="_blank">www.yatavent.com</a>)</li>
+              <li>주소 | 서울특별시 성동구 뚝섬로17가길 48</li>
+              <li>Mail | yatavent@yatavent.com</li>
+              <li>Tel | 02-2039-00633</li>
+              <li>사업자등록번호 | 750-88-01121</li>
+            </ul>
+          </div>
+
+          <div class="footer-copyright">
+            <span class="copyright">
+              Copyright &copy; <a href="http://www.yatavent.com" target="_blank">YATAVENT</a>
+              Corp. All rights reserved.
+            </span>
+          </div>
+        </div>
+        
+        <div class="footer-socials">
+          <div>
+            <a href="https://www.instagram.com/metaforest.official/?hl=ko" target="_blank" class="social-instagram"
+              aria-label="instagram" title="instagram" target="_blank">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/metaforest.official/?hl=ko" class="social social-blog" target="_blank"
+              aria-label="blog" title="blog" target="_blank">
+              <i class="fa fa-blog"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://www.facebook.com/profile.php?id=100075394868765" target="_blank" class=" social-facebook"
+              aria-label="facebook" title="facebook" target="_blank">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="contact">
+            <span></span>
+            <a href="http://yatavent.com/contact">Contact</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div> <!-- end container -->
+  </footer> <!-- end footer -->
 
 
 
-    <script src='./tools/cfg.js'></script>
-    <script src='./tools/enums.js'></script>
-    <script src='./tools/libs.js'></script>
-    <script src='./tools/md5.js'></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <script>
-      'use strict'
-      const testArray = [ 
-        {noticeId : 10, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 9, title : '집단상담은 어떻게 진행되나요?', createdAt : '2022-02-18'}, 
-        {noticeId : 8, title : '플랫폼은 무료인가요?', createdAt : '2022-02-18'}, 
-        {noticeId : 7, title : '1:1상담은 어떻게 진행되는건가요?.', createdAt : '2022-02-18'}, 
-        {noticeId : 6, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 5, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 4, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 3, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 2, title : '공지사항입니다.', createdAt : '2022-02-18'}, 
-        {noticeId : 1, title : '공지사항입니다.', createdAt : '2022-02-18'},
-      ];
-      // test 후 주석처리하기
-      window.onload = function () {
-        paging(testArray.length, 1);
-        buildTable(testArray); 
-      }
-      
-      
-      function buildTable(data) { 
-        let table = document.getElementById('table1');
-        table.innerHTML = '';
-        let row = '';
-        for (let i=0; i < data.length; i++) { 
-          // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
-          row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${data[i].createdAt}</td> </tr>`;
-          table.innerHTML += row 
-        } 
-      }
+  <script src='./tools/cfg.js'></script>
+  <script src='./tools/enums.js'></script>
+  <script src='./tools/libs.js'></script>
+  <script src='./tools/md5.js'></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    </script>
-
-    
-
-    <script>
-      /* 체크박스 전체선택, 전체해제 */
-      let section = document.querySelector('#section9')
-      let noticeList = section.querySelector('.list-table')
-      let tableBody = noticeList.querySelector('tbody')
-      // let allCheckbox = section.querySelector('.overall-checkbox')
-      let deleteButton = section.querySelector('.btn_del')
-      // select all
-      // allCheckbox.onchange = function () {
-      //   let temp = tableBody.querySelectorAll('input[type="checkbox"]')
-      //   if (allCheckbox.checked === true) {
-      //     for (let i=0;i<temp.length;i++) {
-      //       temp[i].checked = true
-      //     }
-      //   } else {
-      //     for (let i=0;i<temp.length;i++) {
-      //       temp[i].checked = false
-      //     }
-      //   }
+  <script>
+    'use strict'
+    const testArray = [{
+        noticeId: 10,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 9,
+        title: '집단상담은 어떻게 진행되나요?',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 8,
+        title: '플랫폼은 무료인가요?',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 7,
+        title: '1:1상담은 어떻게 진행되는건가요?.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 6,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 5,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 4,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 3,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 2,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+      {
+        noticeId: 1,
+        title: '공지사항입니다.',
+        createdAt: '2022-02-18'
+      },
+    ];
+    // test 후 주석처리하기
+    window.onload = function () {
+      // let accessLevel = storageGet('accessLevel', '');
+      // if (accessLevel == '') {
+      //   alert('로그인 후 이용할 수 있습니다.');
+      //   location.href = './login.html';
+      //   return
       // }
-      // delete selected row
-      deleteButton.onclick = async function () {
-        let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
-        console.log(deleteTemp)
-        let checkBoxNum = []
-        for (let i=0;i<deleteTemp.length;i++) {
-          checkBoxNum.push(deleteTemp[i].value)
-        }
-        console.log(checkBoxNum)
-        const response = await axios.post('http://127.0.0.1:7071/notice', {
-          msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
+      paging(testArray.length, 1);
+      buildTable(testArray);
+    }
+
+
+    function buildTable(data) {
+      let table = document.getElementById('table1');
+      table.innerHTML = '';
+      let row = '';
+      for (let i = 0; i < data.length; i++) {
+        // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
+        row =
+          `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${data[i].createdAt}</td> </tr>`;
+        table.innerHTML += row
+      }
+    }
+  </script>
+  <script>
+    'use strict'
+    let addButton = document.querySelector('.btn_new');
+    addButton.onclick = async function () {
+      let accessLevel = storageGet('accessLevel', 0);
+      if (accessLevel < 30) {
+        alert('등록 권한이 없습니다.');
+        return
+      }
+      window.location.href = './board_write.html'
+    }
+  </script>
+
+  <script>
+    'use strict'
+    let searchKeyword = document.querySelector('.sel_cate').value;
+    let searchWordInput = document.getElementsByName('search');
+    let searchWord = document.getElementsByName('search').value;
+    searchWordInput.onkeyup = async function () {
+      if(window.event.keyCode===13) {
+        const _response = await axios.post(apiUrl + 'notice', {
+          msgType: eApiMessageType.USER_GET_LIST_NOTICE_BY_SEARCHWORD_REQ,
           data: {
-            noticeIds : checkBoxNum
+            searchWord: searchWord.toString(),
+            searchKeyword: searchKeyword.toString(),
           }
-        }, {withCredentials: true})
+        }, {
+          withCredentials: true
+        })
+
+        let response = {}
+        Object.assign(response, _response)
 
         console.log(response)
+        console.log(response.data)
+
+        totalData = response.data.length
+        console.log("totalData : " + totalData);
+
+        globalCurrentPage = 1
+
+        await paging(totalData, globalCurrentPage);
+        await apiGetList(globalCurrentPage);
+      }
+    }
+  </script>
+
+
+  <script>
+    /* 체크박스 전체선택, 전체해제 */
+    let section = document.querySelector('#board_area')
+    let noticeList = section.querySelector('.list-table')
+    let tableBody = noticeList.querySelector('tbody')
+    // let allCheckbox = section.querySelector('.overall-checkbox')
+    let deleteButton = section.querySelector('.btn_del')
+    // select all
+    // allCheckbox.onchange = function () {
+    //   let temp = tableBody.querySelectorAll('input[type="checkbox"]')
+    //   if (allCheckbox.checked === true) {
+    //     for (let i=0;i<temp.length;i++) {
+    //       temp[i].checked = true
+    //     }
+    //   } else {
+    //     for (let i=0;i<temp.length;i++) {
+    //       temp[i].checked = false
+    //     }
+    //   }
+    // }
+    // delete selected row
+    deleteButton.onclick = async function () {
+      let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
+      console.log(deleteTemp)
+      let checkBoxNum = []
+      for (let i = 0; i < deleteTemp.length; i++) {
+        checkBoxNum.push(deleteTemp[i].value)
+      }
+      console.log(checkBoxNum)
+      const response = await axios.post(apiUrl+'notice', {
+        msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
+        data: {
+          noticeIds: checkBoxNum
+        }
+      }, {
+        withCredentials: true
+      })
+
+      console.log(response)
+    }
+  </script>
+
+  <script>
+    'use strict'
+    const apiGetList = async (_perPage) => {
+      try {
+        const _response = await axios.post(apiUrl+'notice', {
+          msgType: eApiMessageType.USER_GET_LIST_NOTICE_REQ,
+          data: {
+            page: _perPage
+          }
+        }, {
+          withCredentials: true
+        })
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+        globalCurrentPage = _perPage;
+        paging(totalData, _perPage);
+        buildTable(response.data)
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+  </script>
+
+  <script>
+    'use strict'
+
+    let totalData; // 총 데이터 수 
+    let dataPerPage = 10;
+    let pageCount = 5;
+    let globalCurrentPage = 1; // 현재 페이지
+
+
+    // window.onload = function () {
+    //   apiGetCount()
+    // }
+    const apiGetCount = async () => {
+      try {
+        const _response = await axios.post(apiUrl + 'notice', {
+          msgType: eApiMessageType.USER_GET_COUNT_NOTICE_REQ,
+          data: {}
+        }, {
+          withCredentials: true
+        })
+
+        let response = {}
+        Object.assign(response, _response)
+
+        console.log(response)
+        console.log(response.data)
+
+        totalData = response.data.length
+        console.log("totalData : " + totalData);
+
+        await paging(totalData, globalCurrentPage);
+        await apiGetList(globalCurrentPage);
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
+
+
+    // paging 함수
+    function paging(totalData, currentPage) {
+
+      console.log("currentPage : " + currentPage);
+
+      let totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
+      console.log("totalPage : " + totalPage);
+
+      console.log("pageCount : " + pageCount);
+
+      if (totalPage < pageCount) {
+        pageCount = totalPage;
       }
 
-    </script>
+      let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
+      console.log("pageGroup : " + pageGroup);
 
-    <script>
-      'use strict'
-      const apiGetList = async (_perPage) => {
-        try {
-          const _response = await axios.post('http://127.0.0.1:7071/notice', {
-            msgType: eApiMessageType.USER_GET_LIST_NOTICE_REQ,
-            data: {
-              page: _perPage
-            }
-          }, {withCredentials: true})
+      let last = pageGroup * pageCount // 화면에 보여질 마지막 페이지 번호
+      console.log("last : " + last);
 
-          let response = {}
-          Object.assign(response, _response)
-
-          console.log(response)
-          console.log(response.data)
-
-          if (response.status !== 200) {
-            console.log(response)
-            return
-          }
-          globalCurrentPage = _perPage;
-          paging(totalData, _perPage);
-          buildTable(response.data)
-
-        } catch (err) {
-          console.error(err)
-        }
-      };
-
-    </script>
-
-    <script>
-      'use strict'
-
-      let totalData; // 총 데이터 수 
-      let dataPerPage = 10;
-      let pageCount = 5;
-      let globalCurrentPage = 1; // 현재 페이지
-
-
-      // window.onload = function () {
-      //   apiGetCount()
-      // }
-      const apiGetCount = async () => {
-        try {
-          const _response = await axios.post(apiUrl +'notice', {
-            msgType: eApiMessageType.USER_GET_COUNT_NOTICE_REQ,
-            data: {}
-          }, {withCredentials: true})
-
-          let response = {}
-          Object.assign(response, _response)
-
-          console.log(response)
-          console.log(response.data)
-
-          totalData = response.data.length
-          console.log("totalData : " + totalData);
-
-          await paging(totalData, globalCurrentPage);
-          await apiGetList(globalCurrentPage);
-
-        } catch (err) {
-          console.error(err)
-        }
-      };
-
-      
-
-      // paging 함수
-      function paging(totalData, currentPage) {
-
-        console.log("currentPage : " + currentPage);
-
-        let totalPage = Math.ceil(totalData / dataPerPage); // 총 페이지 수
-        console.log("totalPage : " + totalPage);
-
-        console.log("pageCount : " + pageCount);
-
-        if (totalPage < pageCount) {
-          pageCount = totalPage;
-        }        
-
-        let pageGroup = Math.ceil(currentPage / pageCount); // 페이지 그룹
-        console.log("pageGroup : " + pageGroup);
-
-        let last = pageGroup * pageCount // 화면에 보여질 마지막 페이지 번호
-        console.log("last : " + last);
-
-        if (last > totalPage) {
-          last = totalPage;
-        }
-
-        let first = last - (pageCount - 1); // 화면에 보여질 첫번째 페이지 번호
-        console.log("first : " + first);
-        let next = last + 1;
-        let prev = first - 1;
-
-        let pageHtml = "";
-
-        pageHtml += "<li><a class='pageIdx' id='first' onclick=apiGetList(" + (first.toString()) + ")> |< </a></li>";
-
-        if (prev > 0) {
-          pageHtml += "<li><a class='pageIdx' id='prev' onclick=apiGetList(" + (prev.toString()) + ")> < </a></li>";
-        }
-
-        // 페이징 번호 표시
-        for (let i = first; i<=last; i++) {
-          if(currentPage === i) {
-            pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
-          } else {
-            pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
-          }
-        }
-
-        if (last < totalPage) {
-          pageHtml += "<li><a id='next' onclick=apiGetList(" + (next.toString()) + ")> > </a></li>";
-        }
-
-        pageHtml += "<li><a class='pageIdx' id='last' onclick=apiGetList(" + (last.toString()) + ")> >| </a></li>";
-
-        document.querySelector('#pagingul').innerHTML = pageHtml;
+      if (last > totalPage) {
+        last = totalPage;
       }
 
+      let first = last - (pageCount - 1); // 화면에 보여질 첫번째 페이지 번호
+      console.log("first : " + first);
+      let next = last + 1;
+      let prev = first - 1;
 
-    </script>
+      let pageHtml = "";
+
+      pageHtml += "<li><a class='pageIdx' id='first' onclick=apiGetList(" + (first.toString()) + ")> |< </a></li>";
+
+      if (prev > 0) {
+        pageHtml += "<li><a class='pageIdx' id='prev' onclick=apiGetList(" + (prev.toString()) + ")> < </a></li>";
+      }
+
+      // 페이징 번호 표시
+      for (let i = first; i <= last; i++) {
+        if (currentPage === i) {
+          pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
+        } else {
+          pageHtml += "<li class='on'><a class='pageIdx' onclick=apiGetList(" + (i.toString()) + ")>" + i + "</a></li>";
+        }
+      }
+
+      if (last < totalPage) {
+        pageHtml += "<li><a id='next' onclick=apiGetList(" + (next.toString()) + ")> > </a></li>";
+      }
+
+      pageHtml += "<li><a class='pageIdx' id='last' onclick=apiGetList(" + (last.toString()) + ")> >| </a></li>";
+
+      document.querySelector('#pagingul').innerHTML = pageHtml;
+    }
+  </script>
 
 </body>
+
 </html>

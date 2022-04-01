@@ -11,7 +11,11 @@
     <link href="fonts/NexonLv2Gothic/nexonlv2gothic.css" rel="stylesheet">
     <link href="fonts/ProximaNova/proximanova.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,700&family=Raleway:wght@800&display=swap' rel='stylesheet'>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    
     <!-- css-->
     <link rel="stylesheet" href="css/custom.css">
 
@@ -21,13 +25,6 @@
   <body>
     <!-- Top navigation -->
     <div class="topnav">
-
-      <!-- Centered link -->
-      <div class="topnav-centered">
-        <!-- <a href="#home" class="active">Home</a> -->
-      </div>
-
-      <!-- Left-aligned links (default) -->
       <!-- Logo -->
       <div class="topnav-logo">
         <a href="./index.html" class="">
@@ -39,7 +36,7 @@
       <div class="topnav-right">
         <ul class="" id="">
           <li class="">
-            <a href="./index.html#home" class="nav-link active" aria-haspopup="true">HOME</a>
+            <a href="./index.html#home" class="nav-link font-NXN" aria-haspopup="true">HOME</a>
           </li>
           <li>
             <a href="./index.html#page1Link" class="nav-link font-NXN">서비스 장점</a>
@@ -57,7 +54,7 @@
             <a href="./index.html#page5Link" class="nav-link font-NXN">고객지원</a>
           </li>
           <li>
-            <a href="" class="fa fa-bars"></a>
+            <a href="" class="nav-link fa fa-bars"></a>
           </li>
         </ul>
       </div>
@@ -79,16 +76,15 @@
 
       <h1>이용매뉴얼</h1>
       <h4>찾으시는 질문이 없으실 경우 문의하기를 통해 문의를 주시면 각 질문 내용별 담당자가 내용 확인 후 빠른 답변을 드리겠습니다.</h4>
-      </br>
 
 
       <div class="category-manual">
-        <a class="on">전체</a>
-        <a >1:1 상담</a>
-        <a >집단 상담</a>
-        <a >EAP 상담</a>
-        <a >튜토리얼</a>
-        <a >커뮤니티</a>
+        <a href="javascript:void(0);" class="on">전체</a>
+        <a href="javascript:void(0);" data-value="10" onclick="goDoSomething(this.getAttribute('data-value'));">1:1 상담</a>
+        <a href="javascript:void(0);" data-value="20" onclick="goDoSomething(this.getAttribute('data-value'));">집단 상담</a>
+        <a href="javascript:void(0);" data-value="30" onclick="goDoSomething(this.getAttribute('data-value'));">EAP 상담</a>
+        <a href="javascript:void(0);" data-value="40" onclick="goDoSomething(this.getAttribute('data-value'));">튜토리얼</a>
+        <a href="javascript:void(0);" data-value="50" onclick="goDoSomething(this.getAttribute('data-value'));">커뮤니티</a>
       </div>
 
       </br>
@@ -96,8 +92,9 @@
       <div id="accordion_wrap">
       </div>
 
+      <!-- <button type="button" class="btn_bk" onclick="location.href='board_write.html' ">등록</button> -->
     </br>
-      <button type="button" class="btn_bk" onclick="location.href='board_write.html' ">등록</button>
+    <button type="button" class="btn_bk btn_new">등록</button>
     
 
     </br>
@@ -106,12 +103,77 @@
      <ul id="pagingul">
      </ul>
 
-  </div>
+    </div>
 
   <!-- Footer -->
-  <div class="footer" itemtype="http://schema.org/WPFooter" itemscope>
-    <p>Footer</p>
-  </div> <!-- end footer -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-top">
+        <div class="footer-left">
+          <div class="logo">
+            <img class="logo" src="img/logo/log03.png" alt="logo">
+          </div>
+        </div>
+        <div class="footer-right">
+        </div>
+      </div>
+
+      <div class="footer-middle">
+        <div class="btn-download">
+          <img src="img/button/btn-download.png" alt="download">
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <div class="footer-info">
+            <ul>
+              <li>주식회사 야타브엔터 (<a href="http://www.yatavent.com" target="_blank">www.yatavent.com</a>)</li>
+              <li>주소 | 서울특별시 성동구 뚝섬로17가길 48</li>
+              <li>Mail | yatavent@yatavent.com</li>
+              <li>Tel | 02-2039-00633</li>
+              <li>사업자등록번호 | 750-88-01121</li>
+            </ul>
+          </div>
+
+          <div class="footer-copyright">
+            <span class="copyright">
+              Copyright &copy; <a href="http://www.yatavent.com" target="_blank">YATAVENT</a>
+              Corp. All rights reserved.
+            </span>
+          </div>
+        </div>
+        
+        <div class="footer-socials">
+          <div>
+            <a href="https://www.instagram.com/metaforest.official/?hl=ko" target="_blank" class="social-instagram"
+              aria-label="instagram" title="instagram" target="_blank">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/metaforest.official/?hl=ko" class="social social-blog" target="_blank"
+              aria-label="blog" title="blog" target="_blank">
+              <i class="fa fa-blog"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://www.facebook.com/profile.php?id=100075394868765" target="_blank" class=" social-facebook"
+              aria-label="facebook" title="facebook" target="_blank">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="contact">
+            <span></span>
+            <a href="http://yatavent.com/contact">Contact</a>
+          </div>
+        </div>
+        
+      </div>
+
+    </div> <!-- end container -->
+  </footer> <!-- end footer -->
 
   <script src='./tools/cfg.js'></script>
   <script src='./tools/enums.js'></script>
@@ -123,8 +185,8 @@
     'use strict'
 
       const testArray = [ 
-        {manualId : 7, category: 'EAP상담',  title : '무료로 즐길 수 있나요?', content : '아니요'}, 
-        {manualId : 6, category: '커뮤니티',  title : '무료로 즐길 수 있나요?', content : '네'}, 
+        {manualId : 7, category: '튜토리얼',  title : '어떤 주제로 상담을 받을 수 있나요?', content : '일상생활에서 겪는 우울, 불안, 감정 조절, 스트레스, 진로, 취업, 가족, 심리적 어려움 등 상감 받기 원하는 내용에 맞는 공인된 전문 심리상담사를 통해 상담을 받으실 수 있습니다.'}, 
+        {manualId : 6, category: '커뮤니티',  title : '커뮤니티 어떤 것들이 있을까요?', content : '네'}, 
         {manualId : 5, category: '1:1상담',  title : '무료로 즐길 수 있나요?', content : '네'}, 
         {manualId : 4, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'}, 
         {manualId : 3, category: '튜토리얼',  title : '무료로 즐길 수 있나요?', content : '네'}, 
@@ -166,9 +228,22 @@
 
   <script>
     'use strict'
+    let addButton = document.querySelector('.btn_new');
+    addButton.onclick = async function () {
+      let accessLevel = storageGet('accessLevel', 0);
+      if (accessLevel < 30) {
+        alert('등록 권한이 없습니다.');
+        return
+      }
+      window.location.href = './board_faq_write.html'
+    }
+  </script>
+
+  <script>
+    'use strict'
     const apiGetList = async (_perPage) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/faq', {
+        const _response = await axios.post(apiUrl+'faq', {
           msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
           data: {
             page: _perPage
