@@ -266,8 +266,8 @@
       //   location.href = './login.html';
       //   return
       // }
-      paging(testArray.length, 1);
-      buildTable(testArray);
+      // paging(testArray.length, 1);
+      // buildTable(testArray);
     }
 
 
@@ -278,7 +278,7 @@
       for (let i = 0; i < data.length; i++) {
         // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
         row =
-          `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${data[i].createdAt}</td> </tr>`;
+          `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
         table.innerHTML += row
       }
     }
@@ -415,9 +415,9 @@
     let globalCurrentPage = 1; // 현재 페이지
 
 
-    // window.onload = function () {
-    //   apiGetCount()
-    // }
+    window.onload = function () {
+      apiGetCount()
+    }
     const apiGetCount = async () => {
       try {
         const _response = await axios.post(apiUrl + 'notice', {
