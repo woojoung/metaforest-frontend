@@ -209,8 +209,10 @@
         // const urlParams = new URLSearchParams(queryString);
         // const id = urlParams.get('id');
         const id = getParam('id');
+        console.log(id)
         let noticeIds = [parseInt(id) - 1, parseInt(id), parseInt(id) + 1];
-        // apiGetOne(noticeIds);
+        // 이전글 다음글 없을때 방어코드
+        apiGetOne(noticeIds);
 
         const btnList = document.getElementById('btnList');
         const btnEdit = document.getElementById('btnEdit');
@@ -238,7 +240,7 @@
             }
         }
 
-        buildTable(testArray); 
+        // buildTable(testArray);
     }
     
     
@@ -261,7 +263,7 @@
     'use strict'
     const apiGetOne = async (noticeIds) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+        const _response = await axios.post(apiUrl + 'notice', {
           msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
           data: {
             noticeIds: noticeIds
