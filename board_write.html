@@ -219,7 +219,7 @@
           let uTitle = $('#utitle').val().toString();
           let summernoteContent = $('#summernote').summernote('code');
           // axios post 
-          const response = await axios.post('http://127.0.0.1:7071/notice', {
+          const response = await axios.post(apiUrl + 'notice', {
             msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
             data: {
               title: uTitle,
@@ -241,7 +241,7 @@
     'use strict'
     const apiGetOne = async (noticeIds) => {
       try {
-        const _response = await axios.post('http://127.0.0.1:7071/notice', {
+        const _response = await axios.post(apiUrl + 'notice', {
           msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
           data: {
             noticeIds: noticeIds
