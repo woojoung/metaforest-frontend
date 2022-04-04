@@ -90,3 +90,7 @@ const emailCheck = function (email) {
     let regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
     return (email !== '' && typeof email !== 'undefined' && regex.test(email));
 }
+
+const undefinedToString = function (undefinedOrString) {
+    return (typeof undefinedOrString === 'undefined' ? '' : undefinedOrString)
+}
