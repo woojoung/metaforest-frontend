@@ -250,10 +250,10 @@
       let inTitlePrev = document.getElementById('in_title_prev');
       let inTitleNext = document.getElementById('in_title_next');
 
-      inTitle.innerHTML = `<div style="text-align:left">${data[1].title}</div>`;
-      inContent.innerHTML = `<div style="text-align:left">${data[1].content}</div>`;
-      inTitlePrev.innerHTML = `<div style="text-align:left">${data[0].title}</div>`;
-      inTitleNext.innerHTML = `<div style="text-align:left">${data[2].title}</div>`;
+      inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+      inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
+      inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+      inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
       
     }
 
