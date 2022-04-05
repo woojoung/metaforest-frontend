@@ -91,10 +91,10 @@
 
         <div class="board_list">
           <div id="in_title_prev">
-              <span>공지사항입니다.</span>
+              <!-- <span>공지사항입니다.</span> -->
           </div>
           <div id="in_title_next">
-              <span>집단상담은 어떻게 진행되나요?</span>
+              <!-- <span>집단상담은 어떻게 진행되나요?</span> -->
           </div>
         </div>
 
@@ -209,8 +209,10 @@
         // const urlParams = new URLSearchParams(queryString);
         // const id = urlParams.get('id');
         const id = getParam('id');
-        console.log(id)
-        let noticeIds = [parseInt(id) - 1, parseInt(id), parseInt(id) + 1];
+        console.log('getParam: ',id);
+        let prevNum = parseInt(id) - 1;
+        let nextNum =  parseInt(id) + 1;
+        let noticeIds = [prevNum, parseInt(id), nextNum];
         // 이전글 다음글 없을때 방어코드
         apiGetOne(noticeIds);
 
@@ -240,7 +242,6 @@
             }
         }
 
-        // buildTable(testArray);
     }
     
     
@@ -250,10 +251,24 @@
       let inTitlePrev = document.getElementById('in_title_prev');
       let inTitleNext = document.getElementById('in_title_next');
 
-      inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
-      inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
-      inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
-      inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
+      if (data.length === 3) {
+        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
+        inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+        inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
+      } else if (parseInt(data[0].noticeId) > parseInt(data[1].noticeId)) {
+        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].content)}</div>`;
+        inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
+        inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+      } else if (parseInt(data[0].noticeId) < parseInt(data[1].noticeId)) {
+        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
+        inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+        inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
+      }
+
+      
       
     }
 
