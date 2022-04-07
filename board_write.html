@@ -220,7 +220,7 @@
           let summernoteContent = $('#summernote').summernote('code');
           // axios post 
           const response = await axios.post(apiUrl + 'notice', {
-            msgType: eApiMessageType.ADMIN_CREATE_NOTICE_REQ,
+            msgType: eApiMessageType.USER_CREATE_NOTICE_REQ,
             data: {
               title: uTitle,
               content: summernoteContent

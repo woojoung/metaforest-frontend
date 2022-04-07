@@ -228,7 +228,7 @@
           let summernoteContent = $('#summernote').summernote('code');
           // axios post 
           const response = await axios.post(apiUrl+'faq', {
-            msgType: eApiMessageType.ADMIN_CREATE_FAQ_REQ,
+            msgType: eApiMessageType.USER_CREATE_FAQ_REQ,
             data: {
               title: uTitle,
               content: summernoteContent,
@@ -251,7 +251,7 @@
     const apiGetOne = async (faqId) => {
       try {
         const _response = await axios.post(apiUrl+'faq', {
-          msgType: eApiMessageType.ADMIN_GET_ONE_FAQ_REQ,
+          msgType: eApiMessageType.USER_GET_ONE_FAQ_REQ,
           data: {
             faqId: faqId
           }

@@ -281,6 +281,8 @@
             let birthMonth = document.getElementById("mm").value
             let birthDay = document.getElementById("dd").value
 
+            // let accessLevel = document.getElementById("accessLevel").value
+
             if (email === "" && passwd === "" && userNickname === "" && passwd2 === "") {
                 alert("항목을 모두 입력해주세요.")
                 return
@@ -318,7 +320,8 @@
                     password: hexMd5,
                     gender: genderValue,
                     birth: birth,
-                    md5Mobile: ''
+                    md5Mobile: '',
+                    // accessLevel: accessLevel
                 }
             }
 
@@ -332,7 +335,7 @@
             console.log(response)
             console.log(response.data)
 
-            // if (response.errCode !== eErrCode.NONE) {
+            // if (response.errCode !== eHttpStatus.ok) {
             //     alert(response.message) 
             //     return
             // }

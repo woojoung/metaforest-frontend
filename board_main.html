@@ -361,7 +361,7 @@
       }
       console.log(checkBoxNum)
       const response = await axios.post(apiUrl+'notice', {
-        msgType: eApiMessageType.ADMIN_DELETE_NOTICE_REQ,
+        msgType: eApiMessageType.USER_DELETE_NOTICE_REQ,
         data: {
           noticeIds: checkBoxNum
         }
