@@ -25,6 +25,14 @@ const eHttpStatus = {
     networkAuthenticationRequired: 511
 }
 
+const ePlanType = {
+    NONE : 0,
+    BASIC : 10,
+    PRO : 20,
+    FREE_TRIAL : 30,
+    PREMIUM : 40,
+}
+
 const eApiMessageType = {
     NONE : 0,
 
@@ -72,6 +80,15 @@ const eApiMessageType = {
     USER_GET_LIST_FAQ_REQ : 14005,
     USER_GET_COUNT_FAQ_REQ : 14006,
     USER_GET_LIST_FAQ_BY_CATEGORY_REQ : 14007,
+
+    // PARTNER : 15
+    USER_CREATE_PARTNER_REQ : 15001,
+    USER_UPDATE_PARTNER_REQ : 15002,
+    USER_DELETE_PARTNER_REQ : 15003,
+    USER_GET_ONE_PARTNER_REQ : 15004,
+    USER_GET_LIST_PARTNER_REQ : 15005,
+    USER_GET_COUNT_PARTNER_REQ : 15006,
+    USER_VERIFY_PARTNER_CODE_REQ : 15007,
 
 }
 
