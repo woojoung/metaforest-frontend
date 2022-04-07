@@ -258,16 +258,18 @@
         }
 
         async function verifyPartnerCode() {
+            let partnerId = document.getElementById("partner").value
             let partnerCode = document.getElementById("partner_code").value
 
             let apiRequest = {
                 msgType: eApiMessageType.USER_VERIFY_PARTNER_CODE_REQ,
                 data: {
+                    partnerId: partnerId,
                     code: partnerCode,
                 }
             }
 
-            const _response = await axios.post(apiUrl+'partner/signup', apiRequest, {
+            const _response = await axios.post(apiUrl+'partner/verify', apiRequest, {
                 withCredentials: true
             })
 
@@ -381,9 +383,11 @@
             }
 
             let isVerifiedPartnerCode = storageGet('isVerifiedPartnerCode', 'N');
+
             if (parseInt(accessLevel) !== 10) {
+
                 if (isVerifiedPartnerCode !== 'Y') {
-                    alert(" 인증이 필요합니다.");
+                    alert("기관 인증이 필요합니다.");
                     return
                 }
                 accessLevel = 20;
