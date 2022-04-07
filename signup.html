@@ -40,7 +40,7 @@
                     <label for="id">아이디</label>
                 </h3>
                 <span class="box int_id">
-                    <input type="text" id="id" class="int" maxlength="20" required>
+                    <input type="text" id="id" class="int" maxlength="20" placeholder="이메일" required>
 
                 </span>
                 <span class="error_next_box"></span>
@@ -264,7 +264,7 @@
     <script>
         'use strict'
         async function onSubmitForm() {
-            let accountId = document.getElementById("id").value
+            // let accountId = document.getElementById("id").value
             let userNickname = document.getElementById("name").value
 
             let email = document.getElementById("email").value
@@ -313,7 +313,7 @@
             let apiRequest = {
                 msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
-                    accountId: accountId,
+                    // accountId: accountId,
                     userNickname: userNickname,
                     profileImageUrl: '',
                     email: sendEmail,
