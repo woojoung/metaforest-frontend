@@ -118,6 +118,48 @@
                 <span class="error_next_box"></span>
             </div>
 
+            <!-- ACCESS LEVEL -->
+            <div>
+                <h3 class="join_title"><label for="accessLevel">서비스 유형</label></h3>
+                <span class="box gender_code">
+                    <select id="accessLevel" class="sel" required>
+                        <option>선택</option>
+                        <option value="10">내담자</option>
+                        <option value="20">상담자</option>
+                    </select>
+                </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+            </div>
+
+            <!-- PARTNER -->
+            <div>
+                <h3 class="join_title"><label for="partner">기관 종류</label></h3>
+                <span class="box gender_code">
+                    <select id="partner" class="sel" required>
+                        <option>선택</option>
+                        <option value="1">고려대학교</option>
+                        <option value="2">계명대학교</option>
+                        <option value="3">울산대학교</option>
+                        <option value="4">서울교육대학교</option>
+                        <option value="5">세은심리상담연구소</option>
+                    </select>
+                </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+            </div>
+
+            <!-- PARTNER CODE -->
+            <div>
+                <h3 class="join_title"><label for="partner_code">기관 코드 (상담자 가입시)</label></h3>
+                <span class="int_code">
+                    <input type="text" id="partner_code" class="int" placeholder="">
+                </span>
+                <div id="code_btn">
+                    <button type="button" id="btnSend" onclick="verifyPartnerCode()">
+                        <span>기관코드 인증하기</span>
+                    </button>
+                </div>
+            </div>
+
 
             <!-- EMAIL -->
             <div>
@@ -214,6 +256,36 @@
             storageSet('isVerifiedAuthCode', 'Y')
             alert('인증번호 확인')
         }
+
+        async function verifyPartnerCode() {
+            let partnerCode = document.getElementById("partner_code").value
+
+            let apiRequest = {
+                msgType: eApiMessageType.USER_VERIFY_PARTNER_CODE_REQ,
+                data: {
+                    code: partnerCode,
+                }
+            }
+
+            const _response = await axios.post(apiUrl+'partner/signup', apiRequest, {
+                withCredentials: true
+            })
+
+            let response = {}
+            Object.assign(response, _response)
+
+            console.log(response)
+            console.log(response.data)
+
+            if (response.status !== eHttpStatus.ok) {
+                alert('잘못된 기관 코드 입니다.')
+                return
+            }
+
+            storageSet('isVerifiedPartnerCodeCode', 'Y')
+            alert('기관 코드 확인')
+        }
+
     </script>
 
     <script>
@@ -281,7 +353,7 @@
             let birthMonth = document.getElementById("mm").value
             let birthDay = document.getElementById("dd").value
 
-            // let accessLevel = document.getElementById("accessLevel").value
+            let accessLevel = document.getElementById("accessLevel").value
 
             if (email === "" && passwd === "" && userNickname === "" && passwd2 === "") {
                 alert("항목을 모두 입력해주세요.")
@@ -308,6 +380,15 @@
                 return
             }
 
+            let isVerifiedPartnerCode = storageGet('isVerifiedPartnerCode', 'N');
+            if (parseInt(accessLevel) !== 10) {
+                if (isVerifiedPartnerCode !== 'Y') {
+                    alert(" 인증이 필요합니다.");
+                    return
+                }
+                accessLevel = 20;
+            }
+
             const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
 
             let apiRequest = {
@@ -321,7 +402,7 @@
                     gender: genderValue,
                     birth: birth,
                     md5Mobile: '',
-                    // accessLevel: accessLevel
+                    accessLevel: accessLevel
                 }
             }
 
