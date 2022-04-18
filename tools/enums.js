@@ -92,3 +92,11 @@ const eApiMessageType = {
 
 }
 
+const eFaqCategory = {
+    '' : '',
+    10 : '1:1 상담',
+    20 : '집단 상담',
+    30 : 'EAP 상담',
+    40 : '튜토리얼',
+    50 : '커뮤니티',
+}
