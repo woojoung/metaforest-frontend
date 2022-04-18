@@ -164,17 +164,17 @@
             const _response = await axios.post(apiUrl+'auth/login', apiRequest, {withCredentials: true})
 
             let response = {}
-            Object.assign(response, _response)
+            Object.assign(response, _response.data)
 
             console.log(response)
             console.log(response.data)
-
-			storageSet('accessLevel', response.data.accessLevel.toString())
+			console.log(response.data.accessLevel)
 
             if (response.status !== 200) {
                 alert(response.message) 
                 return
             }
+			storageSet('accessLevel', response.data.accessLevel.toString())
             // window.location.href = "https://metaforest.us/board_main.html;
             location.href = "./board_main.html"
         }
