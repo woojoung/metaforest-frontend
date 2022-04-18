@@ -92,5 +92,9 @@ const emailCheck = function (email) {
 }
 
 const undefinedToString = function (undefinedOrString) {
-    return (typeof undefinedOrString === 'undefined' ? '' : undefinedOrString)
+    return (typeof undefinedOrString === 'undefined' ? '' : undefinedOrString);
+}
+
+const getKeyByValue = function (object, value) {
+    return Object.keys(object).find(key => object[key] === value);
 }
