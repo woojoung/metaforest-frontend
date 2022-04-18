@@ -171,10 +171,10 @@
 
 			storageSet('accessLevel', response.data.accessLevel.toString())
 
-            // if (response.errCode !== eErrCode.NONE) {
-            //     alert(response.message) 
-            //     return
-            // }
+            if (response.status !== 200) {
+                alert(response.message) 
+                return
+            }
             // window.location.href = "https://metaforest.us/board_main.html;
             location.href = "./board_main.html"
         }
