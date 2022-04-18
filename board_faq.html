@@ -212,7 +212,7 @@
       for (var i=0; i < data.length; i++) { 
         // row = `<tr> <td class="center"></td><td style="text-align:center">${data[i].manualId}</td> <td style="text-align:left">${data[i].type}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center"><a class="accordion" >${data[i].content}</a><div class="panel"><p>${data[i].title}</p></div></td> </tr>`;
         row = `<div class="que">
-        <span class="q_cate">${data[i].category}</span>
+        <span class="q_cate">${eFaqCategory[undefinedToString(data[i].category)]}</span>
         <span class="q_tit">${data[i].title}</span>
         </div>
         <div class="anw">
