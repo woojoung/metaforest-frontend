@@ -2,6 +2,7 @@
 
 echo ''
 echo 'git pull 하는 중..'
+
 git pull
 
 echo ''
