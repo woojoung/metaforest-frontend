@@ -31,11 +31,10 @@ rm -rf ./.gitignore
 rm -rf ./README.md
 rm -rf ./sh_deploy_production_build.sh
 
-# az storage blob delete-batch --account-name wwwmetaforestkr --source '$web'
-# az storage blob upload-batch --destination "https://wwwmetaforestkr.blob.core.windows.net/\$web" --source ./
-
 #aws s3 sync ./ s3://wwwmetaforestkr
 #aws cloudfront create-invalidation --distribution-id XXXXXXXXXXX --paths "/*"
+
+aws s3 sync ../www_mf_production_$DATE s3://wwwmetaforestus --delete --profile mfdeployer
 
 git tag www_mf_production_$DATE\_$NAME
 git push origin www_mf_production_$DATE\_$NAME
