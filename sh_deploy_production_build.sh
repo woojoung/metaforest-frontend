@@ -2,7 +2,6 @@
 
 echo ''
 echo 'git pull 하는 중..'
-
 git pull
 
 echo ''
@@ -42,4 +41,5 @@ git push origin www_mf_production_$DATE\_$NAME
 echo www_mf_production_$DATE\_$NAME
 
 echo ''
-
+echo 'AWS CF 에 가서 cache invalidation 을 진행하셨나요? (YES): '
+read ANSWER2
