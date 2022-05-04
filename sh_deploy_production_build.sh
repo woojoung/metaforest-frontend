@@ -4,8 +4,6 @@ echo ''
 echo 'git pull 하는 중..'
 git pull
 
-git status
-
 echo ''
 echo 'git push 를 하셨나요? (YES): '
 read ANSWER1
