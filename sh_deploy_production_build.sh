@@ -33,7 +33,7 @@ rm -rf ./sh_deploy_production_build.sh
 #aws cloudfront create-invalidation --distribution-id XXXXXXXXXXX --paths "/*" --profile mfdeployer
 
 aws s3 sync ../www_mf_production_$DATE s3://wwwmetaforestus --delete --profile mfdeployer
-#aws cloudfront create-invalidation --distribution-id E2TR5EXK2V2I52 --paths "/*" --profile mfdeployer
+aws cloudfront create-invalidation --distribution-id E2TR5EXK2V2I52 --paths "/*" --profile mfdeployer
 
 git tag www_mf_production_$DATE\_$NAME
 git push origin www_mf_production_$DATE\_$NAME
