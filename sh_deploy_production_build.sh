@@ -13,8 +13,6 @@ if [ "$ANSWER1" != 'YES' ]; then
     exit 1
 fi
 
-#az login
-
 NAME=$(whoami)
 DATE=$(date '+%Y%m%d_%H%M%S_%Z')
 
@@ -31,11 +29,11 @@ rm -rf ./.gitignore
 rm -rf ./README.md
 rm -rf ./sh_deploy_production_build.sh
 
-# az storage blob delete-batch --account-name wwwmetaforestkr --source '$web'
-# az storage blob upload-batch --destination "https://wwwmetaforestkr.blob.core.windows.net/\$web" --source ./
-
 #aws s3 sync ./ s3://wwwmetaforestkr
-#aws cloudfront create-invalidation --distribution-id XXXXXXXXXXX --paths "/*"
+#aws cloudfront create-invalidation --distribution-id XXXXXXXXXXX --paths "/*" --profile mfdeployer
+
+aws s3 sync ./ s3://wwwmetaforestus --profile mfdeployer
+aws cloudfront create-invalidation --distribution-id E2TR5EXK2V2I52 --paths "/*" --profile mfdeployer
 
 git tag www_mf_production_$DATE\_$NAME
 git push origin www_mf_production_$DATE\_$NAME
@@ -43,4 +41,5 @@ git push origin www_mf_production_$DATE\_$NAME
 echo www_mf_production_$DATE\_$NAME
 
 echo ''
-
+echo 'AWS CF 에 가서 cache invalidation 을 진행하셨나요? (YES): '
+read ANSWER2
