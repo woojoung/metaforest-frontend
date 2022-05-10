@@ -266,6 +266,8 @@
         inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
         inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
         inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
+      } else {
+        return
       }
       
     }
