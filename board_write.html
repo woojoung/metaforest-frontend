@@ -251,15 +251,15 @@
         let response = {}
         Object.assign(response, _response)
 
-        console.log(response)
-        console.log(response.data)
+        // console.log(response)
+        // console.log(response.data)
 
         if (response.status !== 200) {
           console.log(response)
           return
         }
-
-        return response.data
+        alert('공지사항이 등록되었습니다.');
+        location.href = './board_main.html';
 
       } catch (err) {
         console.error(err)
