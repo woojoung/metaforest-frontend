@@ -251,6 +251,8 @@
       let inTitlePrev = document.getElementById('in_title_prev');
       let inTitleNext = document.getElementById('in_title_next');
 
+      let paramId = getParam('id');
+
       console.log(data);
       inTitle.innerHTML = `<div style="text-align:left">${''}</div>`;
       inContent.innerHTML = `<div style="text-align:left">${''}</div>`;
@@ -258,12 +260,12 @@
       inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
 
       for (let i = 0; i < data.length; i++) {
-        if (parseInt(data[i].noticeId) === parseInt(id)) {
+        if (parseInt(data[i].noticeId) === parseInt(paramId)) {
           inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
           inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].content)}</div>`;
-        } else if (parseInt(data[i].noticeId) < parseInt(id)) {
+        } else if (parseInt(data[i].noticeId) < parseInt(paramId)) {
           inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
-        } else if (parseInt(data[i].noticeId) > parseInt(id)) {
+        } else if (parseInt(data[i].noticeId) > parseInt(paramId)) {
           inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
         }
       }
