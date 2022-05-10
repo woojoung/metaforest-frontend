@@ -252,25 +252,40 @@
       let inTitleNext = document.getElementById('in_title_next');
 
       console.log(data);
+      inTitle.innerHTML = `<div style="text-align:left">${''}</div>`;
+      inContent.innerHTML = `<div style="text-align:left">${''}</div>`;
+      inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
+      inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
 
-      if (data.length === 3) {
-        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
-        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
-        inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
-        inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
-      } else if (data.length === 2 && parseInt(data[0].noticeId) > parseInt(data[1].noticeId)) {
-        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
-        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].content)}</div>`;
-        inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
-        inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
-      } else if (data.length === 2 && parseInt(data[0].noticeId) < parseInt(data[1].noticeId)) {
-        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
-        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
-        inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
-        inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
-      } else {
-        return
+      for (let i = 0; i < data.length; i++) {
+        if (parseInt(data[i].noticeId) === parseInt(id)) {
+          inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+          inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].content)}</div>`;
+        } else if (parseInt(data[i].noticeId) < parseInt(id)) {
+          inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+        } else if (parseInt(data[i].noticeId) > parseInt(id)) {
+          inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+        }
       }
+
+      // if (data.length === 3) {
+      //   inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+      //   inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
+      //   inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+      //   inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
+      // } else if (data.length === 2 && parseInt(data[0].noticeId) > parseInt(data[1].noticeId)) {
+      //   inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+      //   inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].content)}</div>`;
+      //   inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
+      //   inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+      // } else if (data.length === 2 && parseInt(data[0].noticeId) < parseInt(data[1].noticeId)) {
+      //   inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
+      //   inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
+      //   inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
+      //   inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
+      // } else {
+      //   return
+      // }
       
     }
 
