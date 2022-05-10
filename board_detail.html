@@ -256,19 +256,17 @@
         inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
         inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
         inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[2].title)}</div>`;
-      } else if (parseInt(data[0].noticeId) > parseInt(data[1].noticeId)) {
+      } else if (data.length === 2 && parseInt(data[0].noticeId) > parseInt(data[1].noticeId)) {
         inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
         inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].content)}</div>`;
         inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
         inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
-      } else if (parseInt(data[0].noticeId) < parseInt(data[1].noticeId)) {
+      } else if (data.length === 2 && parseInt(data[0].noticeId) < parseInt(data[1].noticeId)) {
         inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
         inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
         inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[0].title)}</div>`;
         inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
       }
-
-      
       
     }
 
