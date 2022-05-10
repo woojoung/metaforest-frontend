@@ -170,6 +170,11 @@
             // console.log(response.data)
 			// console.log(response.data.accessLevel)
 
+			if (response.status !== 401) {
+				location.href = "./board_main.html"
+                return
+            }
+
             if (response.status !== 200) {
                 alert(response.message) 
                 return
