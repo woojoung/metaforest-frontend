@@ -316,10 +316,10 @@
         let response = {}
         Object.assign(response, _response)
 
-        console.log(response)
-        console.log(response.data)
+        // console.log(response)
+        // console.log(response.data)
 
-        totalData = response.data.length
+        totalData = response.data.rows.length
         console.log("totalData : " + totalData);
 
         globalCurrentPage = 1
@@ -398,7 +398,7 @@
         }
         globalCurrentPage = _perPage;
         paging(totalData, _perPage);
-        buildTable(response.data)
+        buildTable(response.data.rows)
 
       } catch (err) {
         console.error(err)
@@ -444,7 +444,7 @@
           return
         }
 
-        totalData = response.data.length
+        totalData = response.data.rows.length
         console.log("totalData : " + totalData);
 
         await paging(totalData, globalCurrentPage);
