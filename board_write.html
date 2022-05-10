@@ -193,8 +193,8 @@
         if (urlParams.has('id')) {
           id = urlParams.get('id');
           let data = await apiGetOne([id]);
-          $('#utitle').val(data[0].title)
-          $('#summernote').val(data[0].cotent);
+          $('#utitle').summernote('code', data[0].title.toString());
+          $('#summernote').summernote('code'. data[0].cotent.toString());
         }
         $('#summernote').summernote({
             height: 300,
