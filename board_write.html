@@ -185,14 +185,14 @@
 
   <script type="text/javascript">
     'use strict'
-    $(document).ready(function() {
+    $(document).ready(async function() {
 
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let id = 0;
         if (urlParams.has('id')) {
           id = urlParams.get('id');
-          let data = apiGetOne([id]);
+          let data = await apiGetOne([id]);
           $('#utitle').val(data[0].title)
           $('#summernote').val(data[0].cotent);
         }
@@ -218,6 +218,31 @@
         $(document).on('click', '#btnSave', async function () {
           let uTitle = $('#utitle').val().toString();
           let summernoteContent = $('#summernote').summernote('code');
+          if (id !== 0){
+            const _response = await axios.post(apiUrl + 'notice', {
+              msgType: eApiMessageType.USER_UPDATE_NOTICE_REQ,
+              data: {
+                noticeId: id,
+                title: uTitle,
+                content: summernoteContent
+              }
+            }, {withCredentials: true});
+
+            let response = {};
+            Object.assign(response, _response);
+
+            console.log(response);
+
+            if (response.status !== 200) {
+              console.log(response);
+              return
+            }
+
+            alert('공지사항이 등록되었습니다.');
+            location.href = './board_main.html';
+            return
+
+          }
           // axios post 
           const response = await axios.post(apiUrl + 'notice', {
             msgType: eApiMessageType.USER_CREATE_NOTICE_REQ,
@@ -231,7 +256,7 @@
         });
 
         $(document).on('click', '#btnList', async function () {
-          window.location.href = './board_main.html';
+          location.href = './board_main.html';
         });
     });
     
@@ -258,8 +283,6 @@
           console.log(response)
           return
         }
-        alert('공지사항이 등록되었습니다.');
-        location.href = './board_main.html';
 
       } catch (err) {
         console.error(err)
