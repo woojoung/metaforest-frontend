@@ -251,6 +251,8 @@
       let inTitlePrev = document.getElementById('in_title_prev');
       let inTitleNext = document.getElementById('in_title_next');
 
+      console.log(data);
+
       if (data.length === 3) {
         inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].title)}</div>`;
         inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[1].content)}</div>`;
