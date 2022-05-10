@@ -161,7 +161,7 @@
                 password: hexMd5
             }
 
-            const _response = await axios.post(apiUrl+'auth/login', apiRequest, {withCredentials: true})
+            const _response = await axios.post(apiUrl+'auth/login', email, passwd, apiRequest, {withCredentials: true})
 
             let response = {}
             Object.assign(response, _response.data)
