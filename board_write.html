@@ -281,12 +281,12 @@
         // console.log(response)
         // console.log(response.data)
 
-        if (response.status !== 200) {
+        if (response.data.status !== 200) {
           console.log(response)
           return
         }
 
-        return response.data.rows
+        return response.data.data.rows
 
       } catch (err) {
         console.error(err)
