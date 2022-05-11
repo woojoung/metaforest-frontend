@@ -253,7 +253,7 @@
 
       let paramId = getParam('id');
 
-      console.log(data);
+      console.log('build talble',data);
       inTitle.innerHTML = `<div style="text-align:left">${''}</div>`;
       inContent.innerHTML = `<div style="text-align:left">${''}</div>`;
       inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
@@ -291,12 +291,12 @@
         // console.log(response)
         // console.log(response.data)
 
-        if (response.status !== 200) {
+        if (response.data.status !== 200) {
           console.log(response)
           return
         }
 
-        buildTable(response.data)
+        buildTable(response.data.data.rows)
 
       } catch (err) {
         console.error(err)
