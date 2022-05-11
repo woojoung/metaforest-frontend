@@ -195,7 +195,7 @@
           let data = await apiGetOne([id]);
           console.log('data from notice: ', data);
           $('#utitle').val(data[0].title.toString());
-          $('#summernote').summernote('code'. data[0].cotent.toString());
+          $('#summernote').summernote('code'. data[0].content.toString());
         }
         $('#summernote').summernote({
             height: 300,
