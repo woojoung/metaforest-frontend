@@ -398,7 +398,7 @@
         }
         globalCurrentPage = _perPage;
         paging(totalData, _perPage);
-        buildTable(response.data.rows)
+        buildTable(response.data.data.rows)
 
       } catch (err) {
         console.error(err)
