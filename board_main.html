@@ -444,7 +444,7 @@
           return
         }
 
-        totalData = response.data.rows.length
+        totalData = response.data.data.rows.length
         console.log("totalData : " + totalData);
 
         await paging(totalData, globalCurrentPage);
