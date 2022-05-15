@@ -123,7 +123,7 @@
 
 
 
-    
+  <script src='./tools/libs.js'></script>
   <script>
     $(function(){
       
@@ -197,6 +197,7 @@
         if (checkTerms() != true){
           return false;
         }
+        storageSet('marketingAgreeTime', toDateTimeInt().toString())
         location.href = './signup.html';
         return true;
       }

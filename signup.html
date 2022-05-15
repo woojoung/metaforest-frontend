@@ -394,7 +394,7 @@
             }
 
             const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
-
+            let marketingAgreeTime = storageGet('marketingAgreeTime', 0);
             let apiRequest = {
                 msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
@@ -406,6 +406,7 @@
                     gender: genderValue,
                     birth: birth,
                     md5Mobile: '',
+                    marketingAgreeTime: marketingAgreeTime,
                     accessLevel: accessLevel
                 }
             }

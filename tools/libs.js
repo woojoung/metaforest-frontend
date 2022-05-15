@@ -56,6 +56,17 @@ const Time = function (d) {
         return date.toUTCString()
     }
 
+    function _toDateTimeInt() {
+        const year = date.getFullYear()
+        const month = (date.getMonth() + 1).toString().padStart(2, '0')
+        const dayOfMonth = date.getDate().toString().padStart(2, '0')
+        const hour = date.getHours().toString().padStart(2, '0')
+        const minute = date.getMinutes().toString().padStart(2, '0')
+        const second = date.getSeconds().toString().padStart(2, '0')
+
+        return parseInt([year, month, dayOfMonth, hour, minute, second].join(''))
+    }
+
     return {
         toDateTimeStr: function () {
             return _toDateTimeStr()
@@ -65,6 +76,9 @@ const Time = function (d) {
         },
         toUTCStr: function () {
             return _toUTCStr()
+        },
+        toDateTimeInt: function () {
+            return _toDateTimeInt()
         }
     }
 }
