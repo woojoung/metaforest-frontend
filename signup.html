@@ -36,14 +36,16 @@
 
             <!-- ID -->
             <div>
-                <h3 class="join_title">
-                    <label for="id">아이디</label>
-                </h3>
-                <span class="box int_id">
-                    <input type="text" id="id" class="int" maxlength="20" placeholder="이메일" required>
-
+                <h3 class="join_title"><label for="id">아이디</label></h3>
+                <span class="int_code">
+                    <input type="text" id="id" class="int" maxlength="5" placeholder="">
                 </span>
                 <span class="error_next_box"></span>
+                <div id="code_btn">
+                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
+                        <span>중복확인</span>
+                    </button>
+                </div>
             </div>
 
             <!-- PW1 -->
@@ -119,50 +121,17 @@
 
             <!-- EMAIL -->
             <div>
-                <h3 class="join_title"><label for="email">이메일 주소</label></h3>
-                <span class="int_email">
-                    <input type="text" id="email" class="int" maxlength="100" placeholder="" required>
-                    @
-                    <select name="" id="email_addrs" required>
-                        <option value="">선택</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="hanmail.net">hanmail.net</option>
-                        <option value="hotmail.com">hotmail.com</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="yahoo.com">yahoo.com</option>
-                    </select>
+                <h3 class="join_title"><label for="name">이메일 주소</label></h3>
+                <span class="box int_name">
+                    <input type="text" id="name" class="int" maxlength="20" required>
                 </span>
-                <div id="email_btn">
-                    <button type="button" id="btnSend" onclick="requestAuthCode()">
-                        <span>인증번호 요청</span>
-                    </button>
-                </div>
                 <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
             </div>
-
-            <!-- SECURITY CODE -->
-            <div>
-                <h3 class="join_title"><label for="email_code">인증번호 (5자리)</label></h3>
-                <span class="int_code">
-                    <input type="text" id="email_code" class="int" maxlength="5" placeholder="인증번호 입력하세요">
-                </span>
-                <div id="code_btn">
-                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
-                        <span>확인</span>
-                    </button>
-                </div>
-            </div>
-
 
 
             <!-- MOBILE -->
             <div>
                 <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
-                <span class="box int_mobile">
-                    <input type="tel" id="mobile" class="int" maxlength="16" placeholder="대한민국 +82" readonly="true">
-                </span>
-                </br>
                 <div id="mobile_wrap">
                     <div id="mobile_digit">
                         <span class="box int_mobile">
@@ -171,10 +140,23 @@
                         <span class="error_next_box"></span>
                     </div>
                     <div id="mobile_btn">
-                        <button type="button" id="btnSend">
+                        <button type="button" id="btnSend" onclick="requestMobileAuthCode()">
                             <span>인증번호 받기</span>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- SECURITY CODE -->
+            <div>
+                <h3 class="join_title"><label for="mobile_code">인증번호 (5자리)</label></h3>
+                <span class="int_code">
+                    <input type="text" id="mobile_code" class="int" maxlength="5" placeholder="인증번호 입력하세요">
+                </span>
+                <div id="code_btn">
+                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
+                        <span>확인</span>
+                    </button>
                 </div>
             </div>
 
@@ -202,10 +184,10 @@
         'use strict'
         async function verifyAuthCode() {
             let storageAuthCode = storageGet('authCode', '0')
-            let emailAuthCode = document.getElementById("email_code").value
+            let emailAuthCode = document.getElementById("mobile_code").value
 
             if (storageAuthCode != emailAuthCode) {
-                alert("storageAuthCode != emailAuthCode")
+                alert("인증번호가 일치하지 않습니다.")
                 return
             }
 
@@ -248,30 +230,11 @@
 
     <script>
         'use strict'
-        async function requestAuthCode() {
-            let email = document.getElementById("email").value
-            let emailAddress = document.getElementById("email_addrs")
-            let emailAddressValue = emailAddress.options[emailAddress.selectedIndex].value
-
-            if (email === "") {
-                alert("이메일 주소를 입력하세요")
-                return
-            }
-
-            if (emailAddressValue === "") {
-                alert("이메일 주소를 입력하세요")
-                return
-            }
-
-            let sendEmail = [email, emailAddressValue].join('@')
-
-            if (!emailCheck(sendEmail)) {
-                alert("wrong email address")
-                return
-            }
+        async function requestMobileAuthCode() {
+            let mobile = document.getElementById("mobile").value
 
             let apiRequest = {
-                msgType: eApiMessageType.USER_SIGNUP_AUTHCODE_REQ,
+                msgType: eApiMessageType.USER_SIGNUP_AUTH_MOBILE_REQ,
                 data: {
                     email: sendEmail,
                 }
@@ -294,22 +257,13 @@
     <script>
         'use strict'
         async function onSubmitForm() {
-            // let accountId = document.getElementById("id").value
+            let accountId = document.getElementById("id").value
             let userNickname = document.getElementById("name").value
 
             let email = document.getElementById("email").value
-            let emailAddress = document.getElementById("email_addrs")
-            let emailAddressValue = emailAddress.options[emailAddress.selectedIndex].value
-
-            let gender = document.getElementById("gender")
-            let genderValue = gender.options[gender.selectedIndex].value
 
             let passwd = document.getElementById("pswd1").value
             let passwd2 = document.getElementById("pswd2").value
-
-            let birthYear = document.getElementById("yy").value
-            let birthMonth = document.getElementById("mm").value
-            let birthDay = document.getElementById("dd").value
 
             let accessLevel = document.getElementById("accessLevel").value
 
@@ -318,10 +272,7 @@
                 return
             }
 
-            let sendEmail = [email, emailAddressValue].join('@')
-            let birth = [birthYear, birthMonth, birthDay].join('-')
-
-            if (!emailCheck(sendEmail)) {
+            if (!emailCheck(email)) {
                 alert("유효한 이메일 주소가 아닙니다.");
                 return
             }
@@ -354,7 +305,7 @@
             let apiRequest = {
                 msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
-                    // accountId: accountId,
+                    accountId: accountId,
                     userNickname: userNickname,
                     profileImageUrl: '',
                     email: sendEmail,
