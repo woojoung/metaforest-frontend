@@ -42,7 +42,7 @@
                 </span>
                 <span class="error_next_box"></span>
                 <div id="code_btn">
-                    <button type="button" id="btnSend" onclick="verifyAuthCode()">
+                    <button type="button" id="btnSend" onclick="verifyAuthAccountId()">
                         <span>중복확인</span>
                     </button>
                 </div>
@@ -195,7 +195,45 @@
             alert('인증번호 확인')
         }
 
+        async function verifyAuthAccountId() {
+
+            let accountId = document.getElementById("id").value
+
+            let apiRequest = {
+                msgType: eApiMessageType.USER_SIGNUP_VERIFY_ACCOUNT_ID_REQ,
+                data: {
+                    accountId: accountId
+                }
+            }
+
+            const _response = await axios.post(apiUrl+'auth/signup', apiRequest, {
+                withCredentials: true
+            })
+
+            let response = {}
+            Object.assign(response, _response)
+
+            console.log(response)
+            console.log(response.data)
+
+            if (response.status !== eHttpStatus.ok) {
+                alert('이미 사용중인 아이디 입니다.')
+                return
+            }
+
+            storageSet('isVerifiedAccountId', 'Y')
+            alert('사용가능한 아이디 입니다.')
+        }
+
         async function verifyPartnerCode() {
+
+            let accessLevel = document.getElementById("accessLevel").value
+
+            if (parseInt(accessLevel) === 10) {
+                alert("상담자에 한해 기관코드 인증이 가능합니다.");
+                return
+            }
+
             let partnerId = document.getElementById("partner").value
             let partnerCode = document.getElementById("partner_code").value
 
@@ -285,19 +323,20 @@
 
             let isVerifiedAuthCode = storageGet('isVerifiedAuthCode', 'N');
             if (isVerifiedAuthCode !== 'Y') {
-                alert("이메일 인증이 필요합니다.");
+                alert("휴대전화 인증이 필요합니다.");
                 return
             }
 
             let isVerifiedPartnerCode = storageGet('isVerifiedPartnerCode', 'N');
+            if (parseInt(accessLevel) === 10 && isVerifiedPartnerCode !== 'Y') {
+                alert("기관코드 인증이 필요합니다.");
+                return
+            }
 
-            if (parseInt(accessLevel) !== 10) {
-
-                if (isVerifiedPartnerCode !== 'Y') {
-                    alert("기관 인증이 필요합니다.");
-                    return
-                }
-                accessLevel = 20;
+            let isVerifiedAccountId = storageGet('isVerifiedAccountId', 'N')
+            if (isVerifiedAccountId !== 'Y') {
+                alert("아이디 중복확인이 필요합니다.");
+                return
             }
 
             const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
@@ -306,12 +345,10 @@
                 msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
                     accountId: accountId,
-                    userNickname: userNickname,
+                    userNickname: userNickname, // unique 풀지..? 
                     profileImageUrl: '',
                     email: sendEmail,
                     password: hexMd5,
-                    gender: genderValue,
-                    birth: birth,
                     md5Mobile: '',
                     marketingAgreeTime: marketingAgreeTime,
                     accessLevel: accessLevel
@@ -328,10 +365,10 @@
             // console.log(response)
             // console.log(response.data)
 
-            // if (response.errCode !== eHttpStatus.ok) {
-            //     alert(response.message) 
-            //     return
-            // }
+            if (response.errCode !== eHttpStatus.ok) {
+                alert(response.message) 
+                return
+            }
             // window.location.href = "https://metaforest.us/login.html"
             location.href = "./login.html"
         }
