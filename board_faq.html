@@ -80,11 +80,11 @@
 
       <div class="category-manual">
         <a href="javascript:void(0);" class="on">전체</a>
-        <a href="javascript:void(0);" data-value="10" onclick="goDoSomething(this.getAttribute('data-value'));">1:1 상담</a>
-        <a href="javascript:void(0);" data-value="20" onclick="goDoSomething(this.getAttribute('data-value'));">집단 상담</a>
-        <a href="javascript:void(0);" data-value="30" onclick="goDoSomething(this.getAttribute('data-value'));">EAP 상담</a>
-        <a href="javascript:void(0);" data-value="40" onclick="goDoSomething(this.getAttribute('data-value'));">튜토리얼</a>
-        <a href="javascript:void(0);" data-value="50" onclick="goDoSomething(this.getAttribute('data-value'));">커뮤니티</a>
+        <a href="javascript:void(0);" data-value="10" onclick="apiGetCount(this.getAttribute('data-value'));">1:1 상담</a>
+        <a href="javascript:void(0);" data-value="20" onclick="apiGetCount(this.getAttribute('data-value'));">집단 상담</a>
+        <a href="javascript:void(0);" data-value="30" onclick="apiGetCount(this.getAttribute('data-value'));">EAP 상담</a>
+        <a href="javascript:void(0);" data-value="40" onclick="apiGetCount(this.getAttribute('data-value'));">튜토리얼</a>
+        <a href="javascript:void(0);" data-value="50" onclick="apiGetCount(this.getAttribute('data-value'));">커뮤니티</a>
       </div>
 
       </br>
@@ -241,12 +241,14 @@
 
   <script>
     'use strict'
-    const apiGetList = async (_perPage) => {
+    const apiGetList = async (_perPage, _category) => {
       try {
         const _response = await axios.post(apiUrl+'faq', {
-          msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
+          // msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
+          msgType: eApiMessageType.USER_GET_LIST_FAQ_BY_CATEGORY_REQ,
           data: {
-            page: _perPage
+            page: _perPage,
+            category: _category
           }
         }, {withCredentials: true})
 
@@ -283,11 +285,13 @@
     window.onload = function () {
       apiGetCount()
     }
-    const apiGetCount = async () => {
+    const apiGetCount = async (_category) => {
       try {
         const _response = await axios.post(apiUrl +'faq', {
           msgType: eApiMessageType.USER_GET_COUNT_FAQ_REQ,
-          data: {}
+          data: {
+            category: _category
+          }
         }, {withCredentials: true})
 
         let response = {}
@@ -300,7 +304,7 @@
         console.log("totalData : " + totalData);
 
         await paging(totalData, globalCurrentPage);
-        await apiGetList(globalCurrentPage);
+        await apiGetList(globalCurrentPage, _category);
 
         $(".que").click(function() {
           $(this).next(".anw").stop().slideToggle(300);
