@@ -1216,6 +1216,15 @@
 		window.open("https://www.yatavent.com/contact.html")
 	}
 	</script>
+	<script type="text/javascript">
+		window.onload = function () {
+			let accessLevel = storageGet('accessLevel', 0);
+			if (accessLevel === 0) {
+				return
+			}
+			window.location.href = './main.html'
+		}
+	</script>
 	<!-- jQuery Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/plugins/objectFitPolyfill.min.js"></script>
