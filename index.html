@@ -1217,13 +1217,20 @@
 	}
 	</script>
 	<script type="text/javascript">
-		window.onload = function () {
+		// window.onload = function () {
+		// 	let accessLevel = storageGet('accessLevel', 0);
+		// 	if (accessLevel === 0) {
+		// 		return
+		// 	}
+		// 	window.location.href = './main.html'
+		// }
+		$(document).ready(function () {
 			let accessLevel = storageGet('accessLevel', 0);
 			if (accessLevel === 0) {
 				return
 			}
-			window.location.href = './main.html'
-		}
+			window.location.href = './main.html';
+		});
 	</script>
 	<!-- jQuery Scripts -->
 	<script src="js/jquery.min.js"></script>
