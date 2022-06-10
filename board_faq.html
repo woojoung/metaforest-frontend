@@ -305,7 +305,8 @@
         console.log("totalData : " + totalData);
 
         await paging(totalData, globalCurrentPage);
-        await apiGetList(globalCurrentPage, _category);
+        // await apiGetList(globalCurrentPage, _category);
+        await apiGetList(globalCurrentPage);
 
         $(".que").click(function() {
           $(this).next(".anw").stop().slideToggle(300);
