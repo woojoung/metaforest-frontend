@@ -95,10 +95,10 @@ const eApiMessageType = {
 }
 
 const eFaqCategory = {
-    '' : '',
-    10 : '1:1 상담',
-    20 : '집단 상담',
-    30 : 'EAP 상담',
-    40 : '튜토리얼',
-    50 : '커뮤니티',
+    NONE : 0,
+    PROGRAM_USAGE : 10,
+    COUNSELING : 20,
+    PARTNER_REGISTRATION : 30,
+    MEMBERSHIP : 40,
+    ETC : 50,
 }
