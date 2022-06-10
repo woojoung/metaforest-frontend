@@ -197,7 +197,7 @@
         if (checkTerms() != true){
           return false;
         }
-        storageSet('marketingAgreeTime', toDateTimeInt().toString())
+        storageSet('marketingAgreeTime', Time().toDateTimeInt().toString())
         location.href = './signup.html';
         return true;
       }

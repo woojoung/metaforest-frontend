@@ -106,13 +106,13 @@
 								<a href="http://yatavent.com/contact" class="nav-link font-NXN">Contact us</a>
 							</li>
 
-							<!-- <li>
+							<li>
 								<a href="./policy.html" class="nav-link font-NXN">회원가입</a>
 							</li>
 							
 							<li>
 								<a href="./login.html" class="nav-link font-NXN">로그인</a>
-							</li> -->
+							</li>
 
 						</ul> <!-- end menu -->
 
@@ -1216,22 +1216,7 @@
 		window.open("https://www.yatavent.com/contact.html")
 	}
 	</script>
-	<script type="text/javascript">
-		// window.onload = function () {
-		// 	let accessLevel = storageGet('accessLevel', 0);
-		// 	if (accessLevel === 0) {
-		// 		return
-		// 	}
-		// 	window.location.href = './main.html'
-		// }
-		$(document).ready(function () {
-			let accessLevel = storageGet('accessLevel', 0);
-			if (accessLevel === 0) {
-				return
-			}
-			window.location.href = './main.html';
-		});
-	</script>
+	
 	<!-- jQuery Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/plugins/objectFitPolyfill.min.js"></script>
@@ -1256,6 +1241,25 @@
 	<!-- Css -->
 	<link rel="stylesheet" href="css/style.min.css" />
 	<link rel="stylesheet" href="css/app.css" />
+	
+	<script src='./tools/libs.js'></script>
+	<script>
+		// window.onload = function () {
+		// 	let accessLevel = storageGet('accessLevel', 0);
+		// 	if (accessLevel === 0) {
+		// 		return
+		// 	}
+		// 	window.location.href = './main.html'
+		// }
+		$(document).ready(function () {
+			let accessLevel = storageGet('accessLevel', 0);
+			console.log('accessLevel', accessLevel);
+			if (accessLevel === 0) {
+				return
+			}
+			window.location.href = './main.html';
+		});
+	</script>
 </body>
 
 </html>
