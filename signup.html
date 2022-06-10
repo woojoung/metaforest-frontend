@@ -107,7 +107,7 @@
 
             <!-- PARTNER CODE -->
             <div>
-                <h3 class="join_title"><label for="partner_code">기관 코드 (상담자 가입시)</label></h3>
+                <h3 class="join_title"><label for="partner_code">기관 코드</label></h3>
                 <span class="int_code">
                     <input type="text" id="partner_code" class="int" placeholder="">
                 </span>
@@ -229,10 +229,10 @@
 
             let accessLevel = document.getElementById("accessLevel").value
 
-            if (parseInt(accessLevel) === 10) {
-                alert("상담자에 한해 기관코드 인증이 가능합니다.");
-                return
-            }
+            // if (parseInt(accessLevel) === 10) {
+            //     alert("상담자에 한해 기관코드 인증이 가능합니다.");
+            //     return
+            // }
 
             let partnerId = document.getElementById("partner").value
             let partnerCode = document.getElementById("partner_code").value
