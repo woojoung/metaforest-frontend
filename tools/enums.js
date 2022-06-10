@@ -94,11 +94,20 @@ const eApiMessageType = {
 
 }
 
+// const eFaqCategory = {
+//     NONE : 0,
+//     PROGRAM_USAGE : 10,
+//     COUNSELING : 20,
+//     PARTNER_REGISTRATION : 30,
+//     MEMBERSHIP : 40,
+//     ETC : 50,
+// }
+
 const eFaqCategory = {
-    NONE : 0,
-    PROGRAM_USAGE : 10,
-    COUNSELING : 20,
-    PARTNER_REGISTRATION : 30,
-    MEMBERSHIP : 40,
-    ETC : 50,
+
+    10 : '프로그램 사용',
+    20 : '심리 상담',
+    30 : '기관 등록',
+    40 : '회원관리',
+    50 : '기타',
 }
