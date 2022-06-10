@@ -38,7 +38,7 @@
             <div>
                 <h3 class="join_title"><label for="id">아이디</label></h3>
                 <span class="int_code">
-                    <input type="text" id="id" class="int" maxlength="5" placeholder="">
+                    <input type="text" id="id" class="int" placeholder="">
                 </span>
                 <span class="error_next_box"></span>
                 <div id="code_btn">
@@ -52,7 +52,7 @@
             <div>
                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                 <span class="box int_pass">
-                    <input type="text" id="pswd1" class="int" maxlength="20" required>
+                    <input type="password" id="pswd1" class="int" maxlength="20" required>
                     <span id="alertTxt">사용불가</span>
                 </span>
                 <span class="error_next_box"></span>
@@ -62,7 +62,7 @@
             <div>
                 <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                 <span class="box int_pass_check">
-                    <input type="text" id="pswd2" class="int" maxlength="20" required>
+                    <input type="password" id="pswd2" class="int" maxlength="20" required>
                 </span>
                 <span class="error_next_box"></span>
             </div>
@@ -183,7 +183,7 @@
     <script>
         'use strict'
         async function verifyAuthCode() {
-            let storageAuthCode = storageGet('authCode', '0')
+            let storageAuthCode = storageGet('mobileAuthCode', '0')
             let emailAuthCode = document.getElementById("mobile_code").value
 
             if (storageAuthCode != emailAuthCode) {
@@ -191,7 +191,7 @@
                 return
             }
 
-            storageSet('isVerifiedAuthCode', 'Y')
+            storageSet('isVerifiedMobileAuthCode', 'Y')
             alert('인증번호 확인')
         }
 
@@ -211,7 +211,7 @@
             })
 
             let response = {}
-            Object.assign(response, _response)
+            Object.assign(response, _response.data)
 
             console.log(response)
             console.log(response.data)
@@ -250,10 +250,10 @@
             })
 
             let response = {}
-            Object.assign(response, _response)
+            Object.assign(response, _response.data)
 
-            // console.log(response)
-            // console.log(response.data)
+            console.log(response)
+            console.log(response.data)
 
             if (response.status !== eHttpStatus.ok) {
                 alert('잘못된 기관 코드 입니다.')
@@ -274,7 +274,7 @@
             let apiRequest = {
                 msgType: eApiMessageType.USER_SIGNUP_AUTH_MOBILE_REQ,
                 data: {
-                    email: sendEmail,
+                    phone: mobile,
                 }
             }
 
@@ -283,12 +283,12 @@
             })
 
             let response = {}
-            Object.assign(response, _response)
+            Object.assign(response, _response.data)
 
-            // console.log(response)
-            // console.log(response.data)
+            console.log(response)
+            console.log(response.data)
 
-            storageSet('authCode', response.data.authCode.toString())
+            storageSet('mobileAuthCode', response.data.authCode.toString())
         }
     </script>
 
@@ -321,8 +321,8 @@
                 return
             }
 
-            let isVerifiedAuthCode = storageGet('isVerifiedAuthCode', 'N');
-            if (isVerifiedAuthCode !== 'Y') {
+            let isVerifiedMobileAuthCode = storageGet('isVerifiedMobileAuthCode', 'N');
+            if (isVerifiedMobileAuthCode !== 'Y') {
                 alert("휴대전화 인증이 필요합니다.");
                 return
             }
@@ -360,10 +360,10 @@
             })
 
             let response = {}
-            Object.assign(response, _response)
+            Object.assign(response, _response.data)
 
-            // console.log(response)
-            // console.log(response.data)
+            console.log(response)
+            console.log(response.data)
 
             if (response.errCode !== eHttpStatus.ok) {
                 alert(response.message) 
