@@ -32,38 +32,36 @@
         <div class="contentBox" id="content">
             <h3 class="headline1">내 정보</h3>
 
-            <!-- ID -->
+            <!-- PARTNER -->
+            <div>
+                <label for="partnerNickname">기관 이름</label>
+                <span class="box int_pid">
+                    <input type="text" id="pid" class="int" maxlength="20" placeholder="기관" required>
+                </span>
+            </div>
+
+            <!-- NAME -->
             <div>
                 <label for="userNickname">이름</label>
-                <span class="box int_uid">
-                    <input type="text" id="uid" class="int" maxlength="20" placeholder="기관" required>
+                <span class="box int_name">
+                    <input type="text" id="name" class="int" maxlength="100" placeholder="이름" required>
                 </span>
             </div>
 
-            <!-- EMAIL -->
+            <!-- ACCOUNT ID -->
             <div>
-                <label for="email">이메일 주소</label>
-                <span class="box int_email">
-                    <input type="text" id="email" class="int" maxlength="100" placeholder="이름" required>
-                </span>
-                <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
-            </div>
-
-            <!-- ID -->
-            <div>
-              <label for="userNickname">이름</label>
-              <span class="box int_uid">
-                  <input type="text" id="uid" class="int" maxlength="20" placeholder="아이디" required>
+              <label for="accountId">아이디</label>
+              <span class="box int_aid">
+                  <input type="text" id="aid" class="int" maxlength="20" placeholder="아이디" required>
               </span>
             </div>
 
-            <!-- EMAIL -->
+            <!-- PASSWORD -->
             <div>
-                <label for="email">이메일 주소</label>
-                <span class="box int_email">
-                    <input type="text" id="email" class="int" maxlength="100" placeholder="비밀번호" required>
+                <label for="password">비밀번호</label>
+                <span class="box int_password">
+                    <input type="password" id="password" class="int" maxlength="100" placeholder="비밀번호" required>
                 </span>
-                <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
                 <div class="">
                     <button type="button" id="" style="background-color: white;">
                         <span style="color: blue;">비밀번호 변경하기</span>
@@ -71,9 +69,9 @@
                 </div>
             </div>
 
-            <!-- ID -->
+            <!-- MOBILE -->
             <div>
-              <label for="userNickname">이름</label>
+              <label for="mobile">모바일</label>
               <span class="box int_uid">
                   <input type="text" id="uid" class="int" maxlength="20" placeholder="핸드폰번호" required>
               </span>
