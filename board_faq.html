@@ -242,19 +242,19 @@
 
   <script>
     'use strict'
-    const apiGetList = async (_perPage, _category) => {
+    const apiGetList = async (_perPage) => {
       try {
         const _response = await axios.post(apiUrl+'faq', {
-          // msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
-          msgType: eApiMessageType.USER_GET_LIST_FAQ_BY_CATEGORY_REQ,
+          msgType: eApiMessageType.USER_GET_LIST_FAQ_REQ,
+          // msgType: eApiMessageType.USER_GET_LIST_FAQ_BY_CATEGORY_REQ,
           data: {
             page: _perPage,
-            category: _category
+            // category: _category
           }
         }, {withCredentials: true})
 
         let response = {}
-        Object.assign(response, _response)
+        Object.assign(response, _response.data)
 
         console.log(response)
         console.log(response.data)
@@ -265,7 +265,7 @@
         }
         globalCurrentPage = _perPage;
         paging(totalData, _perPage);
-        buildTable(response.data)
+        buildTable(response.data.rows)
 
       } catch (err) {
         console.error(err)
@@ -286,22 +286,22 @@
     window.onload = function () {
       apiGetCount()
     }
-    const apiGetCount = async (_category) => {
+    const apiGetCount = async () => {
       try {
         const _response = await axios.post(apiUrl +'faq', {
           msgType: eApiMessageType.USER_GET_COUNT_FAQ_REQ,
           data: {
-            category: _category
+            // category: _category
           }
         }, {withCredentials: true})
 
         let response = {}
-        Object.assign(response, _response)
+        Object.assign(response, _response.data)
 
         console.log(response)
         console.log(response.data)
 
-        totalData = response.data.length
+        totalData = response.rows.length
         console.log("totalData : " + totalData);
 
         await paging(totalData, globalCurrentPage);
