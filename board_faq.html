@@ -79,12 +79,12 @@
 
 
       <div class="category-manual">
-        <a href="javascript:void(0);" class="on" onclick="apiGetCount();">전체</a>
-        <a href="javascript:void(0);" onclick="apiGetListByCategory(10);">프로그램 사용</a>
-        <a href="javascript:void(0);" onclick="apiGetListByCategory(20);">심리 상담</a>
-        <a href="javascript:void(0);" onclick="apiGetListByCategory(30);">기관 등록</a>
-        <a href="javascript:void(0);" onclick="apiGetListByCategory(40);">회원관리</a>
-        <a href="javascript:void(0);" onclick="apiGetListByCategory(50);">기타</a>
+        <a href="javascript:void(0);" class="list-group-item on" onclick="apiGetCount();">전체</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(10);">프로그램 사용</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(20);">심리 상담</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(30);">기관 등록</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(40);">회원관리</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(50);">기타</a>
       </div>
 
       </br>
@@ -225,6 +225,22 @@
 
     
 
+  </script>
+
+  <script>
+    $(".list-group-item").click(function() {
+          
+        // Select all list items
+        var listItems = $(".list-group-item");
+          
+        // Remove 'on' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("on");
+        }
+          
+        // Add 'on' tag for currently selected item
+        this.classList.add("on");
+    });
   </script>
 
   <!-- <script>
