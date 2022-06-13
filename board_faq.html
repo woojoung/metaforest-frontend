@@ -80,11 +80,11 @@
 
       <div class="category-manual">
         <a href="javascript:void(0);" class="on">전체</a>
-        <a href="javascript:void(0);" data-value="10" onclick="apiGetCount(this.getAttribute('data-value'));">프로그램 사용</a>
-        <a href="javascript:void(0);" data-value="20" onclick="apiGetCount(this.getAttribute('data-value'));">심리 상담</a>
-        <a href="javascript:void(0);" data-value="30" onclick="apiGetCount(this.getAttribute('data-value'));">기관 등록</a>
-        <a href="javascript:void(0);" data-value="40" onclick="apiGetCount(this.getAttribute('data-value'));">회원관리</a>
-        <a href="javascript:void(0);" data-value="50" onclick="apiGetCount(this.getAttribute('data-value'));">기타</a>
+        <a href="javascript:void(0);" data-value="10" onclick="apiGetListByCategory(this.getAttribute('data-value'));">프로그램 사용</a>
+        <a href="javascript:void(0);" data-value="20" onclick="apiGetListByCategory(this.getAttribute('data-value'));">심리 상담</a>
+        <a href="javascript:void(0);" data-value="30" onclick="apiGetListByCategory(this.getAttribute('data-value'));">기관 등록</a>
+        <a href="javascript:void(0);" data-value="40" onclick="apiGetListByCategory(this.getAttribute('data-value'));">회원관리</a>
+        <a href="javascript:void(0);" data-value="50" onclick="apiGetListByCategory(this.getAttribute('data-value'));">기타</a>
       </div>
 
       </br>
@@ -284,8 +284,10 @@
 
 
     window.onload = function () {
-      apiGetCount()
+      apiGetCount();
     }
+
+
     const apiGetCount = async () => {
       try {
         const _response = await axios.post(apiUrl +'faq', {
@@ -319,7 +321,36 @@
       }
     };
 
-    
+    const apiGetListByCategory = async (_category) => {
+      try {
+        let _perPage = 1;
+        const _response = await axios.post(apiUrl+'faq', {
+          msgType: eApiMessageType.USER_GET_LIST_FAQ_BY_CATEGORY_REQ,
+          data: {
+            page: _perPage,
+            category: _category
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response.data)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+        globalCurrentPage = _perPage;
+        paging(totalData, _perPage);
+        buildTable(response.data.rows)
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
 
     // paging 함수
     function paging(totalData, currentPage) {
