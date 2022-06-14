@@ -277,13 +277,13 @@
       let row = '';
       for (let i = 0; i < data.length; i++) {
         // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
-        row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${i+1}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
+        row = `<tr><td class="center"><input type="" value="${data[i].noticeId}" /></td><td style="text-align:center">${i+1}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
         // row = `<tr><td style="text-align:center">${i+1}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
         table.innerHTML += row
       }
     }
   </script>
-  <script>
+  <!-- <script>
     'use strict'
     let addButton = document.querySelector('.btn_new');
     addButton.onclick = async function () {
@@ -294,7 +294,7 @@
       }
       window.location.href = './board_write.html'
     }
-  </script>
+  </script> -->
 
   <script>
     'use strict'
@@ -351,26 +351,26 @@
     //     }
     //   }
     // }
-    // delete selected row
-    deleteButton.onclick = async function () {
-      let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
-      console.log(deleteTemp)
-      let checkBoxNum = []
-      for (let i = 0; i < deleteTemp.length; i++) {
-        checkBoxNum.push(deleteTemp[i].value)
-      }
-      console.log(checkBoxNum)
-      const response = await axios.post(apiUrl+'notice', {
-        msgType: eApiMessageType.USER_DELETE_NOTICE_REQ,
-        data: {
-          noticeIds: checkBoxNum
-        }
-      }, {
-        withCredentials: true
-      })
+    // // delete selected row
+    // deleteButton.onclick = async function () {
+    //   let deleteTemp = tableBody.querySelectorAll('input[type="checkbox"]:checked')
+    //   console.log(deleteTemp)
+    //   let checkBoxNum = []
+    //   for (let i = 0; i < deleteTemp.length; i++) {
+    //     checkBoxNum.push(deleteTemp[i].value)
+    //   }
+    //   console.log(checkBoxNum)
+    //   const response = await axios.post(apiUrl+'notice', {
+    //     msgType: eApiMessageType.USER_DELETE_NOTICE_REQ,
+    //     data: {
+    //       noticeIds: checkBoxNum
+    //     }
+    //   }, {
+    //     withCredentials: true
+    //   })
 
-      console.log(response)
-    }
+    //   console.log(response)
+    // }
   </script>
 
   <script>
