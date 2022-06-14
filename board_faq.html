@@ -79,12 +79,12 @@
 
 
       <div class="category-manual">
-        <a href="javascript:void(0);" class="on">전체</a>
-        <a href="javascript:void(0);" data-value="10" onclick="apiGetCount(this.getAttribute('data-value'));">프로그램 사용</a>
-        <a href="javascript:void(0);" data-value="20" onclick="apiGetCount(this.getAttribute('data-value'));">심리 상담</a>
-        <a href="javascript:void(0);" data-value="30" onclick="apiGetCount(this.getAttribute('data-value'));">기관 등록</a>
-        <a href="javascript:void(0);" data-value="40" onclick="apiGetCount(this.getAttribute('data-value'));">회원관리</a>
-        <a href="javascript:void(0);" data-value="50" onclick="apiGetCount(this.getAttribute('data-value'));">기타</a>
+        <a href="javascript:void(0);" class="list-group-item on" onclick="apiGetCount();">전체</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(10);">프로그램 사용</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(20);">심리 상담</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(30);">기관 등록</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(40);">회원관리</a>
+        <a href="javascript:void(0);" class="list-group-item" onclick="apiGetListByCategory(50);">기타</a>
       </div>
 
       </br>
@@ -227,6 +227,22 @@
 
   </script>
 
+  <script>
+    $(".list-group-item").click(function() {
+          
+        // Select all list items
+        var listItems = $(".list-group-item");
+          
+        // Remove 'on' tag for all list items
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].classList.remove("on");
+        }
+          
+        // Add 'on' tag for currently selected item
+        this.classList.add("on");
+    });
+  </script>
+
   <!-- <script>
     'use strict'
     let addButton = document.querySelector('.btn_new');
@@ -284,8 +300,10 @@
 
 
     window.onload = function () {
-      apiGetCount()
+      apiGetCount();
     }
+
+
     const apiGetCount = async () => {
       try {
         const _response = await axios.post(apiUrl +'faq', {
@@ -319,7 +337,42 @@
       }
     };
 
-    
+    const apiGetListByCategory = async (_category) => {
+      try {
+        let _perPage = 1;
+        const _response = await axios.post(apiUrl+'faq', {
+          msgType: eApiMessageType.USER_GET_LIST_FAQ_BY_CATEGORY_REQ,
+          data: {
+            page: _perPage,
+            category: _category
+          }
+        }, {withCredentials: true})
+
+        let response = {}
+        Object.assign(response, _response.data)
+
+        console.log(response)
+        console.log(response.data)
+
+        if (response.status !== 200) {
+          console.log(response)
+          return
+        }
+        globalCurrentPage = _perPage;
+        paging(totalData, _perPage);
+        buildTable(response.data.rows);
+
+        $(".que").click(function() {
+          $(this).next(".anw").stop().slideToggle(300);
+          $(this).toggleClass('on').siblings().removeClass('on');
+          $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+        });
+
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
 
     // paging 함수
     function paging(totalData, currentPage) {
