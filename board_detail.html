@@ -205,105 +205,112 @@
     // ];
     // test 후 주석처리하기
     window.onload = function () {
-        // const queryString = window.location.search;
-        // const urlParams = new URLSearchParams(queryString);
-        // const id = urlParams.get('id');
-        const id = getParam('id');
-        // console.log('getParam: ',id);
-        let prevNum = parseInt(id) - 1;
-        let nextNum =  parseInt(id) + 1;
-        let noticeIds = [prevNum, parseInt(id), nextNum];
-        // 이전글 다음글 없을때 방어코드
-        apiGetOne(noticeIds);
+      // const queryString = window.location.search;
+      // const urlParams = new URLSearchParams(queryString);
+      // const id = urlParams.get('id');
+      const id = getParam('id');
+      // console.log('getParam: ',id);
+      let prevNum = parseInt(id) - 1;
+      let nextNum =  parseInt(id) + 1;
+      let noticeIds = [prevNum, parseInt(id), nextNum];
+      // 이전글 다음글 없을때 방어코드
+      apiGetOne(noticeIds);
 
-        const btnList = document.getElementById('btnList');
-        const btnEdit = document.getElementById('btnEdit');
-        const btnDel = document.getElementById('btnDel');
+      const btnList = document.getElementById('btnList');
+      const btnEdit = document.getElementById('btnEdit');
+      const btnDel = document.getElementById('btnDel');
 
-        btnList.onclick = function () {
-            window.location.href = './board_main.html'
-        }
-
-        btnEdit.onclick = async function () {
-            let accessLevel = storageGet('accessLevel', 0);
-            if (accessLevel < 30) {
-                alert('수정 권한이 없습니다.');
-                return
-            }
-            window.location.href = `./board_write.html?id=${id}`
-        }
-
-        btnDel.onclick = function () {
-            alert('정말 삭제하시겠습니까?');
-            let accessLevel = storageGet('accessLevel', 0);
-            if (accessLevel < 30) {
-                alert('삭제 권한이 없습니다.');
-                return
-            }
-        }
-
-    }
-    
-    
-    function buildTable(data) { 
-      let inTitle = document.getElementById('in_title');
-      let inContent = document.getElementById('in_content');
-      let inTitlePrev = document.getElementById('in_title_prev');
-      let inTitleNext = document.getElementById('in_title_next');
-
-      let paramId = getParam('id');
-
-      console.log('build talble',data);
-      inTitle.innerHTML = `<div style="text-align:left">${''}</div>`;
-      inContent.innerHTML = `<div style="text-align:left">${''}</div>`;
-      inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
-      inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
-
-      for (let i = 0; i < data.length; i++) {
-        if (parseInt(data[i].noticeId) === parseInt(paramId)) {
-          inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
-          inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].content)}</div>`;
-        } else if (parseInt(data[i].noticeId) < parseInt(paramId)) {
-          inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
-        } else if (parseInt(data[i].noticeId) > parseInt(paramId)) {
-          inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
-        }
+      btnList.onclick = function () {
+          window.location.href = './board_main.html'
       }
-      
-    }
 
-  </script>
+      btnEdit.onclick = async function () {
+          let accessLevel = storageGet('accessLevel', 0);
+          if (accessLevel < 30) {
+              alert('수정 권한이 없습니다.');
+              return
+          }
+          window.location.href = `./board_write.html?id=${id}`
+      }
+
+      btnDel.onclick = function () {
+          alert('정말 삭제하시겠습니까?');
+          let accessLevel = storageGet('accessLevel', 0);
+          if (accessLevel < 30) {
+              alert('삭제 권한이 없습니다.');
+              return
+          }
+      }
+
+  }
+    
+    
+  function buildTable(data) { 
+    let inTitle = document.getElementById('in_title');
+    let inContent = document.getElementById('in_content');
+    let inTitlePrev = document.getElementById('in_title_prev');
+    let inTitleNext = document.getElementById('in_title_next');
+
+    let paramId = getParam('id');
+
+    console.log('build talble',data);
+    inTitle.innerHTML = `<div style="text-align:left">${''}</div>`;
+    inContent.innerHTML = `<div style="text-align:left">${''}</div>`;
+    inTitlePrev.innerHTML = `<div style="text-align:left">${''}</div>`;
+    inTitleNext.innerHTML = `<div style="text-align:left">${''}</div>`;
+
+    for (let i = 0; i < data.length; i++) {
+      if (parseInt(data[i].noticeId) === parseInt(paramId)) {
+        inTitle.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+        inContent.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].content)}</div>`;
+      } else if (parseInt(data[i].noticeId) < parseInt(paramId)) {
+        inTitlePrev.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+      } else if (parseInt(data[i].noticeId) > parseInt(paramId)) {
+        inTitleNext.innerHTML = `<div style="text-align:left">${undefinedToString(data[i].title)}</div>`;
+      }
+    }
+    
+  }
+
+</script>
 
 <script>
-    'use strict'
-    const apiGetOne = async (noticeIds) => {
-      try {
-        const _response = await axios.post(apiUrl + 'notice', {
-          msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
-          data: {
-            noticeIds: noticeIds
-          }
-        }, {withCredentials: true})
-
-        let response = {}
-        Object.assign(response, _response)
-
-        // console.log(response)
-        // console.log(response.data)
-
-        if (response.data.status !== 200) {
-          console.log(response)
-          return
+  'use strict'
+  const apiGetOne = async (noticeIds) => {
+    try {
+      const _response = await axios.post(apiUrl + 'notice', {
+        msgType: eApiMessageType.USER_GET_ONE_NOTICE_REQ,
+        data: {
+          noticeIds: noticeIds
         }
+      }, {withCredentials: true})
 
-        buildTable(response.data.data.rows)
+      let response = {}
+      Object.assign(response, _response)
 
-      } catch (err) {
-        console.error(err)
+      // console.log(response)
+      // console.log(response.data)
+
+      if (response.data.status !== 200) {
+        console.log(response)
+        return
       }
-    };
 
-  </script>
+      buildTable(response.data.data.rows)
+
+    } catch (err) {
+      console.error(err)
+    }
+  };
+
+</script>
+
+<script>
+  'use strict'
+  window.onunload = function () {
+    storageClear();
+  }
+</script>
 
 </body>
 </html>
