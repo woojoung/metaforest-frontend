@@ -277,8 +277,9 @@
       let row = '';
       for (let i = 0; i < data.length; i++) {
         // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt)._toDateStr()}</td> </tr>`;
+        // row = `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
         row =
-          `<tr><td class="center"><input type="checkbox" value="${data[i].noticeId}" /></td><td style="text-align:center">${data[i].noticeId}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
+          `<tr><td style="text-align:center">${i+1}</td> <td style="text-align:left" onclick="location.href='./board_detail.html?id=${data[i].noticeId}'">${data[i].title}</td> <td style="text-align:center">${Time(data[i].createdAt).toDateStr()}</td> </tr>`;
         table.innerHTML += row
       }
     }
