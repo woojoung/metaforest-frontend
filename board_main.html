@@ -207,69 +207,6 @@
 
   <script>
     'use strict'
-    // const testArray = [{
-    //     noticeId: 10,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 9,
-    //     title: '집단상담은 어떻게 진행되나요?',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 8,
-    //     title: '플랫폼은 무료인가요?',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 7,
-    //     title: '1:1상담은 어떻게 진행되는건가요?.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 6,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 5,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 4,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 3,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 2,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    //   {
-    //     noticeId: 1,
-    //     title: '공지사항입니다.',
-    //     createdAt: '2022-02-18'
-    //   },
-    // ];
-    // // test 후 주석처리하기
-    // window.onload = function () {
-    //   // let accessLevel = storageGet('accessLevel', '');
-    //   // if (accessLevel == '') {
-    //   //   alert('로그인 후 이용할 수 있습니다.');
-    //   //   location.href = './login.html';
-    //   //   return
-    //   // }
-    //   // paging(testArray.length, 1);
-    //   // buildTable(testArray);
-    // }
-
 
     function buildTable(data) {
       let table = document.getElementById('table1');
@@ -283,18 +220,6 @@
       }
     }
   </script>
-  <!-- <script>
-    'use strict'
-    let addButton = document.querySelector('.btn_new');
-    addButton.onclick = async function () {
-      let accessLevel = storageGet('accessLevel', 0);
-      if (accessLevel < 30) {
-        alert('등록 권한이 없습니다.');
-        return
-      }
-      window.location.href = './board_write.html'
-    }
-  </script> -->
 
   <script>
     'use strict'
@@ -315,9 +240,6 @@
 
         let response = {}
         Object.assign(response, _response)
-
-        // console.log(response)
-        // console.log(response.data)
 
         totalData = response.data.rows.length
         console.log("totalData : " + totalData);
@@ -457,7 +379,7 @@
 
 
 
-    // paging 함수
+    // paging 함수, 나중에 lib 으로
     function paging(totalData, currentPage) {
 
       console.log("currentPage : " + currentPage);
