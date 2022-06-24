@@ -305,6 +305,9 @@
 
             let accessLevel = document.getElementById("accessLevel").value
 
+            let partnerId = document.getElementById("partner").value
+            let mobile = document.getElementById("mobile").value
+
             if (email === "" && passwd === "" && userNickname === "" && passwd2 === "") {
                 alert("항목을 모두 입력해주세요.")
                 return
@@ -340,18 +343,20 @@
             }
 
             const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
+            const md5Mobile = hex_md5('metaforest:' + hex_md5(mobile))
             let marketingAgreeTime = storageGet('marketingAgreeTime', 0);
             let apiRequest = {
                 msgType: eApiMessageType.USER_SIGNUP_REQ,
                 data: {
                     accountId: accountId,
-                    userNickname: userNickname, // unique 풀지..? 
+                    userNickname: userNickname,
                     profileImageUrl: '',
                     email: sendEmail,
                     password: hexMd5,
-                    md5Mobile: '',
+                    md5Mobile: md5Mobile,
                     marketingAgreeTime: marketingAgreeTime,
-                    accessLevel: accessLevel
+                    accessLevel: accessLevel,
+                    partnerId: partnerId,
                 }
             }
 
