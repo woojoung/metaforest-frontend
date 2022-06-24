@@ -342,7 +342,7 @@
                 return
             }
 
-            const hexMd5 = hex_md5(sendEmail + hex_md5(passwd))
+            const hexMd5 = hex_md5(accountId + hex_md5(passwd))
             const md5Mobile = hex_md5('metaforest:' + hex_md5(mobile))
             let marketingAgreeTime = storageGet('marketingAgreeTime', 0);
             let apiRequest = {
