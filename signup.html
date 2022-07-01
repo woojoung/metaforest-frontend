@@ -285,9 +285,6 @@
             let response = {}
             Object.assign(response, _response.data)
 
-            console.log(response)
-            console.log(response.data)
-
             storageSet('mobileAuthCode', response.data.authCode.toString())
         }
     </script>
