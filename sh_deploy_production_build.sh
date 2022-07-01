@@ -16,6 +16,8 @@ fi
 NAME=$(whoami)
 DATE=$(date '+%Y%m%d_%H%M%S_%Z')
 
+\cp -f ./tools/cfg.production.js ./tools/cfg.js
+
 mkdir ../www_mf_production_$DATE
 git archive --format=tar main -o ../www_mf_production_$DATE/www_mf_production_$DATE.tar
 
